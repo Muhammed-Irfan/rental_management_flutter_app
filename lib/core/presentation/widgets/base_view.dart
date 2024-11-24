@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rental_tracker/core/bloc/base_bloc.dart';
-import 'package:rental_tracker/core/bloc/base_bloc_state.dart';
-import 'package:rental_tracker/shared/presentation/widgets/loading_view.dart';
+import 'package:rentease/core/bloc/base_bloc.dart';
+import 'package:rentease/core/bloc/base_bloc_state.dart';
+import 'package:rentease/shared/presentation/widgets/common_widgets.dart';
 
 class BaseView<B extends BaseBloc<dynamic, T>, T> extends StatelessWidget {
   final Widget Function(T data) onLoaded;
@@ -24,11 +24,13 @@ class BaseView<B extends BaseBloc<dynamic, T>, T> extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<B, BaseState<T>>(
       builder: (context, state) {
-        return state.map(
-          initial: (_) => _buildInitial(),
-          loading: (_) => _buildLoading(),
-          loaded: (state) => onLoaded(state.data),
-          error: (state) => _buildError(state.message),
+        return KeyboardDismisser(
+          child: state.map(
+            initial: (_) => _buildInitial(),
+            loading: (_) => _buildLoading(),
+            loaded: (state) => onLoaded(state.data),
+            error: (state) => _buildError(state.message),
+          ),
         );
       },
     );

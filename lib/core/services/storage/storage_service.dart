@@ -1,5 +1,5 @@
 import 'package:injectable/injectable.dart';
-import 'package:rental_tracker/core/services/storage/storage_service_provider.dart';
+import 'package:rentease/core/services/storage/storage_service_provider.dart';
 
 @injectable
 class StorageService {

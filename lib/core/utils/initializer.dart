@@ -3,9 +3,9 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rental_tracker/core/di/injection.dart';
-import 'package:rental_tracker/core/observers/app_bloc_observer.dart';
-import 'package:rental_tracker/core/services/logging/logging_service.dart';
+import 'package:rentease/core/di/injection.dart';
+import 'package:rentease/core/observers/app_bloc_observer.dart';
+import 'package:rentease/core/services/logging/logging_service.dart';
 
 class Initializer {
   factory Initializer() => instance;

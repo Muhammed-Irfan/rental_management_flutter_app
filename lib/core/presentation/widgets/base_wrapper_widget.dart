@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:rental_tracker/core/di/injection.dart';
-import 'package:rental_tracker/core/router/route_names.dart';
-import 'package:rental_tracker/core/services/logging/logging_service.dart';
+import 'package:rentease/core/di/injection.dart';
+import 'package:rentease/core/router/route_names.dart';
+import 'package:rentease/core/services/logging/logging_service.dart';
 
 class BaseWrapperWidget extends StatelessWidget {
   final Widget child;

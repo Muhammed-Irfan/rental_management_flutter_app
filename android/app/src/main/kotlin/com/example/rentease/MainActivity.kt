@@ -1,4 +1,4 @@
-package com.example.flutter_starter
+package com.example.rentease
 
 import io.flutter.embedding.android.FlutterActivity
 

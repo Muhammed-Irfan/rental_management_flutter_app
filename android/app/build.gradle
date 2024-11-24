@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.rental_tracker"
+    namespace = "com.example.rentease"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
@@ -20,7 +20,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.example.rental_tracker"
+        applicationId = "com.example.rentease"
         minSdk = flutter.minSdkVersion
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode

@@ -1,4 +1,4 @@
-import 'package:rental_tracker/core/types/result.dart';
+import 'package:rentease/core/types/result.dart';
 
 abstract class UseCase<Type, Params> {
   Future<Result<Type>> call(Params params);

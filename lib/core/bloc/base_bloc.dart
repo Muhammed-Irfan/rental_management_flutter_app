@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rental_tracker/core/bloc/base_bloc_state.dart';
+import 'package:rentease/core/bloc/base_bloc_state.dart';
 
 abstract class BaseBloc<Event, T> extends Bloc<Event, BaseState<T>> {
   BaseBloc() : super(const BaseState.initial()) {

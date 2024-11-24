@@ -130,7 +130,7 @@ class __$$DashboardOverviewEntityImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$DashboardOverviewEntityImpl implements _DashboardOverviewEntity {
-  _$DashboardOverviewEntityImpl(
+  const _$DashboardOverviewEntityImpl(
       {required this.activeRentalsCount,
       required this.pendingRentalAmount,
       required this.totalAmountCollected});
@@ -175,7 +175,7 @@ class _$DashboardOverviewEntityImpl implements _DashboardOverviewEntity {
 }
 
 abstract class _DashboardOverviewEntity implements DashboardOverviewEntity {
-  factory _DashboardOverviewEntity(
+  const factory _DashboardOverviewEntity(
           {required final int activeRentalsCount,
           required final double pendingRentalAmount,
           required final double totalAmountCollected}) =

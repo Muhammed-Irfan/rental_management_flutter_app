@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rentease/core/theme/theme_imports.dart';
 
 class AppTextField extends StatelessWidget {
   final String label;
@@ -7,6 +8,8 @@ class AppTextField extends StatelessWidget {
   final String? Function(String?)? validator;
   final bool obscureText;
   final TextInputType keyboardType;
+  final void Function(String)? onChanged;
+  final int? maxLines;
 
   const AppTextField({
     required this.label,
@@ -16,6 +19,8 @@ class AppTextField extends StatelessWidget {
     this.validator,
     this.obscureText = false,
     this.keyboardType = TextInputType.text,
+    this.onChanged,
+    this.maxLines,
   });
 
   @override
@@ -25,9 +30,19 @@ class AppTextField extends StatelessWidget {
       validator: validator,
       obscureText: obscureText,
       keyboardType: keyboardType,
+      onChanged: onChanged,
+      maxLines: maxLines,
+      style: const TextStyle(fontWeight: FontWeight.bold),
       decoration: InputDecoration(
         labelText: label,
         hintText: hint,
+        filled: true,
+        fillColor: AppColors.textFieldBackground,
+        border: OutlineInputBorder(
+          borderSide: BorderSide(
+            color: Theme.of(context).primaryColor,
+          ),
+        ),
       ),
     );
   }

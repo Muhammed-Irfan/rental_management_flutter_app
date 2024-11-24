@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:rental_tracker/core/router/router.dart';
-import 'package:rental_tracker/core/theme/app_strings.dart';
-import 'package:rental_tracker/core/theme/app_theme.dart';
+import 'package:rentease/core/router/router.dart';
+import 'package:rentease/core/theme/app_strings.dart';
+import 'package:rentease/core/theme/app_theme.dart';
 
 class RentalTracker extends StatelessWidget {
   const RentalTracker({super.key});

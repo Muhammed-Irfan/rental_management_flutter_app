@@ -1,6 +1,6 @@
 import 'package:fpdart/fpdart.dart';
-import 'package:rental_tracker/core/error/exceptions.dart';
-import 'package:rental_tracker/core/types/result.dart';
+import 'package:rentease/core/error/exceptions.dart';
+import 'package:rentease/core/types/result.dart';
 
 Future<Result<T>> executeSafely<T>(
   Future<T> Function() action, {

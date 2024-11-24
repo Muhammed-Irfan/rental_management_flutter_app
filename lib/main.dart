@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:rental_tracker/app.dart';
-import 'package:rental_tracker/core/di/injection.dart';
-import 'package:rental_tracker/core/utils/initializer.dart';
+import 'package:rentease/app.dart';
+import 'package:rentease/core/di/injection.dart';
+import 'package:rentease/core/utils/initializer.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

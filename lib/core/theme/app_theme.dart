@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:rental_tracker/core/theme/app_colors.dart';
-import 'package:rental_tracker/core/theme/app_text_styles.dart';
+import 'package:rentease/core/theme/app_colors.dart';
+import 'package:rentease/core/theme/app_text_styles.dart';
 
 class AppTheme {
   AppTheme._();
@@ -15,9 +15,10 @@ class AppTheme {
         bodyMedium: AppTextStyles.error,
       ),
       appBarTheme: AppBarTheme(
-        backgroundColor: AppColors.primary,
+        backgroundColor: AppColors.background,
         titleTextStyle: AppTextStyles.heading,
       ),
+      platform: TargetPlatform.iOS, // Force iOS-style back button
     );
   }
 }
