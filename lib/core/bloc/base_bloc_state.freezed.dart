@@ -22,6 +22,7 @@ mixin _$BaseState<T> {
     required TResult Function() loading,
     required TResult Function(T data) loaded,
     required TResult Function(String message) error,
+    required TResult Function(NavigationResult navigation) navigate,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -30,6 +31,7 @@ mixin _$BaseState<T> {
     TResult? Function()? loading,
     TResult? Function(T data)? loaded,
     TResult? Function(String message)? error,
+    TResult? Function(NavigationResult navigation)? navigate,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +40,7 @@ mixin _$BaseState<T> {
     TResult Function()? loading,
     TResult Function(T data)? loaded,
     TResult Function(String message)? error,
+    TResult Function(NavigationResult navigation)? navigate,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -47,6 +50,7 @@ mixin _$BaseState<T> {
     required TResult Function(Loading<T> value) loading,
     required TResult Function(Loaded<T> value) loaded,
     required TResult Function(Error<T> value) error,
+    required TResult Function(Navigate<T> value) navigate,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,6 +59,7 @@ mixin _$BaseState<T> {
     TResult? Function(Loading<T> value)? loading,
     TResult? Function(Loaded<T> value)? loaded,
     TResult? Function(Error<T> value)? error,
+    TResult? Function(Navigate<T> value)? navigate,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -63,6 +68,7 @@ mixin _$BaseState<T> {
     TResult Function(Loading<T> value)? loading,
     TResult Function(Loaded<T> value)? loaded,
     TResult Function(Error<T> value)? error,
+    TResult Function(Navigate<T> value)? navigate,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -134,6 +140,7 @@ class _$InitialImpl<T> implements Initial<T> {
     required TResult Function() loading,
     required TResult Function(T data) loaded,
     required TResult Function(String message) error,
+    required TResult Function(NavigationResult navigation) navigate,
   }) {
     return initial();
   }
@@ -145,6 +152,7 @@ class _$InitialImpl<T> implements Initial<T> {
     TResult? Function()? loading,
     TResult? Function(T data)? loaded,
     TResult? Function(String message)? error,
+    TResult? Function(NavigationResult navigation)? navigate,
   }) {
     return initial?.call();
   }
@@ -156,6 +164,7 @@ class _$InitialImpl<T> implements Initial<T> {
     TResult Function()? loading,
     TResult Function(T data)? loaded,
     TResult Function(String message)? error,
+    TResult Function(NavigationResult navigation)? navigate,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -171,6 +180,7 @@ class _$InitialImpl<T> implements Initial<T> {
     required TResult Function(Loading<T> value) loading,
     required TResult Function(Loaded<T> value) loaded,
     required TResult Function(Error<T> value) error,
+    required TResult Function(Navigate<T> value) navigate,
   }) {
     return initial(this);
   }
@@ -182,6 +192,7 @@ class _$InitialImpl<T> implements Initial<T> {
     TResult? Function(Loading<T> value)? loading,
     TResult? Function(Loaded<T> value)? loaded,
     TResult? Function(Error<T> value)? error,
+    TResult? Function(Navigate<T> value)? navigate,
   }) {
     return initial?.call(this);
   }
@@ -193,6 +204,7 @@ class _$InitialImpl<T> implements Initial<T> {
     TResult Function(Loading<T> value)? loading,
     TResult Function(Loaded<T> value)? loaded,
     TResult Function(Error<T> value)? error,
+    TResult Function(Navigate<T> value)? navigate,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -251,6 +263,7 @@ class _$LoadingImpl<T> implements Loading<T> {
     required TResult Function() loading,
     required TResult Function(T data) loaded,
     required TResult Function(String message) error,
+    required TResult Function(NavigationResult navigation) navigate,
   }) {
     return loading();
   }
@@ -262,6 +275,7 @@ class _$LoadingImpl<T> implements Loading<T> {
     TResult? Function()? loading,
     TResult? Function(T data)? loaded,
     TResult? Function(String message)? error,
+    TResult? Function(NavigationResult navigation)? navigate,
   }) {
     return loading?.call();
   }
@@ -273,6 +287,7 @@ class _$LoadingImpl<T> implements Loading<T> {
     TResult Function()? loading,
     TResult Function(T data)? loaded,
     TResult Function(String message)? error,
+    TResult Function(NavigationResult navigation)? navigate,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -288,6 +303,7 @@ class _$LoadingImpl<T> implements Loading<T> {
     required TResult Function(Loading<T> value) loading,
     required TResult Function(Loaded<T> value) loaded,
     required TResult Function(Error<T> value) error,
+    required TResult Function(Navigate<T> value) navigate,
   }) {
     return loading(this);
   }
@@ -299,6 +315,7 @@ class _$LoadingImpl<T> implements Loading<T> {
     TResult? Function(Loading<T> value)? loading,
     TResult? Function(Loaded<T> value)? loaded,
     TResult? Function(Error<T> value)? error,
+    TResult? Function(Navigate<T> value)? navigate,
   }) {
     return loading?.call(this);
   }
@@ -310,6 +327,7 @@ class _$LoadingImpl<T> implements Loading<T> {
     TResult Function(Loading<T> value)? loading,
     TResult Function(Loaded<T> value)? loaded,
     TResult Function(Error<T> value)? error,
+    TResult Function(Navigate<T> value)? navigate,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -396,6 +414,7 @@ class _$LoadedImpl<T> implements Loaded<T> {
     required TResult Function() loading,
     required TResult Function(T data) loaded,
     required TResult Function(String message) error,
+    required TResult Function(NavigationResult navigation) navigate,
   }) {
     return loaded(data);
   }
@@ -407,6 +426,7 @@ class _$LoadedImpl<T> implements Loaded<T> {
     TResult? Function()? loading,
     TResult? Function(T data)? loaded,
     TResult? Function(String message)? error,
+    TResult? Function(NavigationResult navigation)? navigate,
   }) {
     return loaded?.call(data);
   }
@@ -418,6 +438,7 @@ class _$LoadedImpl<T> implements Loaded<T> {
     TResult Function()? loading,
     TResult Function(T data)? loaded,
     TResult Function(String message)? error,
+    TResult Function(NavigationResult navigation)? navigate,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -433,6 +454,7 @@ class _$LoadedImpl<T> implements Loaded<T> {
     required TResult Function(Loading<T> value) loading,
     required TResult Function(Loaded<T> value) loaded,
     required TResult Function(Error<T> value) error,
+    required TResult Function(Navigate<T> value) navigate,
   }) {
     return loaded(this);
   }
@@ -444,6 +466,7 @@ class _$LoadedImpl<T> implements Loaded<T> {
     TResult? Function(Loading<T> value)? loading,
     TResult? Function(Loaded<T> value)? loaded,
     TResult? Function(Error<T> value)? error,
+    TResult? Function(Navigate<T> value)? navigate,
   }) {
     return loaded?.call(this);
   }
@@ -455,6 +478,7 @@ class _$LoadedImpl<T> implements Loaded<T> {
     TResult Function(Loading<T> value)? loading,
     TResult Function(Loaded<T> value)? loaded,
     TResult Function(Error<T> value)? error,
+    TResult Function(Navigate<T> value)? navigate,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -548,6 +572,7 @@ class _$ErrorImpl<T> implements Error<T> {
     required TResult Function() loading,
     required TResult Function(T data) loaded,
     required TResult Function(String message) error,
+    required TResult Function(NavigationResult navigation) navigate,
   }) {
     return error(message);
   }
@@ -559,6 +584,7 @@ class _$ErrorImpl<T> implements Error<T> {
     TResult? Function()? loading,
     TResult? Function(T data)? loaded,
     TResult? Function(String message)? error,
+    TResult? Function(NavigationResult navigation)? navigate,
   }) {
     return error?.call(message);
   }
@@ -570,6 +596,7 @@ class _$ErrorImpl<T> implements Error<T> {
     TResult Function()? loading,
     TResult Function(T data)? loaded,
     TResult Function(String message)? error,
+    TResult Function(NavigationResult navigation)? navigate,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -585,6 +612,7 @@ class _$ErrorImpl<T> implements Error<T> {
     required TResult Function(Loading<T> value) loading,
     required TResult Function(Loaded<T> value) loaded,
     required TResult Function(Error<T> value) error,
+    required TResult Function(Navigate<T> value) navigate,
   }) {
     return error(this);
   }
@@ -596,6 +624,7 @@ class _$ErrorImpl<T> implements Error<T> {
     TResult? Function(Loading<T> value)? loading,
     TResult? Function(Loaded<T> value)? loaded,
     TResult? Function(Error<T> value)? error,
+    TResult? Function(Navigate<T> value)? navigate,
   }) {
     return error?.call(this);
   }
@@ -607,6 +636,7 @@ class _$ErrorImpl<T> implements Error<T> {
     TResult Function(Loading<T> value)? loading,
     TResult Function(Loaded<T> value)? loaded,
     TResult Function(Error<T> value)? error,
+    TResult Function(Navigate<T> value)? navigate,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -625,5 +655,164 @@ abstract class Error<T> implements BaseState<T> {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ErrorImplCopyWith<T, _$ErrorImpl<T>> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$NavigateImplCopyWith<T, $Res> {
+  factory _$$NavigateImplCopyWith(
+          _$NavigateImpl<T> value, $Res Function(_$NavigateImpl<T>) then) =
+      __$$NavigateImplCopyWithImpl<T, $Res>;
+  @useResult
+  $Res call({NavigationResult navigation});
+}
+
+/// @nodoc
+class __$$NavigateImplCopyWithImpl<T, $Res>
+    extends _$BaseStateCopyWithImpl<T, $Res, _$NavigateImpl<T>>
+    implements _$$NavigateImplCopyWith<T, $Res> {
+  __$$NavigateImplCopyWithImpl(
+      _$NavigateImpl<T> _value, $Res Function(_$NavigateImpl<T>) _then)
+      : super(_value, _then);
+
+  /// Create a copy of BaseState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? navigation = null,
+  }) {
+    return _then(_$NavigateImpl<T>(
+      null == navigation
+          ? _value.navigation
+          : navigation // ignore: cast_nullable_to_non_nullable
+              as NavigationResult,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$NavigateImpl<T> implements Navigate<T> {
+  const _$NavigateImpl(this.navigation);
+
+  @override
+  final NavigationResult navigation;
+
+  @override
+  String toString() {
+    return 'BaseState<$T>.navigate(navigation: $navigation)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$NavigateImpl<T> &&
+            (identical(other.navigation, navigation) ||
+                other.navigation == navigation));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, navigation);
+
+  /// Create a copy of BaseState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$NavigateImplCopyWith<T, _$NavigateImpl<T>> get copyWith =>
+      __$$NavigateImplCopyWithImpl<T, _$NavigateImpl<T>>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(T data) loaded,
+    required TResult Function(String message) error,
+    required TResult Function(NavigationResult navigation) navigate,
+  }) {
+    return navigate(navigation);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(T data)? loaded,
+    TResult? Function(String message)? error,
+    TResult? Function(NavigationResult navigation)? navigate,
+  }) {
+    return navigate?.call(navigation);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(T data)? loaded,
+    TResult Function(String message)? error,
+    TResult Function(NavigationResult navigation)? navigate,
+    required TResult orElse(),
+  }) {
+    if (navigate != null) {
+      return navigate(navigation);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Initial<T> value) initial,
+    required TResult Function(Loading<T> value) loading,
+    required TResult Function(Loaded<T> value) loaded,
+    required TResult Function(Error<T> value) error,
+    required TResult Function(Navigate<T> value) navigate,
+  }) {
+    return navigate(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Initial<T> value)? initial,
+    TResult? Function(Loading<T> value)? loading,
+    TResult? Function(Loaded<T> value)? loaded,
+    TResult? Function(Error<T> value)? error,
+    TResult? Function(Navigate<T> value)? navigate,
+  }) {
+    return navigate?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Initial<T> value)? initial,
+    TResult Function(Loading<T> value)? loading,
+    TResult Function(Loaded<T> value)? loaded,
+    TResult Function(Error<T> value)? error,
+    TResult Function(Navigate<T> value)? navigate,
+    required TResult orElse(),
+  }) {
+    if (navigate != null) {
+      return navigate(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Navigate<T> implements BaseState<T> {
+  const factory Navigate(final NavigationResult navigation) = _$NavigateImpl<T>;
+
+  NavigationResult get navigation;
+
+  /// Create a copy of BaseState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$NavigateImplCopyWith<T, _$NavigateImpl<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }

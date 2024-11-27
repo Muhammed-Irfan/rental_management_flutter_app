@@ -4,24 +4,37 @@ import 'package:rentease/core/di/injection.dart';
 import 'package:rentease/core/presentation/widgets/base_view.dart';
 import 'package:rentease/core/theme/theme_imports.dart';
 import 'package:rentease/core/utils/extensions.dart';
-import 'package:rentease/features/inventory/domain/entities/inventory_item_entity.dart';
 import 'package:rentease/features/inventory/presentation/bloc/add_inventory_bloc.dart';
 import 'package:rentease/shared/presentation/widgets/common_widgets.dart';
 
 class AddInventoryPage extends StatelessWidget {
-  const AddInventoryPage({super.key});
+  final String? id;
+  const AddInventoryPage({super.key, this.id});
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => getIt<AddInventoryBloc>(),
-      child: const AddInventoryView(),
+      create: (context) {
+        final bloc = getIt<AddInventoryBloc>();
+        if (id != null) {
+          bloc.add(AddInventoryEvent.setItem(id!));
+        }
+        return bloc;
+      },
+      child: AddInventoryView(id: id),
     );
   }
 }
 
 class AddInventoryView extends StatelessWidget {
-  const AddInventoryView({super.key});
+  final String? id;
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _descriptionController = TextEditingController();
+  final TextEditingController _quantityController = TextEditingController();
+  final TextEditingController _availableController = TextEditingController();
+  final TextEditingController _rentController = TextEditingController();
+
+  AddInventoryView({super.key, this.id});
 
   @override
   Widget build(BuildContext context) {
@@ -30,16 +43,20 @@ class AddInventoryView extends StatelessWidget {
         title: const Text('Add New Item'),
       ),
       body: BaseView<AddInventoryBloc, AddInventoryState>(
-        initialWidget: _buildContent(
-          context,
-          AddInventoryState(item: InventoryItemEntity.empty()),
-        ),
-        onLoaded: (state) => _buildContent(context, state),
+        initialWidget: _buildContent(context),
+        onLoaded: (state) {
+          _nameController.text = state.item.name;
+          _descriptionController.text = state.item.description ?? '';
+          _quantityController.text = state.item.quantity.toString();
+          _availableController.text = state.item.available.toString();
+          _rentController.text = state.item.rent.toStringAsFixed(2);
+          return _buildContent(context);
+        },
       ),
     );
   }
 
-  Widget _buildContent(BuildContext context, AddInventoryState state) {
+  Widget _buildContent(BuildContext context) {
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -53,24 +70,12 @@ class AddInventoryView extends StatelessWidget {
             const SizedBox(height: 16),
             AppTextField(
               label: 'Name',
-              controller: TextEditingController(text: state.item.name)
-                ..selection = TextSelection.fromPosition(
-                  TextPosition(offset: state.item.name.length),
-                ),
-              onChanged: (value) {
-                context.read<AddInventoryBloc>().add(AddInventoryEvent.updateName(value));
-              },
+              controller: _nameController,
             ),
             const SizedBox(height: 16),
             AppTextField(
               label: 'Description',
-              controller: TextEditingController(text: state.item.description)
-                ..selection = TextSelection.fromPosition(
-                  TextPosition(offset: state.item.description?.length ?? 0),
-                ),
-              onChanged: (value) {
-                context.read<AddInventoryBloc>().add(AddInventoryEvent.updateDescription(value));
-              },
+              controller: _descriptionController,
             ),
             const SizedBox(height: 24),
             Text(
@@ -84,17 +89,7 @@ class AddInventoryView extends StatelessWidget {
                   child: AppTextField(
                     label: 'Quantity',
                     keyboardType: TextInputType.number,
-                    controller: TextEditingController(
-                      text: state.item.quantity.toString(),
-                    )..selection = TextSelection.fromPosition(
-                        TextPosition(
-                          offset: state.item.quantity.toString().length,
-                        ),
-                      ),
-                    onChanged: (value) {
-                      final quantity = int.tryParse(value) ?? 0;
-                      context.read<AddInventoryBloc>().add(AddInventoryEvent.updateQuantity(quantity));
-                    },
+                    controller: _quantityController,
                   ),
                 ),
                 const SizedBox(width: 16),
@@ -102,44 +97,47 @@ class AddInventoryView extends StatelessWidget {
                   child: AppTextField(
                     label: 'Available',
                     keyboardType: TextInputType.number,
-                    controller: TextEditingController(
-                      text: state.item.available.toString(),
-                    )..selection = TextSelection.fromPosition(
-                        TextPosition(
-                          offset: state.item.available.toString().length,
-                        ),
-                      ),
-                    onChanged: (value) {
-                      final available = int.tryParse(value) ?? 0;
-                      context.read<AddInventoryBloc>().add(AddInventoryEvent.updateAvailable(available));
-                    },
+                    controller: _availableController,
                   ),
                 ),
               ],
             ),
             const SizedBox(height: 16),
             AppTextField(
-              label: 'Rent',
+              label: 'Rent (₹)',
               keyboardType: TextInputType.number,
-              controller: TextEditingController(
-                text: state.item.rent.toString(),
-              )..selection = TextSelection.fromPosition(
-                  TextPosition(
-                    offset: state.item.rent.toString().length,
-                  ),
-                ),
-              onChanged: (value) {
-                final rent = double.tryParse(value) ?? 0.0;
-                context.read<AddInventoryBloc>().add(AddInventoryEvent.updateRent(rent));
-              },
+              controller: _rentController,
             ),
             const SizedBox(height: 32),
-            AppButton(
-              text: 'Add Item',
-              onPressed: () {
-                context.read<AddInventoryBloc>().add(const AddInventoryEvent.createItem());
+            ValueListenableBuilder<TextEditingValue>(
+              valueListenable: _nameController,
+              builder: (context, nameValue, _) {
+                return ValueListenableBuilder<TextEditingValue>(
+                  valueListenable: _rentController,
+                  builder: (context, rentValue, _) {
+                    return AppButton(
+                      text: id != null ? 'Save Item' : 'Add Item',
+                      isDisabled: nameValue.text.isEmpty || (double.tryParse(rentValue.text) ?? 0) <= 0,
+                      onPressed: () async {
+                        final bloc = context.read<AddInventoryBloc>()
+                          ..add(
+                            AddInventoryEvent.updateFields(
+                              name: _nameController.text,
+                              description: _descriptionController.text,
+                              quantity: int.tryParse(_quantityController.text) ?? 0,
+                              available: int.tryParse(_availableController.text) ?? 0,
+                              rent: double.tryParse(_rentController.text) ?? 0.0,
+                            ),
+                          );
+                        await Future.delayed(const Duration(milliseconds: 100));
+                        bloc.add(
+                            id != null ? const AddInventoryEvent.updateItem() : const AddInventoryEvent.createItem(),);
+                      },
+                    ).expandedWidth;
+                  },
+                );
               },
-            ).expandedWidth,
+            ),
           ],
         ),
       ),

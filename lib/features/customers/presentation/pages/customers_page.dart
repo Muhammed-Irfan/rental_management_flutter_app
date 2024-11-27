@@ -5,7 +5,6 @@ import 'package:rentease/core/di/injection.dart';
 import 'package:rentease/core/presentation/widgets/base_view.dart';
 import 'package:rentease/core/router/route_names.dart';
 import 'package:rentease/core/utils/extensions.dart';
-import 'package:rentease/features/customers/domain/entities/customer_entity.dart';
 import 'package:rentease/features/customers/presentation/bloc/customers_bloc.dart';
 import 'package:rentease/features/customers/presentation/widgets/customer_item.dart';
 import 'package:rentease/shared/presentation/widgets/common_widgets.dart';
@@ -16,7 +15,7 @@ class CustomersPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => getIt<CustomersBloc>(),
+      create: (context) => getIt<CustomersBloc>()..add(const CustomersEvent.loadCustomers()),
       child: const CustomersView(),
     );
   }
@@ -32,30 +31,27 @@ class CustomersView extends StatelessWidget {
         title: const Text('Customers'),
       ),
       body: BaseView<CustomersBloc, CustomersState>(
-        initialWidget:
-            _buildContent(context, CustomersState(customers: [CustomerEntity.empty(), CustomerEntity.empty()])),
+        initialWidget: _buildContent(context, const CustomersState(customers: [])),
         onLoaded: (state) => _buildContent(context, state),
       ),
     );
   }
 
   Widget _buildContent(BuildContext context, CustomersState state) {
-    return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            AppButton(
-              text: 'Add Customer',
-              onPressed: () {
-                context.pushNamed(RouteNames.addCustomer);
-              },
-            ).expandedWidth,
-            const SizedBox(height: 24),
-            _buildCustomerList(state),
-          ],
-        ),
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(16.0, 16, 16, 0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          AppButton(
+            text: 'Add New Customer',
+            onPressed: () {
+              context.pushNamed(RouteNames.addCustomer);
+            },
+          ).expandedWidth,
+          const SizedBox(height: 24),
+          Expanded(child: _buildCustomerList(state)),
+        ],
       ),
     );
   }
@@ -71,7 +67,6 @@ class CustomersView extends StatelessWidget {
     }
 
     return ListView.separated(
-      shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       itemCount: state.customers.length,
       itemBuilder: (context, index) {
@@ -81,7 +76,7 @@ class CustomersView extends StatelessWidget {
           subtitle: customer.phoneNumber ?? '',
           onTap: () => context.pushNamed(
             RouteNames.customerDetails,
-            pathParameters: {'id': customer.id.toString()},
+            pathParameters: {'id': customer.id},
           ),
         );
       },

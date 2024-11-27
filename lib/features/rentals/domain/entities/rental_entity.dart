@@ -7,25 +7,48 @@ part 'rental_entity.freezed.dart';
 @freezed
 class RentalEntity with _$RentalEntity {
   const factory RentalEntity({
-    required int id,
+    required String id,
     required CustomerEntity customer,
     required List<InventoryItemEntity> items,
     required DateTime rentedAt,
     @Default(0.0) double advanceAmount,
+    @Default(0.0) double partialPaymentAmount,
     DateTime? returnedAt,
     @Default(0.0) double totalAmount,
     @Default(RentalStatus.active) RentalStatus status,
   }) = _RentalEntity;
 
   factory RentalEntity.empty() => RentalEntity(
-        id: 0,
+        id: '',
         customer: CustomerEntity.empty(),
         items: [],
         rentedAt: DateTime.now(),
       );
+
+  const RentalEntity._();
+
+  // Add 1 to include the rental day
+  int get numberOfDays => (returnedAt ?? DateTime.now()).difference(rentedAt).inDays + 1;
+
+  double calculateTotalAmount() {
+    if (status != RentalStatus.active) {
+      return totalAmount;
+    }
+
+    return items.fold(
+      0,
+      (total, item) => total + (item.rent * item.quantity * numberOfDays),
+    );
+  }
+
+  double calculatePendingAmount() {
+    return calculateTotalAmount() - advanceAmount - partialPaymentAmount;
+  }
 }
 
 enum RentalStatus {
+  all, // Represents all statuses
   active,
+  partiallyPaid,
   paid,
 }

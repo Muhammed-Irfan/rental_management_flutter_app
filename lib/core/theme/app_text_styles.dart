@@ -22,6 +22,11 @@ class AppTextStyles {
     color: AppColors.primary,
   );
 
+  static TextStyle caption = const TextStyle(
+    fontSize: AppDimensions.fontSizeSmall,
+    color: AppColors.secondary,
+  );
+
   static TextStyle button = const TextStyle(
     fontSize: AppDimensions.fontSizeMedium,
     fontWeight: FontWeight.w500,

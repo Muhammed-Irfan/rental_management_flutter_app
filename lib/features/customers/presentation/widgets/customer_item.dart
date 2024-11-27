@@ -32,7 +32,7 @@ class CustomerItem extends StatelessWidget {
                 backgroundColor: AppColors.profileColors[Random().nextInt(AppColors.profileColors.length)],
                 radius: 24,
                 child: Text(
-                  name.substring(0, 2).toUpperCase(),
+                  name.substring(0, name.length >= 3 ? 2 : name.length).toUpperCase(),
                   style: AppTextStyles.button,
                 ),
               ),

@@ -18,51 +18,52 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AddCustomerEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String name) updateName,
-    required TResult Function(String phone) updatePhone,
-    required TResult Function(String address) updateAddress,
+    required TResult Function(String name, String phone, String address)
+        updateFields,
     required TResult Function() createCustomer,
+    required TResult Function() updateCustomer,
+    required TResult Function(String id) setCustomer,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String name)? updateName,
-    TResult? Function(String phone)? updatePhone,
-    TResult? Function(String address)? updateAddress,
+    TResult? Function(String name, String phone, String address)? updateFields,
     TResult? Function()? createCustomer,
+    TResult? Function()? updateCustomer,
+    TResult? Function(String id)? setCustomer,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String name)? updateName,
-    TResult Function(String phone)? updatePhone,
-    TResult Function(String address)? updateAddress,
+    TResult Function(String name, String phone, String address)? updateFields,
     TResult Function()? createCustomer,
+    TResult Function()? updateCustomer,
+    TResult Function(String id)? setCustomer,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_UpdateName value) updateName,
-    required TResult Function(_UpdatePhone value) updatePhone,
-    required TResult Function(_UpdateAddress value) updateAddress,
+    required TResult Function(_UpdateFields value) updateFields,
     required TResult Function(_CreateCustomer value) createCustomer,
+    required TResult Function(_UpdateCustomer value) updateCustomer,
+    required TResult Function(_SetCustomer value) setCustomer,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_UpdateName value)? updateName,
-    TResult? Function(_UpdatePhone value)? updatePhone,
-    TResult? Function(_UpdateAddress value)? updateAddress,
+    TResult? Function(_UpdateFields value)? updateFields,
     TResult? Function(_CreateCustomer value)? createCustomer,
+    TResult? Function(_UpdateCustomer value)? updateCustomer,
+    TResult? Function(_SetCustomer value)? setCustomer,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_UpdateName value)? updateName,
-    TResult Function(_UpdatePhone value)? updatePhone,
-    TResult Function(_UpdateAddress value)? updateAddress,
+    TResult Function(_UpdateFields value)? updateFields,
     TResult Function(_CreateCustomer value)? createCustomer,
+    TResult Function(_UpdateCustomer value)? updateCustomer,
+    TResult Function(_SetCustomer value)? setCustomer,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -90,20 +91,20 @@ class _$AddCustomerEventCopyWithImpl<$Res, $Val extends AddCustomerEvent>
 }
 
 /// @nodoc
-abstract class _$$UpdateNameImplCopyWith<$Res> {
-  factory _$$UpdateNameImplCopyWith(
-          _$UpdateNameImpl value, $Res Function(_$UpdateNameImpl) then) =
-      __$$UpdateNameImplCopyWithImpl<$Res>;
+abstract class _$$UpdateFieldsImplCopyWith<$Res> {
+  factory _$$UpdateFieldsImplCopyWith(
+          _$UpdateFieldsImpl value, $Res Function(_$UpdateFieldsImpl) then) =
+      __$$UpdateFieldsImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String name});
+  $Res call({String name, String phone, String address});
 }
 
 /// @nodoc
-class __$$UpdateNameImplCopyWithImpl<$Res>
-    extends _$AddCustomerEventCopyWithImpl<$Res, _$UpdateNameImpl>
-    implements _$$UpdateNameImplCopyWith<$Res> {
-  __$$UpdateNameImplCopyWithImpl(
-      _$UpdateNameImpl _value, $Res Function(_$UpdateNameImpl) _then)
+class __$$UpdateFieldsImplCopyWithImpl<$Res>
+    extends _$AddCustomerEventCopyWithImpl<$Res, _$UpdateFieldsImpl>
+    implements _$$UpdateFieldsImplCopyWith<$Res> {
+  __$$UpdateFieldsImplCopyWithImpl(
+      _$UpdateFieldsImpl _value, $Res Function(_$UpdateFieldsImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of AddCustomerEvent
@@ -112,313 +113,19 @@ class __$$UpdateNameImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? name = null,
+    Object? phone = null,
+    Object? address = null,
   }) {
-    return _then(_$UpdateNameImpl(
-      null == name
+    return _then(_$UpdateFieldsImpl(
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$UpdateNameImpl implements _UpdateName {
-  const _$UpdateNameImpl(this.name);
-
-  @override
-  final String name;
-
-  @override
-  String toString() {
-    return 'AddCustomerEvent.updateName(name: $name)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$UpdateNameImpl &&
-            (identical(other.name, name) || other.name == name));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, name);
-
-  /// Create a copy of AddCustomerEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$UpdateNameImplCopyWith<_$UpdateNameImpl> get copyWith =>
-      __$$UpdateNameImplCopyWithImpl<_$UpdateNameImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String name) updateName,
-    required TResult Function(String phone) updatePhone,
-    required TResult Function(String address) updateAddress,
-    required TResult Function() createCustomer,
-  }) {
-    return updateName(name);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String name)? updateName,
-    TResult? Function(String phone)? updatePhone,
-    TResult? Function(String address)? updateAddress,
-    TResult? Function()? createCustomer,
-  }) {
-    return updateName?.call(name);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String name)? updateName,
-    TResult Function(String phone)? updatePhone,
-    TResult Function(String address)? updateAddress,
-    TResult Function()? createCustomer,
-    required TResult orElse(),
-  }) {
-    if (updateName != null) {
-      return updateName(name);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_UpdateName value) updateName,
-    required TResult Function(_UpdatePhone value) updatePhone,
-    required TResult Function(_UpdateAddress value) updateAddress,
-    required TResult Function(_CreateCustomer value) createCustomer,
-  }) {
-    return updateName(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_UpdateName value)? updateName,
-    TResult? Function(_UpdatePhone value)? updatePhone,
-    TResult? Function(_UpdateAddress value)? updateAddress,
-    TResult? Function(_CreateCustomer value)? createCustomer,
-  }) {
-    return updateName?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_UpdateName value)? updateName,
-    TResult Function(_UpdatePhone value)? updatePhone,
-    TResult Function(_UpdateAddress value)? updateAddress,
-    TResult Function(_CreateCustomer value)? createCustomer,
-    required TResult orElse(),
-  }) {
-    if (updateName != null) {
-      return updateName(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _UpdateName implements AddCustomerEvent {
-  const factory _UpdateName(final String name) = _$UpdateNameImpl;
-
-  String get name;
-
-  /// Create a copy of AddCustomerEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$UpdateNameImplCopyWith<_$UpdateNameImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$UpdatePhoneImplCopyWith<$Res> {
-  factory _$$UpdatePhoneImplCopyWith(
-          _$UpdatePhoneImpl value, $Res Function(_$UpdatePhoneImpl) then) =
-      __$$UpdatePhoneImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String phone});
-}
-
-/// @nodoc
-class __$$UpdatePhoneImplCopyWithImpl<$Res>
-    extends _$AddCustomerEventCopyWithImpl<$Res, _$UpdatePhoneImpl>
-    implements _$$UpdatePhoneImplCopyWith<$Res> {
-  __$$UpdatePhoneImplCopyWithImpl(
-      _$UpdatePhoneImpl _value, $Res Function(_$UpdatePhoneImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of AddCustomerEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? phone = null,
-  }) {
-    return _then(_$UpdatePhoneImpl(
-      null == phone
+      phone: null == phone
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$UpdatePhoneImpl implements _UpdatePhone {
-  const _$UpdatePhoneImpl(this.phone);
-
-  @override
-  final String phone;
-
-  @override
-  String toString() {
-    return 'AddCustomerEvent.updatePhone(phone: $phone)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$UpdatePhoneImpl &&
-            (identical(other.phone, phone) || other.phone == phone));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, phone);
-
-  /// Create a copy of AddCustomerEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$UpdatePhoneImplCopyWith<_$UpdatePhoneImpl> get copyWith =>
-      __$$UpdatePhoneImplCopyWithImpl<_$UpdatePhoneImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String name) updateName,
-    required TResult Function(String phone) updatePhone,
-    required TResult Function(String address) updateAddress,
-    required TResult Function() createCustomer,
-  }) {
-    return updatePhone(phone);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String name)? updateName,
-    TResult? Function(String phone)? updatePhone,
-    TResult? Function(String address)? updateAddress,
-    TResult? Function()? createCustomer,
-  }) {
-    return updatePhone?.call(phone);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String name)? updateName,
-    TResult Function(String phone)? updatePhone,
-    TResult Function(String address)? updateAddress,
-    TResult Function()? createCustomer,
-    required TResult orElse(),
-  }) {
-    if (updatePhone != null) {
-      return updatePhone(phone);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_UpdateName value) updateName,
-    required TResult Function(_UpdatePhone value) updatePhone,
-    required TResult Function(_UpdateAddress value) updateAddress,
-    required TResult Function(_CreateCustomer value) createCustomer,
-  }) {
-    return updatePhone(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_UpdateName value)? updateName,
-    TResult? Function(_UpdatePhone value)? updatePhone,
-    TResult? Function(_UpdateAddress value)? updateAddress,
-    TResult? Function(_CreateCustomer value)? createCustomer,
-  }) {
-    return updatePhone?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_UpdateName value)? updateName,
-    TResult Function(_UpdatePhone value)? updatePhone,
-    TResult Function(_UpdateAddress value)? updateAddress,
-    TResult Function(_CreateCustomer value)? createCustomer,
-    required TResult orElse(),
-  }) {
-    if (updatePhone != null) {
-      return updatePhone(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _UpdatePhone implements AddCustomerEvent {
-  const factory _UpdatePhone(final String phone) = _$UpdatePhoneImpl;
-
-  String get phone;
-
-  /// Create a copy of AddCustomerEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$UpdatePhoneImplCopyWith<_$UpdatePhoneImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$UpdateAddressImplCopyWith<$Res> {
-  factory _$$UpdateAddressImplCopyWith(
-          _$UpdateAddressImpl value, $Res Function(_$UpdateAddressImpl) then) =
-      __$$UpdateAddressImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String address});
-}
-
-/// @nodoc
-class __$$UpdateAddressImplCopyWithImpl<$Res>
-    extends _$AddCustomerEventCopyWithImpl<$Res, _$UpdateAddressImpl>
-    implements _$$UpdateAddressImplCopyWith<$Res> {
-  __$$UpdateAddressImplCopyWithImpl(
-      _$UpdateAddressImpl _value, $Res Function(_$UpdateAddressImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of AddCustomerEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? address = null,
-  }) {
-    return _then(_$UpdateAddressImpl(
-      null == address
+      address: null == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
               as String,
@@ -428,69 +135,77 @@ class __$$UpdateAddressImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$UpdateAddressImpl implements _UpdateAddress {
-  const _$UpdateAddressImpl(this.address);
+class _$UpdateFieldsImpl implements _UpdateFields {
+  const _$UpdateFieldsImpl(
+      {required this.name, required this.phone, required this.address});
 
+  @override
+  final String name;
+  @override
+  final String phone;
   @override
   final String address;
 
   @override
   String toString() {
-    return 'AddCustomerEvent.updateAddress(address: $address)';
+    return 'AddCustomerEvent.updateFields(name: $name, phone: $phone, address: $address)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$UpdateAddressImpl &&
+            other is _$UpdateFieldsImpl &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.phone, phone) || other.phone == phone) &&
             (identical(other.address, address) || other.address == address));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, address);
+  int get hashCode => Object.hash(runtimeType, name, phone, address);
 
   /// Create a copy of AddCustomerEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$UpdateAddressImplCopyWith<_$UpdateAddressImpl> get copyWith =>
-      __$$UpdateAddressImplCopyWithImpl<_$UpdateAddressImpl>(this, _$identity);
+  _$$UpdateFieldsImplCopyWith<_$UpdateFieldsImpl> get copyWith =>
+      __$$UpdateFieldsImplCopyWithImpl<_$UpdateFieldsImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String name) updateName,
-    required TResult Function(String phone) updatePhone,
-    required TResult Function(String address) updateAddress,
+    required TResult Function(String name, String phone, String address)
+        updateFields,
     required TResult Function() createCustomer,
+    required TResult Function() updateCustomer,
+    required TResult Function(String id) setCustomer,
   }) {
-    return updateAddress(address);
+    return updateFields(name, phone, address);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String name)? updateName,
-    TResult? Function(String phone)? updatePhone,
-    TResult? Function(String address)? updateAddress,
+    TResult? Function(String name, String phone, String address)? updateFields,
     TResult? Function()? createCustomer,
+    TResult? Function()? updateCustomer,
+    TResult? Function(String id)? setCustomer,
   }) {
-    return updateAddress?.call(address);
+    return updateFields?.call(name, phone, address);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String name)? updateName,
-    TResult Function(String phone)? updatePhone,
-    TResult Function(String address)? updateAddress,
+    TResult Function(String name, String phone, String address)? updateFields,
     TResult Function()? createCustomer,
+    TResult Function()? updateCustomer,
+    TResult Function(String id)? setCustomer,
     required TResult orElse(),
   }) {
-    if (updateAddress != null) {
-      return updateAddress(address);
+    if (updateFields != null) {
+      return updateFields(name, phone, address);
     }
     return orElse();
   }
@@ -498,50 +213,55 @@ class _$UpdateAddressImpl implements _UpdateAddress {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_UpdateName value) updateName,
-    required TResult Function(_UpdatePhone value) updatePhone,
-    required TResult Function(_UpdateAddress value) updateAddress,
+    required TResult Function(_UpdateFields value) updateFields,
     required TResult Function(_CreateCustomer value) createCustomer,
+    required TResult Function(_UpdateCustomer value) updateCustomer,
+    required TResult Function(_SetCustomer value) setCustomer,
   }) {
-    return updateAddress(this);
+    return updateFields(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_UpdateName value)? updateName,
-    TResult? Function(_UpdatePhone value)? updatePhone,
-    TResult? Function(_UpdateAddress value)? updateAddress,
+    TResult? Function(_UpdateFields value)? updateFields,
     TResult? Function(_CreateCustomer value)? createCustomer,
+    TResult? Function(_UpdateCustomer value)? updateCustomer,
+    TResult? Function(_SetCustomer value)? setCustomer,
   }) {
-    return updateAddress?.call(this);
+    return updateFields?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_UpdateName value)? updateName,
-    TResult Function(_UpdatePhone value)? updatePhone,
-    TResult Function(_UpdateAddress value)? updateAddress,
+    TResult Function(_UpdateFields value)? updateFields,
     TResult Function(_CreateCustomer value)? createCustomer,
+    TResult Function(_UpdateCustomer value)? updateCustomer,
+    TResult Function(_SetCustomer value)? setCustomer,
     required TResult orElse(),
   }) {
-    if (updateAddress != null) {
-      return updateAddress(this);
+    if (updateFields != null) {
+      return updateFields(this);
     }
     return orElse();
   }
 }
 
-abstract class _UpdateAddress implements AddCustomerEvent {
-  const factory _UpdateAddress(final String address) = _$UpdateAddressImpl;
+abstract class _UpdateFields implements AddCustomerEvent {
+  const factory _UpdateFields(
+      {required final String name,
+      required final String phone,
+      required final String address}) = _$UpdateFieldsImpl;
 
+  String get name;
+  String get phone;
   String get address;
 
   /// Create a copy of AddCustomerEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$UpdateAddressImplCopyWith<_$UpdateAddressImpl> get copyWith =>
+  _$$UpdateFieldsImplCopyWith<_$UpdateFieldsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -586,10 +306,11 @@ class _$CreateCustomerImpl implements _CreateCustomer {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String name) updateName,
-    required TResult Function(String phone) updatePhone,
-    required TResult Function(String address) updateAddress,
+    required TResult Function(String name, String phone, String address)
+        updateFields,
     required TResult Function() createCustomer,
+    required TResult Function() updateCustomer,
+    required TResult Function(String id) setCustomer,
   }) {
     return createCustomer();
   }
@@ -597,10 +318,10 @@ class _$CreateCustomerImpl implements _CreateCustomer {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String name)? updateName,
-    TResult? Function(String phone)? updatePhone,
-    TResult? Function(String address)? updateAddress,
+    TResult? Function(String name, String phone, String address)? updateFields,
     TResult? Function()? createCustomer,
+    TResult? Function()? updateCustomer,
+    TResult? Function(String id)? setCustomer,
   }) {
     return createCustomer?.call();
   }
@@ -608,10 +329,10 @@ class _$CreateCustomerImpl implements _CreateCustomer {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String name)? updateName,
-    TResult Function(String phone)? updatePhone,
-    TResult Function(String address)? updateAddress,
+    TResult Function(String name, String phone, String address)? updateFields,
     TResult Function()? createCustomer,
+    TResult Function()? updateCustomer,
+    TResult Function(String id)? setCustomer,
     required TResult orElse(),
   }) {
     if (createCustomer != null) {
@@ -623,10 +344,10 @@ class _$CreateCustomerImpl implements _CreateCustomer {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_UpdateName value) updateName,
-    required TResult Function(_UpdatePhone value) updatePhone,
-    required TResult Function(_UpdateAddress value) updateAddress,
+    required TResult Function(_UpdateFields value) updateFields,
     required TResult Function(_CreateCustomer value) createCustomer,
+    required TResult Function(_UpdateCustomer value) updateCustomer,
+    required TResult Function(_SetCustomer value) setCustomer,
   }) {
     return createCustomer(this);
   }
@@ -634,10 +355,10 @@ class _$CreateCustomerImpl implements _CreateCustomer {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_UpdateName value)? updateName,
-    TResult? Function(_UpdatePhone value)? updatePhone,
-    TResult? Function(_UpdateAddress value)? updateAddress,
+    TResult? Function(_UpdateFields value)? updateFields,
     TResult? Function(_CreateCustomer value)? createCustomer,
+    TResult? Function(_UpdateCustomer value)? updateCustomer,
+    TResult? Function(_SetCustomer value)? setCustomer,
   }) {
     return createCustomer?.call(this);
   }
@@ -645,10 +366,10 @@ class _$CreateCustomerImpl implements _CreateCustomer {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_UpdateName value)? updateName,
-    TResult Function(_UpdatePhone value)? updatePhone,
-    TResult Function(_UpdateAddress value)? updateAddress,
+    TResult Function(_UpdateFields value)? updateFields,
     TResult Function(_CreateCustomer value)? createCustomer,
+    TResult Function(_UpdateCustomer value)? updateCustomer,
+    TResult Function(_SetCustomer value)? setCustomer,
     required TResult orElse(),
   }) {
     if (createCustomer != null) {
@@ -660,6 +381,277 @@ class _$CreateCustomerImpl implements _CreateCustomer {
 
 abstract class _CreateCustomer implements AddCustomerEvent {
   const factory _CreateCustomer() = _$CreateCustomerImpl;
+}
+
+/// @nodoc
+abstract class _$$UpdateCustomerImplCopyWith<$Res> {
+  factory _$$UpdateCustomerImplCopyWith(_$UpdateCustomerImpl value,
+          $Res Function(_$UpdateCustomerImpl) then) =
+      __$$UpdateCustomerImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$UpdateCustomerImplCopyWithImpl<$Res>
+    extends _$AddCustomerEventCopyWithImpl<$Res, _$UpdateCustomerImpl>
+    implements _$$UpdateCustomerImplCopyWith<$Res> {
+  __$$UpdateCustomerImplCopyWithImpl(
+      _$UpdateCustomerImpl _value, $Res Function(_$UpdateCustomerImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AddCustomerEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$UpdateCustomerImpl implements _UpdateCustomer {
+  const _$UpdateCustomerImpl();
+
+  @override
+  String toString() {
+    return 'AddCustomerEvent.updateCustomer()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$UpdateCustomerImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String name, String phone, String address)
+        updateFields,
+    required TResult Function() createCustomer,
+    required TResult Function() updateCustomer,
+    required TResult Function(String id) setCustomer,
+  }) {
+    return updateCustomer();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String name, String phone, String address)? updateFields,
+    TResult? Function()? createCustomer,
+    TResult? Function()? updateCustomer,
+    TResult? Function(String id)? setCustomer,
+  }) {
+    return updateCustomer?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String name, String phone, String address)? updateFields,
+    TResult Function()? createCustomer,
+    TResult Function()? updateCustomer,
+    TResult Function(String id)? setCustomer,
+    required TResult orElse(),
+  }) {
+    if (updateCustomer != null) {
+      return updateCustomer();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_UpdateFields value) updateFields,
+    required TResult Function(_CreateCustomer value) createCustomer,
+    required TResult Function(_UpdateCustomer value) updateCustomer,
+    required TResult Function(_SetCustomer value) setCustomer,
+  }) {
+    return updateCustomer(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_UpdateFields value)? updateFields,
+    TResult? Function(_CreateCustomer value)? createCustomer,
+    TResult? Function(_UpdateCustomer value)? updateCustomer,
+    TResult? Function(_SetCustomer value)? setCustomer,
+  }) {
+    return updateCustomer?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_UpdateFields value)? updateFields,
+    TResult Function(_CreateCustomer value)? createCustomer,
+    TResult Function(_UpdateCustomer value)? updateCustomer,
+    TResult Function(_SetCustomer value)? setCustomer,
+    required TResult orElse(),
+  }) {
+    if (updateCustomer != null) {
+      return updateCustomer(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UpdateCustomer implements AddCustomerEvent {
+  const factory _UpdateCustomer() = _$UpdateCustomerImpl;
+}
+
+/// @nodoc
+abstract class _$$SetCustomerImplCopyWith<$Res> {
+  factory _$$SetCustomerImplCopyWith(
+          _$SetCustomerImpl value, $Res Function(_$SetCustomerImpl) then) =
+      __$$SetCustomerImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String id});
+}
+
+/// @nodoc
+class __$$SetCustomerImplCopyWithImpl<$Res>
+    extends _$AddCustomerEventCopyWithImpl<$Res, _$SetCustomerImpl>
+    implements _$$SetCustomerImplCopyWith<$Res> {
+  __$$SetCustomerImplCopyWithImpl(
+      _$SetCustomerImpl _value, $Res Function(_$SetCustomerImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AddCustomerEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+  }) {
+    return _then(_$SetCustomerImpl(
+      null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SetCustomerImpl implements _SetCustomer {
+  const _$SetCustomerImpl(this.id);
+
+  @override
+  final String id;
+
+  @override
+  String toString() {
+    return 'AddCustomerEvent.setCustomer(id: $id)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SetCustomerImpl &&
+            (identical(other.id, id) || other.id == id));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, id);
+
+  /// Create a copy of AddCustomerEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SetCustomerImplCopyWith<_$SetCustomerImpl> get copyWith =>
+      __$$SetCustomerImplCopyWithImpl<_$SetCustomerImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String name, String phone, String address)
+        updateFields,
+    required TResult Function() createCustomer,
+    required TResult Function() updateCustomer,
+    required TResult Function(String id) setCustomer,
+  }) {
+    return setCustomer(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String name, String phone, String address)? updateFields,
+    TResult? Function()? createCustomer,
+    TResult? Function()? updateCustomer,
+    TResult? Function(String id)? setCustomer,
+  }) {
+    return setCustomer?.call(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String name, String phone, String address)? updateFields,
+    TResult Function()? createCustomer,
+    TResult Function()? updateCustomer,
+    TResult Function(String id)? setCustomer,
+    required TResult orElse(),
+  }) {
+    if (setCustomer != null) {
+      return setCustomer(id);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_UpdateFields value) updateFields,
+    required TResult Function(_CreateCustomer value) createCustomer,
+    required TResult Function(_UpdateCustomer value) updateCustomer,
+    required TResult Function(_SetCustomer value) setCustomer,
+  }) {
+    return setCustomer(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_UpdateFields value)? updateFields,
+    TResult? Function(_CreateCustomer value)? createCustomer,
+    TResult? Function(_UpdateCustomer value)? updateCustomer,
+    TResult? Function(_SetCustomer value)? setCustomer,
+  }) {
+    return setCustomer?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_UpdateFields value)? updateFields,
+    TResult Function(_CreateCustomer value)? createCustomer,
+    TResult Function(_UpdateCustomer value)? updateCustomer,
+    TResult Function(_SetCustomer value)? setCustomer,
+    required TResult orElse(),
+  }) {
+    if (setCustomer != null) {
+      return setCustomer(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SetCustomer implements AddCustomerEvent {
+  const factory _SetCustomer(final String id) = _$SetCustomerImpl;
+
+  String get id;
+
+  /// Create a copy of AddCustomerEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SetCustomerImplCopyWith<_$SetCustomerImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc

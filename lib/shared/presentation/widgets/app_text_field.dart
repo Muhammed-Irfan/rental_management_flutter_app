@@ -10,6 +10,7 @@ class AppTextField extends StatelessWidget {
   final TextInputType keyboardType;
   final void Function(String)? onChanged;
   final int? maxLines;
+  final bool readOnly;
 
   const AppTextField({
     required this.label,
@@ -21,12 +22,14 @@ class AppTextField extends StatelessWidget {
     this.keyboardType = TextInputType.text,
     this.onChanged,
     this.maxLines,
+    this.readOnly = false,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       controller: controller,
+      readOnly: readOnly,
       validator: validator,
       obscureText: obscureText,
       keyboardType: keyboardType,

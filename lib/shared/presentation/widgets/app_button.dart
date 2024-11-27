@@ -5,7 +5,7 @@ import 'package:rentease/core/utils/extensions.dart';
 
 class AppButton extends StatelessWidget {
   final String text;
-  final VoidCallback onPressed;
+  final void Function()? onPressed;
   final bool isLoading;
   final bool isDisabled;
 
@@ -23,7 +23,7 @@ class AppButton extends StatelessWidget {
       onPressed: isDisabled || isLoading ? null : onPressed,
       style: ButtonStyle(
         backgroundColor: WidgetStatePropertyAll(
-          Theme.of(context).primaryColor,
+          Theme.of(context).primaryColor.withOpacity(isDisabled ? 0.7 : 1),
         ),
         padding: const WidgetStatePropertyAll(
           EdgeInsets.symmetric(vertical: 16),

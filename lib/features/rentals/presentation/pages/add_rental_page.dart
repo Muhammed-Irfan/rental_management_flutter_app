@@ -3,28 +3,43 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rentease/core/di/injection.dart';
 import 'package:rentease/core/presentation/widgets/base_view.dart';
 import 'package:rentease/core/theme/theme_imports.dart';
+import 'package:rentease/core/utils/app_debouncer.dart';
 import 'package:rentease/core/utils/extensions.dart';
 import 'package:rentease/features/customers/domain/entities/customer_entity.dart';
-import 'package:rentease/features/inventory/domain/entities/inventory_item_entity.dart';
 import 'package:rentease/features/rentals/domain/entities/rental_entity.dart';
 import 'package:rentease/features/rentals/presentation/bloc/add_rental_bloc.dart';
+import 'package:rentease/features/rentals/presentation/widgets/item_dropdown.dart';
 import 'package:rentease/features/rentals/presentation/widgets/rental_calculation_sheet.dart';
 import 'package:rentease/shared/presentation/widgets/common_widgets.dart';
 
 class AddRentalPage extends StatelessWidget {
-  const AddRentalPage({super.key});
+  final String? id;
+  const AddRentalPage({super.key, this.id});
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => getIt<AddRentalBloc>(),
-      child: const AddRentalView(),
+      create: (context) {
+        final bloc = getIt<AddRentalBloc>();
+        if (id != null) {
+          bloc.add(AddRentalEvent.setRental(id!));
+        } else {
+          bloc
+            ..add(const AddRentalEvent.initializeCustomers())
+            ..add(const AddRentalEvent.initializeItems());
+        }
+        return bloc;
+      },
+      child: AddRentalView(id: id),
     );
   }
 }
 
 class AddRentalView extends StatelessWidget {
-  const AddRentalView({super.key});
+  final String? id;
+  final _debouncer = AppDebouncer(milliseconds: 1500);
+
+  AddRentalView({super.key, this.id});
 
   @override
   Widget build(BuildContext context) {
@@ -33,8 +48,14 @@ class AddRentalView extends StatelessWidget {
         title: const Text('Add New Rental'),
       ),
       body: BaseView<AddRentalBloc, AddRentalState>(
-        initialWidget: _buildContent(context, AddRentalState(selectedRental: RentalEntity.empty())),
-        onLoaded: (state) => _buildContent(context, state),
+        initialWidget: _buildContent(
+          context,
+          AddRentalState(selectedRental: RentalEntity.empty()),
+        ),
+        onLoaded: (state) {
+          // Set text controllers based on state
+          return _buildContent(context, state);
+        },
       ),
     );
   }
@@ -42,7 +63,7 @@ class AddRentalView extends StatelessWidget {
   Widget _buildContent(BuildContext context, AddRentalState state) {
     return SingleChildScrollView(
       child: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.fromLTRB(16.0, 16, 16, 0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -52,7 +73,10 @@ class AddRentalView extends StatelessWidget {
             const SizedBox(height: 24),
             _buildAdvanceSection(context, state),
             const SizedBox(height: 32),
+            _buildDateSection(context, state),
+            const SizedBox(height: 24),
             _buildActionButton(context, state),
+            const SizedBox(height: 24),
           ],
         ),
       ),
@@ -60,64 +84,139 @@ class AddRentalView extends StatelessWidget {
   }
 
   Widget _buildCustomerSection(BuildContext context, AddRentalState state) {
-    // TODO: Get customers from a repository
-    final customers = [
-      const CustomerEntity(id: 1, name: 'John Doe'),
-      const CustomerEntity(id: 2, name: 'Jane Smith'),
-    ];
+    final customers = state.customers;
+    final selectedCustomer = state.selectedRental.customer;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           'Customer Details',
-          style: AppTextStyles.body,
+          style: AppTextStyles.title,
         ),
         const SizedBox(height: 16),
-        AppDropdown<CustomerEntity>(
-          label: 'Select Customer',
-          hint: 'Choose a customer',
-          value: state.selectedRental.customer.id == '0' ? null : state.selectedRental.customer,
-          items: customers,
-          itemLabel: (customer) => customer.name,
-          onChanged: (customer) {
-            if (customer != null) {
-              context.read<AddRentalBloc>().add(AddRentalEvent.selectCustomer(customer));
-            }
-          },
+        if (selectedCustomer.id.isNotEmpty)
+          Container(
+            decoration: BoxDecoration(
+              border: Border.all(color: Theme.of(context).primaryColor),
+              borderRadius: 4.0.borderRadius,
+              color: AppColors.customerCardBackground,
+            ),
+            padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 6.0),
+            child: Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    selectedCustomer.name,
+                    style: AppTextStyles.title,
+                  ),
+                ),
+                state.selectedRental.status != RentalStatus.paid
+                    ? IconButton(
+                        icon: const Icon(Icons.close),
+                        onPressed: () {
+                          context.read<AddRentalBloc>().add(const AddRentalEvent.removeCustomer());
+                        },
+                      )
+                    : const SizedBox(height: 45),
+              ],
+            ),
+          )
+        else
+          AppDropdown<CustomerEntity>(
+            label: 'Select Customer',
+            hint: 'Type to search or create customer',
+            value: null,
+            items: customers,
+            itemLabel: (customer) => customer.name,
+            onChanged: (customer) {
+              if (customer != null) {
+                context.read<AddRentalBloc>().add(AddRentalEvent.selectCustomer(customer));
+              }
+            },
+            isSearchable: true,
+            emptyItemText: "Create new customer",
+            emptyItemOnTap: (name) {
+              if (name.isNotEmpty) {
+                context.read<AddRentalBloc>().add(
+                      AddRentalEvent.selectCustomer(
+                        CustomerEntity(id: '', name: name),
+                      ),
+                    );
+              }
+            },
+          ),
+      ],
+    );
+  }
+
+  Widget _buildDateSection(BuildContext context, AddRentalState state) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'Rental Date',
+          style: AppTextStyles.title,
+        ),
+        const SizedBox(height: 16),
+        GestureDetector(
+          onTap: state.selectedRental.status == RentalStatus.paid
+              ? null
+              : () async {
+                  final bloc = context.read<AddRentalBloc>();
+                  final date = await showDatePicker(
+                    context: context,
+                    initialDate: state.selectedRental.rentedAt,
+                    firstDate: DateTime(2000),
+                    lastDate: DateTime(2100),
+                  );
+                  if (date != null) {
+                    bloc.add(AddRentalEvent.updateRentedAt(date));
+                  }
+                },
+          child: Container(
+            decoration: BoxDecoration(
+              border: Border.all(color: Theme.of(context).primaryColor),
+              borderRadius: 4.0.borderRadius,
+              color: AppColors.textFieldBackground,
+            ),
+            padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 16.0),
+            child: Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    state.selectedRental.rentedAt.toFormattedString(),
+                    style: AppTextStyles.title,
+                  ),
+                ),
+                const Icon(Icons.calendar_today),
+              ],
+            ),
+          ),
         ),
       ],
     );
   }
 
   Widget _buildItemsSection(BuildContext context, AddRentalState state) {
-    // TODO: Get items from a repository
-    final items = [
-      const InventoryItemEntity(
-        id: 1,
-        name: 'Item 1',
-        description: 'Desc 1',
-        rent: 100,
-        quantity: 100,
-        available: 100,
-      ),
-      const InventoryItemEntity(id: 2, name: 'Item 2', description: 'Desc 2', rent: 200, quantity: 50, available: 50),
-    ];
+    final items = state.items;
+    final unselectedItems =
+        items.where((item) => !state.selectedRental.items.map((e) => e.id).contains(item.id)).toList();
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           'Rental Items',
-          style: AppTextStyles.body,
+          style: AppTextStyles.title,
         ),
         const SizedBox(height: 16),
         ...state.selectedRental.items.asMap().entries.map(
               (entry) => Padding(
-                padding: const EdgeInsets.only(bottom: 8.0),
+                padding: const EdgeInsets.only(bottom: 16.0),
                 child: Card(
                   child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(12.0),
                     child: Column(
                       children: [
                         Row(
@@ -126,19 +225,24 @@ class AddRentalView extends StatelessWidget {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(entry.value.name),
+                                  Text(entry.value.name, style: AppTextStyles.title),
+                                  Text(
+                                    'Available: ${entry.value.available.toStringAsFixed(0)}',
+                                    style: AppTextStyles.caption,
+                                  ),
                                 ],
                               ),
                             ),
-                            IconButton(
-                              icon: const Icon(Icons.delete),
-                              onPressed: () {
-                                context.read<AddRentalBloc>().add(AddRentalEvent.removeItem(entry.key));
-                              },
-                            ),
+                            if (state.selectedRental.status != RentalStatus.paid)
+                              IconButton(
+                                icon: const Icon(Icons.delete),
+                                onPressed: () {
+                                  context.read<AddRentalBloc>().add(AddRentalEvent.removeItem(entry.key));
+                                },
+                              ),
                           ],
                         ),
-                        const SizedBox(height: 8),
+                        const SizedBox(height: 16),
                         Row(
                           children: [
                             Expanded(
@@ -148,17 +252,22 @@ class AddRentalView extends StatelessWidget {
                                 controller: TextEditingController(
                                   text: entry.value.quantity.toString(),
                                 ),
+                                readOnly: state.selectedRental.status == RentalStatus.paid,
                                 onChanged: (value) {
-                                  final quantity = int.tryParse(value) ?? 1;
-                                  final updatedItem = entry.value.copyWith(
-                                    quantity: quantity,
-                                  );
-                                  context.read<AddRentalBloc>().add(
-                                        AddRentalEvent.updateItem(
-                                          entry.key,
-                                          updatedItem,
-                                        ),
+                                  _debouncer.run(() {
+                                    final quantity = int.tryParse(value);
+                                    if (quantity != null && quantity > 0) {
+                                      final updatedItem = entry.value.copyWith(
+                                        quantity: quantity,
                                       );
+                                      context.read<AddRentalBloc>().add(
+                                            AddRentalEvent.updateItem(
+                                              entry.key,
+                                              updatedItem,
+                                            ),
+                                          );
+                                    }
+                                  });
                                 },
                               ),
                             ),
@@ -170,48 +279,47 @@ class AddRentalView extends StatelessWidget {
                                 controller: TextEditingController(
                                   text: entry.value.rent.toString(),
                                 ),
+                                readOnly: state.selectedRental.status == RentalStatus.paid,
                                 onChanged: (value) {
-                                  final rent = double.tryParse(value) ?? 0.0;
-                                  final updatedItem = entry.value.copyWith(
-                                    rent: rent,
-                                  );
-                                  context.read<AddRentalBloc>().add(
-                                        AddRentalEvent.updateItem(
-                                          entry.key,
-                                          updatedItem,
-                                        ),
-                                      );
+                                  _debouncer.run(() {
+                                    final rent = double.tryParse(value) ?? 0.0;
+                                    final updatedItem = entry.value.copyWith(
+                                      rent: rent,
+                                    );
+                                    context.read<AddRentalBloc>().add(
+                                          AddRentalEvent.updateItem(
+                                            entry.key,
+                                            updatedItem,
+                                          ),
+                                        );
+                                  });
                                 },
                               ),
                             ),
                           ],
                         ),
+                        const SizedBox(height: 4),
                       ],
                     ),
                   ),
                 ),
               ),
             ),
-        const SizedBox(height: 16),
-        Row(
-          children: [
-            Expanded(
-              child: AppDropdown<InventoryItemEntity>(
-                label: 'Select Item',
-                hint: 'Choose an item to rent',
-                items: items,
-                itemLabel: (item) => '${item.name} (\$${item.rent})',
-                onChanged: (item) {
-                  if (item != null) {
-                    // Set default quantity to 1 and rent to item's rent
-                    final rentalItem = item.copyWith(quantity: 1);
-                    context.read<AddRentalBloc>().add(AddRentalEvent.addItem(rentalItem));
-                  }
-                },
-              ),
+        if (state.selectedRental.status != RentalStatus.paid && unselectedItems.isNotEmpty)
+          ItemDropdown(
+            items: unselectedItems,
+            onItemSelected: (item) {
+              final rentalItem = item.copyWith(quantity: 1);
+              context.read<AddRentalBloc>().add(AddRentalEvent.addItem(rentalItem));
+            },
+          ),
+        if (state.items.isEmpty && unselectedItems.isEmpty)
+          const Center(
+            child: Text(
+              'No items found',
+              style: TextStyle(fontSize: 16, color: Colors.grey),
             ),
-          ],
-        ),
+          ),
       ],
     );
   }
@@ -222,12 +330,13 @@ class AddRentalView extends StatelessWidget {
       children: [
         Text(
           'Payment Details',
-          style: AppTextStyles.body,
+          style: AppTextStyles.title,
         ),
         const SizedBox(height: 16),
         AppTextField(
           label: 'Advance Amount',
           keyboardType: TextInputType.number,
+          readOnly: state.selectedRental.status == RentalStatus.paid,
           controller: TextEditingController(
             text: state.selectedRental.advanceAmount.toString(),
           )..selection = TextSelection.fromPosition(
@@ -236,8 +345,10 @@ class AddRentalView extends StatelessWidget {
               ),
             ),
           onChanged: (value) {
-            final amount = double.tryParse(value) ?? 0.0;
-            context.read<AddRentalBloc>().add(AddRentalEvent.updateAdvanceAmount(amount));
+            _debouncer.run(() {
+              final amount = double.tryParse(value) ?? 0.0;
+              context.read<AddRentalBloc>().add(AddRentalEvent.updateAdvanceAmount(amount));
+            });
           },
         ),
       ],
@@ -247,37 +358,61 @@ class AddRentalView extends StatelessWidget {
   Widget _buildActionButton(BuildContext context, AddRentalState state) {
     return Column(
       children: [
-        AppButton(
-          text: 'Calculate',
-          onPressed: () => _showCalculationSheet(context, state),
-        ).expandedWidth,
+        if (state.selectedRental.status == RentalStatus.active) ...[
+          AppButton(
+            text: id != null ? 'Save Rental' : 'Create Rental',
+            isDisabled: state.selectedRental.customer.id.isEmpty || state.selectedRental.items.isEmpty,
+            onPressed: () {
+              context.read<AddRentalBloc>().add(
+                    id != null
+                        ? AddRentalEvent.updateRental(state.selectedRental)
+                        : const AddRentalEvent.createRental(),
+                  );
+            },
+          ).expandedWidth,
+        ],
         const SizedBox(height: 16),
         AppButton(
-          text: 'Create Rental',
-          onPressed: () {
-            context.read<AddRentalBloc>().add(const AddRentalEvent.createRental());
-          },
+          text: state.selectedRental.status == RentalStatus.paid ? 'View Summary' : 'Proceed to Pay',
+          onPressed: () => _showCalculationSheet(context, state),
+          isDisabled: state.selectedRental.items.isEmpty,
         ).expandedWidth,
       ],
     );
   }
 
-  void _showCalculationSheet(BuildContext context, AddRentalState state) {
-    context.read<AddRentalBloc>().add(const AddRentalEvent.calculateRental());
+  Future<void> _showCalculationSheet(BuildContext context, AddRentalState state) async {
+    final bloc = context.read<AddRentalBloc>()..add(const AddRentalEvent.calculateRental());
 
-    showModalBottomSheet(
-      context: context,
-      backgroundColor: AppColors.background,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
-      ),
-      builder: (context) => RentalCalculationSheet(
-        rental: state.selectedRental,
-        onMarkAsPaid: () {
-          // TODO: Implement mark as paid functionality
-          Navigator.pop(context);
-        },
+    // Wait for the calculation to complete by listening to the bloc state
+    await bloc.stream.firstWhere(
+      (state) => state.maybeWhen(
+        loaded: (_) => true,
+        loading: () => false,
+        orElse: () => false,
       ),
     );
+
+    if (context.mounted) {
+      showModalBottomSheet(
+        context: context,
+        isScrollControlled: true,
+        backgroundColor: AppColors.background,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+        ),
+        builder: (context) => RentalCalculationSheet(
+          rental: state.selectedRental,
+          onMarkAsPaid: () {
+            bloc.add(const AddRentalEvent.markRentalAsPaid());
+            Navigator.pop(context);
+          },
+          onPartialPayment: (amount) {
+            bloc.add(AddRentalEvent.recordPartialPayment(amount));
+            Navigator.pop(context);
+          },
+        ),
+      );
+    }
   }
 }

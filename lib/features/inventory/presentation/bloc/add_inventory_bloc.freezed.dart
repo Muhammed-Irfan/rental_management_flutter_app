@@ -18,63 +18,57 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AddInventoryEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String name) updateName,
-    required TResult Function(String description) updateDescription,
-    required TResult Function(int quantity) updateQuantity,
-    required TResult Function(int available) updateAvailable,
-    required TResult Function(double rent) updateRent,
+    required TResult Function(String name, String description, int quantity,
+            int available, double rent)
+        updateFields,
     required TResult Function() createItem,
+    required TResult Function() updateItem,
+    required TResult Function(String itemId) setItem,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String name)? updateName,
-    TResult? Function(String description)? updateDescription,
-    TResult? Function(int quantity)? updateQuantity,
-    TResult? Function(int available)? updateAvailable,
-    TResult? Function(double rent)? updateRent,
+    TResult? Function(String name, String description, int quantity,
+            int available, double rent)?
+        updateFields,
     TResult? Function()? createItem,
+    TResult? Function()? updateItem,
+    TResult? Function(String itemId)? setItem,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String name)? updateName,
-    TResult Function(String description)? updateDescription,
-    TResult Function(int quantity)? updateQuantity,
-    TResult Function(int available)? updateAvailable,
-    TResult Function(double rent)? updateRent,
+    TResult Function(String name, String description, int quantity,
+            int available, double rent)?
+        updateFields,
     TResult Function()? createItem,
+    TResult Function()? updateItem,
+    TResult Function(String itemId)? setItem,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_UpdateName value) updateName,
-    required TResult Function(_UpdateDescription value) updateDescription,
-    required TResult Function(_UpdateQuantity value) updateQuantity,
-    required TResult Function(_UpdateAvailable value) updateAvailable,
-    required TResult Function(_UpdateRent value) updateRent,
+    required TResult Function(_UpdateFields value) updateFields,
     required TResult Function(_CreateItem value) createItem,
+    required TResult Function(_UpdateItem value) updateItem,
+    required TResult Function(_SetItem value) setItem,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_UpdateName value)? updateName,
-    TResult? Function(_UpdateDescription value)? updateDescription,
-    TResult? Function(_UpdateQuantity value)? updateQuantity,
-    TResult? Function(_UpdateAvailable value)? updateAvailable,
-    TResult? Function(_UpdateRent value)? updateRent,
+    TResult? Function(_UpdateFields value)? updateFields,
     TResult? Function(_CreateItem value)? createItem,
+    TResult? Function(_UpdateItem value)? updateItem,
+    TResult? Function(_SetItem value)? setItem,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_UpdateName value)? updateName,
-    TResult Function(_UpdateDescription value)? updateDescription,
-    TResult Function(_UpdateQuantity value)? updateQuantity,
-    TResult Function(_UpdateAvailable value)? updateAvailable,
-    TResult Function(_UpdateRent value)? updateRent,
+    TResult Function(_UpdateFields value)? updateFields,
     TResult Function(_CreateItem value)? createItem,
+    TResult Function(_UpdateItem value)? updateItem,
+    TResult Function(_SetItem value)? setItem,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -102,20 +96,25 @@ class _$AddInventoryEventCopyWithImpl<$Res, $Val extends AddInventoryEvent>
 }
 
 /// @nodoc
-abstract class _$$UpdateNameImplCopyWith<$Res> {
-  factory _$$UpdateNameImplCopyWith(
-          _$UpdateNameImpl value, $Res Function(_$UpdateNameImpl) then) =
-      __$$UpdateNameImplCopyWithImpl<$Res>;
+abstract class _$$UpdateFieldsImplCopyWith<$Res> {
+  factory _$$UpdateFieldsImplCopyWith(
+          _$UpdateFieldsImpl value, $Res Function(_$UpdateFieldsImpl) then) =
+      __$$UpdateFieldsImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String name});
+  $Res call(
+      {String name,
+      String description,
+      int quantity,
+      int available,
+      double rent});
 }
 
 /// @nodoc
-class __$$UpdateNameImplCopyWithImpl<$Res>
-    extends _$AddInventoryEventCopyWithImpl<$Res, _$UpdateNameImpl>
-    implements _$$UpdateNameImplCopyWith<$Res> {
-  __$$UpdateNameImplCopyWithImpl(
-      _$UpdateNameImpl _value, $Res Function(_$UpdateNameImpl) _then)
+class __$$UpdateFieldsImplCopyWithImpl<$Res>
+    extends _$AddInventoryEventCopyWithImpl<$Res, _$UpdateFieldsImpl>
+    implements _$$UpdateFieldsImplCopyWith<$Res> {
+  __$$UpdateFieldsImplCopyWithImpl(
+      _$UpdateFieldsImpl _value, $Res Function(_$UpdateFieldsImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of AddInventoryEvent
@@ -124,672 +123,29 @@ class __$$UpdateNameImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? name = null,
+    Object? description = null,
+    Object? quantity = null,
+    Object? available = null,
+    Object? rent = null,
   }) {
-    return _then(_$UpdateNameImpl(
-      null == name
+    return _then(_$UpdateFieldsImpl(
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$UpdateNameImpl implements _UpdateName {
-  const _$UpdateNameImpl(this.name);
-
-  @override
-  final String name;
-
-  @override
-  String toString() {
-    return 'AddInventoryEvent.updateName(name: $name)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$UpdateNameImpl &&
-            (identical(other.name, name) || other.name == name));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, name);
-
-  /// Create a copy of AddInventoryEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$UpdateNameImplCopyWith<_$UpdateNameImpl> get copyWith =>
-      __$$UpdateNameImplCopyWithImpl<_$UpdateNameImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String name) updateName,
-    required TResult Function(String description) updateDescription,
-    required TResult Function(int quantity) updateQuantity,
-    required TResult Function(int available) updateAvailable,
-    required TResult Function(double rent) updateRent,
-    required TResult Function() createItem,
-  }) {
-    return updateName(name);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String name)? updateName,
-    TResult? Function(String description)? updateDescription,
-    TResult? Function(int quantity)? updateQuantity,
-    TResult? Function(int available)? updateAvailable,
-    TResult? Function(double rent)? updateRent,
-    TResult? Function()? createItem,
-  }) {
-    return updateName?.call(name);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String name)? updateName,
-    TResult Function(String description)? updateDescription,
-    TResult Function(int quantity)? updateQuantity,
-    TResult Function(int available)? updateAvailable,
-    TResult Function(double rent)? updateRent,
-    TResult Function()? createItem,
-    required TResult orElse(),
-  }) {
-    if (updateName != null) {
-      return updateName(name);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_UpdateName value) updateName,
-    required TResult Function(_UpdateDescription value) updateDescription,
-    required TResult Function(_UpdateQuantity value) updateQuantity,
-    required TResult Function(_UpdateAvailable value) updateAvailable,
-    required TResult Function(_UpdateRent value) updateRent,
-    required TResult Function(_CreateItem value) createItem,
-  }) {
-    return updateName(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_UpdateName value)? updateName,
-    TResult? Function(_UpdateDescription value)? updateDescription,
-    TResult? Function(_UpdateQuantity value)? updateQuantity,
-    TResult? Function(_UpdateAvailable value)? updateAvailable,
-    TResult? Function(_UpdateRent value)? updateRent,
-    TResult? Function(_CreateItem value)? createItem,
-  }) {
-    return updateName?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_UpdateName value)? updateName,
-    TResult Function(_UpdateDescription value)? updateDescription,
-    TResult Function(_UpdateQuantity value)? updateQuantity,
-    TResult Function(_UpdateAvailable value)? updateAvailable,
-    TResult Function(_UpdateRent value)? updateRent,
-    TResult Function(_CreateItem value)? createItem,
-    required TResult orElse(),
-  }) {
-    if (updateName != null) {
-      return updateName(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _UpdateName implements AddInventoryEvent {
-  const factory _UpdateName(final String name) = _$UpdateNameImpl;
-
-  String get name;
-
-  /// Create a copy of AddInventoryEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$UpdateNameImplCopyWith<_$UpdateNameImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$UpdateDescriptionImplCopyWith<$Res> {
-  factory _$$UpdateDescriptionImplCopyWith(_$UpdateDescriptionImpl value,
-          $Res Function(_$UpdateDescriptionImpl) then) =
-      __$$UpdateDescriptionImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String description});
-}
-
-/// @nodoc
-class __$$UpdateDescriptionImplCopyWithImpl<$Res>
-    extends _$AddInventoryEventCopyWithImpl<$Res, _$UpdateDescriptionImpl>
-    implements _$$UpdateDescriptionImplCopyWith<$Res> {
-  __$$UpdateDescriptionImplCopyWithImpl(_$UpdateDescriptionImpl _value,
-      $Res Function(_$UpdateDescriptionImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of AddInventoryEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? description = null,
-  }) {
-    return _then(_$UpdateDescriptionImpl(
-      null == description
+      description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$UpdateDescriptionImpl implements _UpdateDescription {
-  const _$UpdateDescriptionImpl(this.description);
-
-  @override
-  final String description;
-
-  @override
-  String toString() {
-    return 'AddInventoryEvent.updateDescription(description: $description)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$UpdateDescriptionImpl &&
-            (identical(other.description, description) ||
-                other.description == description));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, description);
-
-  /// Create a copy of AddInventoryEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$UpdateDescriptionImplCopyWith<_$UpdateDescriptionImpl> get copyWith =>
-      __$$UpdateDescriptionImplCopyWithImpl<_$UpdateDescriptionImpl>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String name) updateName,
-    required TResult Function(String description) updateDescription,
-    required TResult Function(int quantity) updateQuantity,
-    required TResult Function(int available) updateAvailable,
-    required TResult Function(double rent) updateRent,
-    required TResult Function() createItem,
-  }) {
-    return updateDescription(description);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String name)? updateName,
-    TResult? Function(String description)? updateDescription,
-    TResult? Function(int quantity)? updateQuantity,
-    TResult? Function(int available)? updateAvailable,
-    TResult? Function(double rent)? updateRent,
-    TResult? Function()? createItem,
-  }) {
-    return updateDescription?.call(description);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String name)? updateName,
-    TResult Function(String description)? updateDescription,
-    TResult Function(int quantity)? updateQuantity,
-    TResult Function(int available)? updateAvailable,
-    TResult Function(double rent)? updateRent,
-    TResult Function()? createItem,
-    required TResult orElse(),
-  }) {
-    if (updateDescription != null) {
-      return updateDescription(description);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_UpdateName value) updateName,
-    required TResult Function(_UpdateDescription value) updateDescription,
-    required TResult Function(_UpdateQuantity value) updateQuantity,
-    required TResult Function(_UpdateAvailable value) updateAvailable,
-    required TResult Function(_UpdateRent value) updateRent,
-    required TResult Function(_CreateItem value) createItem,
-  }) {
-    return updateDescription(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_UpdateName value)? updateName,
-    TResult? Function(_UpdateDescription value)? updateDescription,
-    TResult? Function(_UpdateQuantity value)? updateQuantity,
-    TResult? Function(_UpdateAvailable value)? updateAvailable,
-    TResult? Function(_UpdateRent value)? updateRent,
-    TResult? Function(_CreateItem value)? createItem,
-  }) {
-    return updateDescription?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_UpdateName value)? updateName,
-    TResult Function(_UpdateDescription value)? updateDescription,
-    TResult Function(_UpdateQuantity value)? updateQuantity,
-    TResult Function(_UpdateAvailable value)? updateAvailable,
-    TResult Function(_UpdateRent value)? updateRent,
-    TResult Function(_CreateItem value)? createItem,
-    required TResult orElse(),
-  }) {
-    if (updateDescription != null) {
-      return updateDescription(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _UpdateDescription implements AddInventoryEvent {
-  const factory _UpdateDescription(final String description) =
-      _$UpdateDescriptionImpl;
-
-  String get description;
-
-  /// Create a copy of AddInventoryEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$UpdateDescriptionImplCopyWith<_$UpdateDescriptionImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$UpdateQuantityImplCopyWith<$Res> {
-  factory _$$UpdateQuantityImplCopyWith(_$UpdateQuantityImpl value,
-          $Res Function(_$UpdateQuantityImpl) then) =
-      __$$UpdateQuantityImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({int quantity});
-}
-
-/// @nodoc
-class __$$UpdateQuantityImplCopyWithImpl<$Res>
-    extends _$AddInventoryEventCopyWithImpl<$Res, _$UpdateQuantityImpl>
-    implements _$$UpdateQuantityImplCopyWith<$Res> {
-  __$$UpdateQuantityImplCopyWithImpl(
-      _$UpdateQuantityImpl _value, $Res Function(_$UpdateQuantityImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of AddInventoryEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? quantity = null,
-  }) {
-    return _then(_$UpdateQuantityImpl(
-      null == quantity
+      quantity: null == quantity
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
               as int,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$UpdateQuantityImpl implements _UpdateQuantity {
-  const _$UpdateQuantityImpl(this.quantity);
-
-  @override
-  final int quantity;
-
-  @override
-  String toString() {
-    return 'AddInventoryEvent.updateQuantity(quantity: $quantity)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$UpdateQuantityImpl &&
-            (identical(other.quantity, quantity) ||
-                other.quantity == quantity));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, quantity);
-
-  /// Create a copy of AddInventoryEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$UpdateQuantityImplCopyWith<_$UpdateQuantityImpl> get copyWith =>
-      __$$UpdateQuantityImplCopyWithImpl<_$UpdateQuantityImpl>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String name) updateName,
-    required TResult Function(String description) updateDescription,
-    required TResult Function(int quantity) updateQuantity,
-    required TResult Function(int available) updateAvailable,
-    required TResult Function(double rent) updateRent,
-    required TResult Function() createItem,
-  }) {
-    return updateQuantity(quantity);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String name)? updateName,
-    TResult? Function(String description)? updateDescription,
-    TResult? Function(int quantity)? updateQuantity,
-    TResult? Function(int available)? updateAvailable,
-    TResult? Function(double rent)? updateRent,
-    TResult? Function()? createItem,
-  }) {
-    return updateQuantity?.call(quantity);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String name)? updateName,
-    TResult Function(String description)? updateDescription,
-    TResult Function(int quantity)? updateQuantity,
-    TResult Function(int available)? updateAvailable,
-    TResult Function(double rent)? updateRent,
-    TResult Function()? createItem,
-    required TResult orElse(),
-  }) {
-    if (updateQuantity != null) {
-      return updateQuantity(quantity);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_UpdateName value) updateName,
-    required TResult Function(_UpdateDescription value) updateDescription,
-    required TResult Function(_UpdateQuantity value) updateQuantity,
-    required TResult Function(_UpdateAvailable value) updateAvailable,
-    required TResult Function(_UpdateRent value) updateRent,
-    required TResult Function(_CreateItem value) createItem,
-  }) {
-    return updateQuantity(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_UpdateName value)? updateName,
-    TResult? Function(_UpdateDescription value)? updateDescription,
-    TResult? Function(_UpdateQuantity value)? updateQuantity,
-    TResult? Function(_UpdateAvailable value)? updateAvailable,
-    TResult? Function(_UpdateRent value)? updateRent,
-    TResult? Function(_CreateItem value)? createItem,
-  }) {
-    return updateQuantity?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_UpdateName value)? updateName,
-    TResult Function(_UpdateDescription value)? updateDescription,
-    TResult Function(_UpdateQuantity value)? updateQuantity,
-    TResult Function(_UpdateAvailable value)? updateAvailable,
-    TResult Function(_UpdateRent value)? updateRent,
-    TResult Function(_CreateItem value)? createItem,
-    required TResult orElse(),
-  }) {
-    if (updateQuantity != null) {
-      return updateQuantity(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _UpdateQuantity implements AddInventoryEvent {
-  const factory _UpdateQuantity(final int quantity) = _$UpdateQuantityImpl;
-
-  int get quantity;
-
-  /// Create a copy of AddInventoryEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$UpdateQuantityImplCopyWith<_$UpdateQuantityImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$UpdateAvailableImplCopyWith<$Res> {
-  factory _$$UpdateAvailableImplCopyWith(_$UpdateAvailableImpl value,
-          $Res Function(_$UpdateAvailableImpl) then) =
-      __$$UpdateAvailableImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({int available});
-}
-
-/// @nodoc
-class __$$UpdateAvailableImplCopyWithImpl<$Res>
-    extends _$AddInventoryEventCopyWithImpl<$Res, _$UpdateAvailableImpl>
-    implements _$$UpdateAvailableImplCopyWith<$Res> {
-  __$$UpdateAvailableImplCopyWithImpl(
-      _$UpdateAvailableImpl _value, $Res Function(_$UpdateAvailableImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of AddInventoryEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? available = null,
-  }) {
-    return _then(_$UpdateAvailableImpl(
-      null == available
+      available: null == available
           ? _value.available
           : available // ignore: cast_nullable_to_non_nullable
               as int,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$UpdateAvailableImpl implements _UpdateAvailable {
-  const _$UpdateAvailableImpl(this.available);
-
-  @override
-  final int available;
-
-  @override
-  String toString() {
-    return 'AddInventoryEvent.updateAvailable(available: $available)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$UpdateAvailableImpl &&
-            (identical(other.available, available) ||
-                other.available == available));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, available);
-
-  /// Create a copy of AddInventoryEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$UpdateAvailableImplCopyWith<_$UpdateAvailableImpl> get copyWith =>
-      __$$UpdateAvailableImplCopyWithImpl<_$UpdateAvailableImpl>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String name) updateName,
-    required TResult Function(String description) updateDescription,
-    required TResult Function(int quantity) updateQuantity,
-    required TResult Function(int available) updateAvailable,
-    required TResult Function(double rent) updateRent,
-    required TResult Function() createItem,
-  }) {
-    return updateAvailable(available);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String name)? updateName,
-    TResult? Function(String description)? updateDescription,
-    TResult? Function(int quantity)? updateQuantity,
-    TResult? Function(int available)? updateAvailable,
-    TResult? Function(double rent)? updateRent,
-    TResult? Function()? createItem,
-  }) {
-    return updateAvailable?.call(available);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String name)? updateName,
-    TResult Function(String description)? updateDescription,
-    TResult Function(int quantity)? updateQuantity,
-    TResult Function(int available)? updateAvailable,
-    TResult Function(double rent)? updateRent,
-    TResult Function()? createItem,
-    required TResult orElse(),
-  }) {
-    if (updateAvailable != null) {
-      return updateAvailable(available);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_UpdateName value) updateName,
-    required TResult Function(_UpdateDescription value) updateDescription,
-    required TResult Function(_UpdateQuantity value) updateQuantity,
-    required TResult Function(_UpdateAvailable value) updateAvailable,
-    required TResult Function(_UpdateRent value) updateRent,
-    required TResult Function(_CreateItem value) createItem,
-  }) {
-    return updateAvailable(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_UpdateName value)? updateName,
-    TResult? Function(_UpdateDescription value)? updateDescription,
-    TResult? Function(_UpdateQuantity value)? updateQuantity,
-    TResult? Function(_UpdateAvailable value)? updateAvailable,
-    TResult? Function(_UpdateRent value)? updateRent,
-    TResult? Function(_CreateItem value)? createItem,
-  }) {
-    return updateAvailable?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_UpdateName value)? updateName,
-    TResult Function(_UpdateDescription value)? updateDescription,
-    TResult Function(_UpdateQuantity value)? updateQuantity,
-    TResult Function(_UpdateAvailable value)? updateAvailable,
-    TResult Function(_UpdateRent value)? updateRent,
-    TResult Function(_CreateItem value)? createItem,
-    required TResult orElse(),
-  }) {
-    if (updateAvailable != null) {
-      return updateAvailable(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _UpdateAvailable implements AddInventoryEvent {
-  const factory _UpdateAvailable(final int available) = _$UpdateAvailableImpl;
-
-  int get available;
-
-  /// Create a copy of AddInventoryEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$UpdateAvailableImplCopyWith<_$UpdateAvailableImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$UpdateRentImplCopyWith<$Res> {
-  factory _$$UpdateRentImplCopyWith(
-          _$UpdateRentImpl value, $Res Function(_$UpdateRentImpl) then) =
-      __$$UpdateRentImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({double rent});
-}
-
-/// @nodoc
-class __$$UpdateRentImplCopyWithImpl<$Res>
-    extends _$AddInventoryEventCopyWithImpl<$Res, _$UpdateRentImpl>
-    implements _$$UpdateRentImplCopyWith<$Res> {
-  __$$UpdateRentImplCopyWithImpl(
-      _$UpdateRentImpl _value, $Res Function(_$UpdateRentImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of AddInventoryEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? rent = null,
-  }) {
-    return _then(_$UpdateRentImpl(
-      null == rent
+      rent: null == rent
           ? _value.rent
           : rent // ignore: cast_nullable_to_non_nullable
               as double,
@@ -799,75 +155,96 @@ class __$$UpdateRentImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$UpdateRentImpl implements _UpdateRent {
-  const _$UpdateRentImpl(this.rent);
+class _$UpdateFieldsImpl implements _UpdateFields {
+  const _$UpdateFieldsImpl(
+      {required this.name,
+      required this.description,
+      required this.quantity,
+      required this.available,
+      required this.rent});
 
+  @override
+  final String name;
+  @override
+  final String description;
+  @override
+  final int quantity;
+  @override
+  final int available;
   @override
   final double rent;
 
   @override
   String toString() {
-    return 'AddInventoryEvent.updateRent(rent: $rent)';
+    return 'AddInventoryEvent.updateFields(name: $name, description: $description, quantity: $quantity, available: $available, rent: $rent)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$UpdateRentImpl &&
+            other is _$UpdateFieldsImpl &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.quantity, quantity) ||
+                other.quantity == quantity) &&
+            (identical(other.available, available) ||
+                other.available == available) &&
             (identical(other.rent, rent) || other.rent == rent));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, rent);
+  int get hashCode =>
+      Object.hash(runtimeType, name, description, quantity, available, rent);
 
   /// Create a copy of AddInventoryEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$UpdateRentImplCopyWith<_$UpdateRentImpl> get copyWith =>
-      __$$UpdateRentImplCopyWithImpl<_$UpdateRentImpl>(this, _$identity);
+  _$$UpdateFieldsImplCopyWith<_$UpdateFieldsImpl> get copyWith =>
+      __$$UpdateFieldsImplCopyWithImpl<_$UpdateFieldsImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String name) updateName,
-    required TResult Function(String description) updateDescription,
-    required TResult Function(int quantity) updateQuantity,
-    required TResult Function(int available) updateAvailable,
-    required TResult Function(double rent) updateRent,
+    required TResult Function(String name, String description, int quantity,
+            int available, double rent)
+        updateFields,
     required TResult Function() createItem,
+    required TResult Function() updateItem,
+    required TResult Function(String itemId) setItem,
   }) {
-    return updateRent(rent);
+    return updateFields(name, description, quantity, available, rent);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String name)? updateName,
-    TResult? Function(String description)? updateDescription,
-    TResult? Function(int quantity)? updateQuantity,
-    TResult? Function(int available)? updateAvailable,
-    TResult? Function(double rent)? updateRent,
+    TResult? Function(String name, String description, int quantity,
+            int available, double rent)?
+        updateFields,
     TResult? Function()? createItem,
+    TResult? Function()? updateItem,
+    TResult? Function(String itemId)? setItem,
   }) {
-    return updateRent?.call(rent);
+    return updateFields?.call(name, description, quantity, available, rent);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String name)? updateName,
-    TResult Function(String description)? updateDescription,
-    TResult Function(int quantity)? updateQuantity,
-    TResult Function(int available)? updateAvailable,
-    TResult Function(double rent)? updateRent,
+    TResult Function(String name, String description, int quantity,
+            int available, double rent)?
+        updateFields,
     TResult Function()? createItem,
+    TResult Function()? updateItem,
+    TResult Function(String itemId)? setItem,
     required TResult orElse(),
   }) {
-    if (updateRent != null) {
-      return updateRent(rent);
+    if (updateFields != null) {
+      return updateFields(name, description, quantity, available, rent);
     }
     return orElse();
   }
@@ -875,56 +252,59 @@ class _$UpdateRentImpl implements _UpdateRent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_UpdateName value) updateName,
-    required TResult Function(_UpdateDescription value) updateDescription,
-    required TResult Function(_UpdateQuantity value) updateQuantity,
-    required TResult Function(_UpdateAvailable value) updateAvailable,
-    required TResult Function(_UpdateRent value) updateRent,
+    required TResult Function(_UpdateFields value) updateFields,
     required TResult Function(_CreateItem value) createItem,
+    required TResult Function(_UpdateItem value) updateItem,
+    required TResult Function(_SetItem value) setItem,
   }) {
-    return updateRent(this);
+    return updateFields(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_UpdateName value)? updateName,
-    TResult? Function(_UpdateDescription value)? updateDescription,
-    TResult? Function(_UpdateQuantity value)? updateQuantity,
-    TResult? Function(_UpdateAvailable value)? updateAvailable,
-    TResult? Function(_UpdateRent value)? updateRent,
+    TResult? Function(_UpdateFields value)? updateFields,
     TResult? Function(_CreateItem value)? createItem,
+    TResult? Function(_UpdateItem value)? updateItem,
+    TResult? Function(_SetItem value)? setItem,
   }) {
-    return updateRent?.call(this);
+    return updateFields?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_UpdateName value)? updateName,
-    TResult Function(_UpdateDescription value)? updateDescription,
-    TResult Function(_UpdateQuantity value)? updateQuantity,
-    TResult Function(_UpdateAvailable value)? updateAvailable,
-    TResult Function(_UpdateRent value)? updateRent,
+    TResult Function(_UpdateFields value)? updateFields,
     TResult Function(_CreateItem value)? createItem,
+    TResult Function(_UpdateItem value)? updateItem,
+    TResult Function(_SetItem value)? setItem,
     required TResult orElse(),
   }) {
-    if (updateRent != null) {
-      return updateRent(this);
+    if (updateFields != null) {
+      return updateFields(this);
     }
     return orElse();
   }
 }
 
-abstract class _UpdateRent implements AddInventoryEvent {
-  const factory _UpdateRent(final double rent) = _$UpdateRentImpl;
+abstract class _UpdateFields implements AddInventoryEvent {
+  const factory _UpdateFields(
+      {required final String name,
+      required final String description,
+      required final int quantity,
+      required final int available,
+      required final double rent}) = _$UpdateFieldsImpl;
 
+  String get name;
+  String get description;
+  int get quantity;
+  int get available;
   double get rent;
 
   /// Create a copy of AddInventoryEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$UpdateRentImplCopyWith<_$UpdateRentImpl> get copyWith =>
+  _$$UpdateFieldsImplCopyWith<_$UpdateFieldsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -969,12 +349,12 @@ class _$CreateItemImpl implements _CreateItem {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String name) updateName,
-    required TResult Function(String description) updateDescription,
-    required TResult Function(int quantity) updateQuantity,
-    required TResult Function(int available) updateAvailable,
-    required TResult Function(double rent) updateRent,
+    required TResult Function(String name, String description, int quantity,
+            int available, double rent)
+        updateFields,
     required TResult Function() createItem,
+    required TResult Function() updateItem,
+    required TResult Function(String itemId) setItem,
   }) {
     return createItem();
   }
@@ -982,12 +362,12 @@ class _$CreateItemImpl implements _CreateItem {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String name)? updateName,
-    TResult? Function(String description)? updateDescription,
-    TResult? Function(int quantity)? updateQuantity,
-    TResult? Function(int available)? updateAvailable,
-    TResult? Function(double rent)? updateRent,
+    TResult? Function(String name, String description, int quantity,
+            int available, double rent)?
+        updateFields,
     TResult? Function()? createItem,
+    TResult? Function()? updateItem,
+    TResult? Function(String itemId)? setItem,
   }) {
     return createItem?.call();
   }
@@ -995,12 +375,12 @@ class _$CreateItemImpl implements _CreateItem {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String name)? updateName,
-    TResult Function(String description)? updateDescription,
-    TResult Function(int quantity)? updateQuantity,
-    TResult Function(int available)? updateAvailable,
-    TResult Function(double rent)? updateRent,
+    TResult Function(String name, String description, int quantity,
+            int available, double rent)?
+        updateFields,
     TResult Function()? createItem,
+    TResult Function()? updateItem,
+    TResult Function(String itemId)? setItem,
     required TResult orElse(),
   }) {
     if (createItem != null) {
@@ -1012,12 +392,10 @@ class _$CreateItemImpl implements _CreateItem {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_UpdateName value) updateName,
-    required TResult Function(_UpdateDescription value) updateDescription,
-    required TResult Function(_UpdateQuantity value) updateQuantity,
-    required TResult Function(_UpdateAvailable value) updateAvailable,
-    required TResult Function(_UpdateRent value) updateRent,
+    required TResult Function(_UpdateFields value) updateFields,
     required TResult Function(_CreateItem value) createItem,
+    required TResult Function(_UpdateItem value) updateItem,
+    required TResult Function(_SetItem value) setItem,
   }) {
     return createItem(this);
   }
@@ -1025,12 +403,10 @@ class _$CreateItemImpl implements _CreateItem {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_UpdateName value)? updateName,
-    TResult? Function(_UpdateDescription value)? updateDescription,
-    TResult? Function(_UpdateQuantity value)? updateQuantity,
-    TResult? Function(_UpdateAvailable value)? updateAvailable,
-    TResult? Function(_UpdateRent value)? updateRent,
+    TResult? Function(_UpdateFields value)? updateFields,
     TResult? Function(_CreateItem value)? createItem,
+    TResult? Function(_UpdateItem value)? updateItem,
+    TResult? Function(_SetItem value)? setItem,
   }) {
     return createItem?.call(this);
   }
@@ -1038,12 +414,10 @@ class _$CreateItemImpl implements _CreateItem {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_UpdateName value)? updateName,
-    TResult Function(_UpdateDescription value)? updateDescription,
-    TResult Function(_UpdateQuantity value)? updateQuantity,
-    TResult Function(_UpdateAvailable value)? updateAvailable,
-    TResult Function(_UpdateRent value)? updateRent,
+    TResult Function(_UpdateFields value)? updateFields,
     TResult Function(_CreateItem value)? createItem,
+    TResult Function(_UpdateItem value)? updateItem,
+    TResult Function(_SetItem value)? setItem,
     required TResult orElse(),
   }) {
     if (createItem != null) {
@@ -1055,6 +429,287 @@ class _$CreateItemImpl implements _CreateItem {
 
 abstract class _CreateItem implements AddInventoryEvent {
   const factory _CreateItem() = _$CreateItemImpl;
+}
+
+/// @nodoc
+abstract class _$$UpdateItemImplCopyWith<$Res> {
+  factory _$$UpdateItemImplCopyWith(
+          _$UpdateItemImpl value, $Res Function(_$UpdateItemImpl) then) =
+      __$$UpdateItemImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$UpdateItemImplCopyWithImpl<$Res>
+    extends _$AddInventoryEventCopyWithImpl<$Res, _$UpdateItemImpl>
+    implements _$$UpdateItemImplCopyWith<$Res> {
+  __$$UpdateItemImplCopyWithImpl(
+      _$UpdateItemImpl _value, $Res Function(_$UpdateItemImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AddInventoryEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$UpdateItemImpl implements _UpdateItem {
+  const _$UpdateItemImpl();
+
+  @override
+  String toString() {
+    return 'AddInventoryEvent.updateItem()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$UpdateItemImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String name, String description, int quantity,
+            int available, double rent)
+        updateFields,
+    required TResult Function() createItem,
+    required TResult Function() updateItem,
+    required TResult Function(String itemId) setItem,
+  }) {
+    return updateItem();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String name, String description, int quantity,
+            int available, double rent)?
+        updateFields,
+    TResult? Function()? createItem,
+    TResult? Function()? updateItem,
+    TResult? Function(String itemId)? setItem,
+  }) {
+    return updateItem?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String name, String description, int quantity,
+            int available, double rent)?
+        updateFields,
+    TResult Function()? createItem,
+    TResult Function()? updateItem,
+    TResult Function(String itemId)? setItem,
+    required TResult orElse(),
+  }) {
+    if (updateItem != null) {
+      return updateItem();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_UpdateFields value) updateFields,
+    required TResult Function(_CreateItem value) createItem,
+    required TResult Function(_UpdateItem value) updateItem,
+    required TResult Function(_SetItem value) setItem,
+  }) {
+    return updateItem(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_UpdateFields value)? updateFields,
+    TResult? Function(_CreateItem value)? createItem,
+    TResult? Function(_UpdateItem value)? updateItem,
+    TResult? Function(_SetItem value)? setItem,
+  }) {
+    return updateItem?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_UpdateFields value)? updateFields,
+    TResult Function(_CreateItem value)? createItem,
+    TResult Function(_UpdateItem value)? updateItem,
+    TResult Function(_SetItem value)? setItem,
+    required TResult orElse(),
+  }) {
+    if (updateItem != null) {
+      return updateItem(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UpdateItem implements AddInventoryEvent {
+  const factory _UpdateItem() = _$UpdateItemImpl;
+}
+
+/// @nodoc
+abstract class _$$SetItemImplCopyWith<$Res> {
+  factory _$$SetItemImplCopyWith(
+          _$SetItemImpl value, $Res Function(_$SetItemImpl) then) =
+      __$$SetItemImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String itemId});
+}
+
+/// @nodoc
+class __$$SetItemImplCopyWithImpl<$Res>
+    extends _$AddInventoryEventCopyWithImpl<$Res, _$SetItemImpl>
+    implements _$$SetItemImplCopyWith<$Res> {
+  __$$SetItemImplCopyWithImpl(
+      _$SetItemImpl _value, $Res Function(_$SetItemImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AddInventoryEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? itemId = null,
+  }) {
+    return _then(_$SetItemImpl(
+      null == itemId
+          ? _value.itemId
+          : itemId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SetItemImpl implements _SetItem {
+  const _$SetItemImpl(this.itemId);
+
+  @override
+  final String itemId;
+
+  @override
+  String toString() {
+    return 'AddInventoryEvent.setItem(itemId: $itemId)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SetItemImpl &&
+            (identical(other.itemId, itemId) || other.itemId == itemId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, itemId);
+
+  /// Create a copy of AddInventoryEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SetItemImplCopyWith<_$SetItemImpl> get copyWith =>
+      __$$SetItemImplCopyWithImpl<_$SetItemImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String name, String description, int quantity,
+            int available, double rent)
+        updateFields,
+    required TResult Function() createItem,
+    required TResult Function() updateItem,
+    required TResult Function(String itemId) setItem,
+  }) {
+    return setItem(itemId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String name, String description, int quantity,
+            int available, double rent)?
+        updateFields,
+    TResult? Function()? createItem,
+    TResult? Function()? updateItem,
+    TResult? Function(String itemId)? setItem,
+  }) {
+    return setItem?.call(itemId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String name, String description, int quantity,
+            int available, double rent)?
+        updateFields,
+    TResult Function()? createItem,
+    TResult Function()? updateItem,
+    TResult Function(String itemId)? setItem,
+    required TResult orElse(),
+  }) {
+    if (setItem != null) {
+      return setItem(itemId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_UpdateFields value) updateFields,
+    required TResult Function(_CreateItem value) createItem,
+    required TResult Function(_UpdateItem value) updateItem,
+    required TResult Function(_SetItem value) setItem,
+  }) {
+    return setItem(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_UpdateFields value)? updateFields,
+    TResult? Function(_CreateItem value)? createItem,
+    TResult? Function(_UpdateItem value)? updateItem,
+    TResult? Function(_SetItem value)? setItem,
+  }) {
+    return setItem?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_UpdateFields value)? updateFields,
+    TResult Function(_CreateItem value)? createItem,
+    TResult Function(_UpdateItem value)? updateItem,
+    TResult Function(_SetItem value)? setItem,
+    required TResult orElse(),
+  }) {
+    if (setItem != null) {
+      return setItem(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SetItem implements AddInventoryEvent {
+  const factory _SetItem(final String itemId) = _$SetItemImpl;
+
+  String get itemId;
+
+  /// Create a copy of AddInventoryEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SetItemImplCopyWith<_$SetItemImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc

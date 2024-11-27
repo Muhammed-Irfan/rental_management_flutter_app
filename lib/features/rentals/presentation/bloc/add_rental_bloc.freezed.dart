@@ -19,68 +19,116 @@ mixin _$AddRentalEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(CustomerEntity customer) selectCustomer,
+    required TResult Function() removeCustomer,
     required TResult Function(InventoryItemEntity item) addItem,
     required TResult Function(int index) removeItem,
     required TResult Function(int index, InventoryItemEntity item) updateItem,
     required TResult Function(double amount) updateAdvanceAmount,
     required TResult Function() createRental,
+    required TResult Function(RentalEntity rental) updateRental,
     required TResult Function() calculateRental,
+    required TResult Function(String id) setRental,
+    required TResult Function() initializeCustomers,
+    required TResult Function() initializeItems,
+    required TResult Function() markRentalAsPaid,
+    required TResult Function(DateTime date) updateRentedAt,
+    required TResult Function(double amount) recordPartialPayment,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(CustomerEntity customer)? selectCustomer,
+    TResult? Function()? removeCustomer,
     TResult? Function(InventoryItemEntity item)? addItem,
     TResult? Function(int index)? removeItem,
     TResult? Function(int index, InventoryItemEntity item)? updateItem,
     TResult? Function(double amount)? updateAdvanceAmount,
     TResult? Function()? createRental,
+    TResult? Function(RentalEntity rental)? updateRental,
     TResult? Function()? calculateRental,
+    TResult? Function(String id)? setRental,
+    TResult? Function()? initializeCustomers,
+    TResult? Function()? initializeItems,
+    TResult? Function()? markRentalAsPaid,
+    TResult? Function(DateTime date)? updateRentedAt,
+    TResult? Function(double amount)? recordPartialPayment,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(CustomerEntity customer)? selectCustomer,
+    TResult Function()? removeCustomer,
     TResult Function(InventoryItemEntity item)? addItem,
     TResult Function(int index)? removeItem,
     TResult Function(int index, InventoryItemEntity item)? updateItem,
     TResult Function(double amount)? updateAdvanceAmount,
     TResult Function()? createRental,
+    TResult Function(RentalEntity rental)? updateRental,
     TResult Function()? calculateRental,
+    TResult Function(String id)? setRental,
+    TResult Function()? initializeCustomers,
+    TResult Function()? initializeItems,
+    TResult Function()? markRentalAsPaid,
+    TResult Function(DateTime date)? updateRentedAt,
+    TResult Function(double amount)? recordPartialPayment,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_SelectCustomer value) selectCustomer,
+    required TResult Function(_RemoveCustomer value) removeCustomer,
     required TResult Function(_AddItem value) addItem,
     required TResult Function(_RemoveItem value) removeItem,
     required TResult Function(_UpdateItem value) updateItem,
     required TResult Function(_UpdateAdvanceAmount value) updateAdvanceAmount,
     required TResult Function(_CreateRental value) createRental,
+    required TResult Function(_UpdateRental value) updateRental,
     required TResult Function(_CalculateRental value) calculateRental,
+    required TResult Function(_SetRental value) setRental,
+    required TResult Function(_InitializeCustomers value) initializeCustomers,
+    required TResult Function(_InitializeItems value) initializeItems,
+    required TResult Function(_MarkRentalAsPaid value) markRentalAsPaid,
+    required TResult Function(_UpdateRentedAt value) updateRentedAt,
+    required TResult Function(_RecordPartialPayment value) recordPartialPayment,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_SelectCustomer value)? selectCustomer,
+    TResult? Function(_RemoveCustomer value)? removeCustomer,
     TResult? Function(_AddItem value)? addItem,
     TResult? Function(_RemoveItem value)? removeItem,
     TResult? Function(_UpdateItem value)? updateItem,
     TResult? Function(_UpdateAdvanceAmount value)? updateAdvanceAmount,
     TResult? Function(_CreateRental value)? createRental,
+    TResult? Function(_UpdateRental value)? updateRental,
     TResult? Function(_CalculateRental value)? calculateRental,
+    TResult? Function(_SetRental value)? setRental,
+    TResult? Function(_InitializeCustomers value)? initializeCustomers,
+    TResult? Function(_InitializeItems value)? initializeItems,
+    TResult? Function(_MarkRentalAsPaid value)? markRentalAsPaid,
+    TResult? Function(_UpdateRentedAt value)? updateRentedAt,
+    TResult? Function(_RecordPartialPayment value)? recordPartialPayment,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_SelectCustomer value)? selectCustomer,
+    TResult Function(_RemoveCustomer value)? removeCustomer,
     TResult Function(_AddItem value)? addItem,
     TResult Function(_RemoveItem value)? removeItem,
     TResult Function(_UpdateItem value)? updateItem,
     TResult Function(_UpdateAdvanceAmount value)? updateAdvanceAmount,
     TResult Function(_CreateRental value)? createRental,
+    TResult Function(_UpdateRental value)? updateRental,
     TResult Function(_CalculateRental value)? calculateRental,
+    TResult Function(_SetRental value)? setRental,
+    TResult Function(_InitializeCustomers value)? initializeCustomers,
+    TResult Function(_InitializeItems value)? initializeItems,
+    TResult Function(_MarkRentalAsPaid value)? markRentalAsPaid,
+    TResult Function(_UpdateRentedAt value)? updateRentedAt,
+    TResult Function(_RecordPartialPayment value)? recordPartialPayment,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -190,12 +238,20 @@ class _$SelectCustomerImpl implements _SelectCustomer {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(CustomerEntity customer) selectCustomer,
+    required TResult Function() removeCustomer,
     required TResult Function(InventoryItemEntity item) addItem,
     required TResult Function(int index) removeItem,
     required TResult Function(int index, InventoryItemEntity item) updateItem,
     required TResult Function(double amount) updateAdvanceAmount,
     required TResult Function() createRental,
+    required TResult Function(RentalEntity rental) updateRental,
     required TResult Function() calculateRental,
+    required TResult Function(String id) setRental,
+    required TResult Function() initializeCustomers,
+    required TResult Function() initializeItems,
+    required TResult Function() markRentalAsPaid,
+    required TResult Function(DateTime date) updateRentedAt,
+    required TResult Function(double amount) recordPartialPayment,
   }) {
     return selectCustomer(customer);
   }
@@ -204,12 +260,20 @@ class _$SelectCustomerImpl implements _SelectCustomer {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(CustomerEntity customer)? selectCustomer,
+    TResult? Function()? removeCustomer,
     TResult? Function(InventoryItemEntity item)? addItem,
     TResult? Function(int index)? removeItem,
     TResult? Function(int index, InventoryItemEntity item)? updateItem,
     TResult? Function(double amount)? updateAdvanceAmount,
     TResult? Function()? createRental,
+    TResult? Function(RentalEntity rental)? updateRental,
     TResult? Function()? calculateRental,
+    TResult? Function(String id)? setRental,
+    TResult? Function()? initializeCustomers,
+    TResult? Function()? initializeItems,
+    TResult? Function()? markRentalAsPaid,
+    TResult? Function(DateTime date)? updateRentedAt,
+    TResult? Function(double amount)? recordPartialPayment,
   }) {
     return selectCustomer?.call(customer);
   }
@@ -218,12 +282,20 @@ class _$SelectCustomerImpl implements _SelectCustomer {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(CustomerEntity customer)? selectCustomer,
+    TResult Function()? removeCustomer,
     TResult Function(InventoryItemEntity item)? addItem,
     TResult Function(int index)? removeItem,
     TResult Function(int index, InventoryItemEntity item)? updateItem,
     TResult Function(double amount)? updateAdvanceAmount,
     TResult Function()? createRental,
+    TResult Function(RentalEntity rental)? updateRental,
     TResult Function()? calculateRental,
+    TResult Function(String id)? setRental,
+    TResult Function()? initializeCustomers,
+    TResult Function()? initializeItems,
+    TResult Function()? markRentalAsPaid,
+    TResult Function(DateTime date)? updateRentedAt,
+    TResult Function(double amount)? recordPartialPayment,
     required TResult orElse(),
   }) {
     if (selectCustomer != null) {
@@ -236,12 +308,20 @@ class _$SelectCustomerImpl implements _SelectCustomer {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_SelectCustomer value) selectCustomer,
+    required TResult Function(_RemoveCustomer value) removeCustomer,
     required TResult Function(_AddItem value) addItem,
     required TResult Function(_RemoveItem value) removeItem,
     required TResult Function(_UpdateItem value) updateItem,
     required TResult Function(_UpdateAdvanceAmount value) updateAdvanceAmount,
     required TResult Function(_CreateRental value) createRental,
+    required TResult Function(_UpdateRental value) updateRental,
     required TResult Function(_CalculateRental value) calculateRental,
+    required TResult Function(_SetRental value) setRental,
+    required TResult Function(_InitializeCustomers value) initializeCustomers,
+    required TResult Function(_InitializeItems value) initializeItems,
+    required TResult Function(_MarkRentalAsPaid value) markRentalAsPaid,
+    required TResult Function(_UpdateRentedAt value) updateRentedAt,
+    required TResult Function(_RecordPartialPayment value) recordPartialPayment,
   }) {
     return selectCustomer(this);
   }
@@ -250,12 +330,20 @@ class _$SelectCustomerImpl implements _SelectCustomer {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_SelectCustomer value)? selectCustomer,
+    TResult? Function(_RemoveCustomer value)? removeCustomer,
     TResult? Function(_AddItem value)? addItem,
     TResult? Function(_RemoveItem value)? removeItem,
     TResult? Function(_UpdateItem value)? updateItem,
     TResult? Function(_UpdateAdvanceAmount value)? updateAdvanceAmount,
     TResult? Function(_CreateRental value)? createRental,
+    TResult? Function(_UpdateRental value)? updateRental,
     TResult? Function(_CalculateRental value)? calculateRental,
+    TResult? Function(_SetRental value)? setRental,
+    TResult? Function(_InitializeCustomers value)? initializeCustomers,
+    TResult? Function(_InitializeItems value)? initializeItems,
+    TResult? Function(_MarkRentalAsPaid value)? markRentalAsPaid,
+    TResult? Function(_UpdateRentedAt value)? updateRentedAt,
+    TResult? Function(_RecordPartialPayment value)? recordPartialPayment,
   }) {
     return selectCustomer?.call(this);
   }
@@ -264,12 +352,20 @@ class _$SelectCustomerImpl implements _SelectCustomer {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_SelectCustomer value)? selectCustomer,
+    TResult Function(_RemoveCustomer value)? removeCustomer,
     TResult Function(_AddItem value)? addItem,
     TResult Function(_RemoveItem value)? removeItem,
     TResult Function(_UpdateItem value)? updateItem,
     TResult Function(_UpdateAdvanceAmount value)? updateAdvanceAmount,
     TResult Function(_CreateRental value)? createRental,
+    TResult Function(_UpdateRental value)? updateRental,
     TResult Function(_CalculateRental value)? calculateRental,
+    TResult Function(_SetRental value)? setRental,
+    TResult Function(_InitializeCustomers value)? initializeCustomers,
+    TResult Function(_InitializeItems value)? initializeItems,
+    TResult Function(_MarkRentalAsPaid value)? markRentalAsPaid,
+    TResult Function(_UpdateRentedAt value)? updateRentedAt,
+    TResult Function(_RecordPartialPayment value)? recordPartialPayment,
     required TResult orElse(),
   }) {
     if (selectCustomer != null) {
@@ -290,6 +386,189 @@ abstract class _SelectCustomer implements AddRentalEvent {
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SelectCustomerImplCopyWith<_$SelectCustomerImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$RemoveCustomerImplCopyWith<$Res> {
+  factory _$$RemoveCustomerImplCopyWith(_$RemoveCustomerImpl value,
+          $Res Function(_$RemoveCustomerImpl) then) =
+      __$$RemoveCustomerImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$RemoveCustomerImplCopyWithImpl<$Res>
+    extends _$AddRentalEventCopyWithImpl<$Res, _$RemoveCustomerImpl>
+    implements _$$RemoveCustomerImplCopyWith<$Res> {
+  __$$RemoveCustomerImplCopyWithImpl(
+      _$RemoveCustomerImpl _value, $Res Function(_$RemoveCustomerImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AddRentalEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$RemoveCustomerImpl implements _RemoveCustomer {
+  const _$RemoveCustomerImpl();
+
+  @override
+  String toString() {
+    return 'AddRentalEvent.removeCustomer()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$RemoveCustomerImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(CustomerEntity customer) selectCustomer,
+    required TResult Function() removeCustomer,
+    required TResult Function(InventoryItemEntity item) addItem,
+    required TResult Function(int index) removeItem,
+    required TResult Function(int index, InventoryItemEntity item) updateItem,
+    required TResult Function(double amount) updateAdvanceAmount,
+    required TResult Function() createRental,
+    required TResult Function(RentalEntity rental) updateRental,
+    required TResult Function() calculateRental,
+    required TResult Function(String id) setRental,
+    required TResult Function() initializeCustomers,
+    required TResult Function() initializeItems,
+    required TResult Function() markRentalAsPaid,
+    required TResult Function(DateTime date) updateRentedAt,
+    required TResult Function(double amount) recordPartialPayment,
+  }) {
+    return removeCustomer();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(CustomerEntity customer)? selectCustomer,
+    TResult? Function()? removeCustomer,
+    TResult? Function(InventoryItemEntity item)? addItem,
+    TResult? Function(int index)? removeItem,
+    TResult? Function(int index, InventoryItemEntity item)? updateItem,
+    TResult? Function(double amount)? updateAdvanceAmount,
+    TResult? Function()? createRental,
+    TResult? Function(RentalEntity rental)? updateRental,
+    TResult? Function()? calculateRental,
+    TResult? Function(String id)? setRental,
+    TResult? Function()? initializeCustomers,
+    TResult? Function()? initializeItems,
+    TResult? Function()? markRentalAsPaid,
+    TResult? Function(DateTime date)? updateRentedAt,
+    TResult? Function(double amount)? recordPartialPayment,
+  }) {
+    return removeCustomer?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(CustomerEntity customer)? selectCustomer,
+    TResult Function()? removeCustomer,
+    TResult Function(InventoryItemEntity item)? addItem,
+    TResult Function(int index)? removeItem,
+    TResult Function(int index, InventoryItemEntity item)? updateItem,
+    TResult Function(double amount)? updateAdvanceAmount,
+    TResult Function()? createRental,
+    TResult Function(RentalEntity rental)? updateRental,
+    TResult Function()? calculateRental,
+    TResult Function(String id)? setRental,
+    TResult Function()? initializeCustomers,
+    TResult Function()? initializeItems,
+    TResult Function()? markRentalAsPaid,
+    TResult Function(DateTime date)? updateRentedAt,
+    TResult Function(double amount)? recordPartialPayment,
+    required TResult orElse(),
+  }) {
+    if (removeCustomer != null) {
+      return removeCustomer();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SelectCustomer value) selectCustomer,
+    required TResult Function(_RemoveCustomer value) removeCustomer,
+    required TResult Function(_AddItem value) addItem,
+    required TResult Function(_RemoveItem value) removeItem,
+    required TResult Function(_UpdateItem value) updateItem,
+    required TResult Function(_UpdateAdvanceAmount value) updateAdvanceAmount,
+    required TResult Function(_CreateRental value) createRental,
+    required TResult Function(_UpdateRental value) updateRental,
+    required TResult Function(_CalculateRental value) calculateRental,
+    required TResult Function(_SetRental value) setRental,
+    required TResult Function(_InitializeCustomers value) initializeCustomers,
+    required TResult Function(_InitializeItems value) initializeItems,
+    required TResult Function(_MarkRentalAsPaid value) markRentalAsPaid,
+    required TResult Function(_UpdateRentedAt value) updateRentedAt,
+    required TResult Function(_RecordPartialPayment value) recordPartialPayment,
+  }) {
+    return removeCustomer(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SelectCustomer value)? selectCustomer,
+    TResult? Function(_RemoveCustomer value)? removeCustomer,
+    TResult? Function(_AddItem value)? addItem,
+    TResult? Function(_RemoveItem value)? removeItem,
+    TResult? Function(_UpdateItem value)? updateItem,
+    TResult? Function(_UpdateAdvanceAmount value)? updateAdvanceAmount,
+    TResult? Function(_CreateRental value)? createRental,
+    TResult? Function(_UpdateRental value)? updateRental,
+    TResult? Function(_CalculateRental value)? calculateRental,
+    TResult? Function(_SetRental value)? setRental,
+    TResult? Function(_InitializeCustomers value)? initializeCustomers,
+    TResult? Function(_InitializeItems value)? initializeItems,
+    TResult? Function(_MarkRentalAsPaid value)? markRentalAsPaid,
+    TResult? Function(_UpdateRentedAt value)? updateRentedAt,
+    TResult? Function(_RecordPartialPayment value)? recordPartialPayment,
+  }) {
+    return removeCustomer?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SelectCustomer value)? selectCustomer,
+    TResult Function(_RemoveCustomer value)? removeCustomer,
+    TResult Function(_AddItem value)? addItem,
+    TResult Function(_RemoveItem value)? removeItem,
+    TResult Function(_UpdateItem value)? updateItem,
+    TResult Function(_UpdateAdvanceAmount value)? updateAdvanceAmount,
+    TResult Function(_CreateRental value)? createRental,
+    TResult Function(_UpdateRental value)? updateRental,
+    TResult Function(_CalculateRental value)? calculateRental,
+    TResult Function(_SetRental value)? setRental,
+    TResult Function(_InitializeCustomers value)? initializeCustomers,
+    TResult Function(_InitializeItems value)? initializeItems,
+    TResult Function(_MarkRentalAsPaid value)? markRentalAsPaid,
+    TResult Function(_UpdateRentedAt value)? updateRentedAt,
+    TResult Function(_RecordPartialPayment value)? recordPartialPayment,
+    required TResult orElse(),
+  }) {
+    if (removeCustomer != null) {
+      return removeCustomer(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _RemoveCustomer implements AddRentalEvent {
+  const factory _RemoveCustomer() = _$RemoveCustomerImpl;
 }
 
 /// @nodoc
@@ -373,12 +652,20 @@ class _$AddItemImpl implements _AddItem {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(CustomerEntity customer) selectCustomer,
+    required TResult Function() removeCustomer,
     required TResult Function(InventoryItemEntity item) addItem,
     required TResult Function(int index) removeItem,
     required TResult Function(int index, InventoryItemEntity item) updateItem,
     required TResult Function(double amount) updateAdvanceAmount,
     required TResult Function() createRental,
+    required TResult Function(RentalEntity rental) updateRental,
     required TResult Function() calculateRental,
+    required TResult Function(String id) setRental,
+    required TResult Function() initializeCustomers,
+    required TResult Function() initializeItems,
+    required TResult Function() markRentalAsPaid,
+    required TResult Function(DateTime date) updateRentedAt,
+    required TResult Function(double amount) recordPartialPayment,
   }) {
     return addItem(item);
   }
@@ -387,12 +674,20 @@ class _$AddItemImpl implements _AddItem {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(CustomerEntity customer)? selectCustomer,
+    TResult? Function()? removeCustomer,
     TResult? Function(InventoryItemEntity item)? addItem,
     TResult? Function(int index)? removeItem,
     TResult? Function(int index, InventoryItemEntity item)? updateItem,
     TResult? Function(double amount)? updateAdvanceAmount,
     TResult? Function()? createRental,
+    TResult? Function(RentalEntity rental)? updateRental,
     TResult? Function()? calculateRental,
+    TResult? Function(String id)? setRental,
+    TResult? Function()? initializeCustomers,
+    TResult? Function()? initializeItems,
+    TResult? Function()? markRentalAsPaid,
+    TResult? Function(DateTime date)? updateRentedAt,
+    TResult? Function(double amount)? recordPartialPayment,
   }) {
     return addItem?.call(item);
   }
@@ -401,12 +696,20 @@ class _$AddItemImpl implements _AddItem {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(CustomerEntity customer)? selectCustomer,
+    TResult Function()? removeCustomer,
     TResult Function(InventoryItemEntity item)? addItem,
     TResult Function(int index)? removeItem,
     TResult Function(int index, InventoryItemEntity item)? updateItem,
     TResult Function(double amount)? updateAdvanceAmount,
     TResult Function()? createRental,
+    TResult Function(RentalEntity rental)? updateRental,
     TResult Function()? calculateRental,
+    TResult Function(String id)? setRental,
+    TResult Function()? initializeCustomers,
+    TResult Function()? initializeItems,
+    TResult Function()? markRentalAsPaid,
+    TResult Function(DateTime date)? updateRentedAt,
+    TResult Function(double amount)? recordPartialPayment,
     required TResult orElse(),
   }) {
     if (addItem != null) {
@@ -419,12 +722,20 @@ class _$AddItemImpl implements _AddItem {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_SelectCustomer value) selectCustomer,
+    required TResult Function(_RemoveCustomer value) removeCustomer,
     required TResult Function(_AddItem value) addItem,
     required TResult Function(_RemoveItem value) removeItem,
     required TResult Function(_UpdateItem value) updateItem,
     required TResult Function(_UpdateAdvanceAmount value) updateAdvanceAmount,
     required TResult Function(_CreateRental value) createRental,
+    required TResult Function(_UpdateRental value) updateRental,
     required TResult Function(_CalculateRental value) calculateRental,
+    required TResult Function(_SetRental value) setRental,
+    required TResult Function(_InitializeCustomers value) initializeCustomers,
+    required TResult Function(_InitializeItems value) initializeItems,
+    required TResult Function(_MarkRentalAsPaid value) markRentalAsPaid,
+    required TResult Function(_UpdateRentedAt value) updateRentedAt,
+    required TResult Function(_RecordPartialPayment value) recordPartialPayment,
   }) {
     return addItem(this);
   }
@@ -433,12 +744,20 @@ class _$AddItemImpl implements _AddItem {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_SelectCustomer value)? selectCustomer,
+    TResult? Function(_RemoveCustomer value)? removeCustomer,
     TResult? Function(_AddItem value)? addItem,
     TResult? Function(_RemoveItem value)? removeItem,
     TResult? Function(_UpdateItem value)? updateItem,
     TResult? Function(_UpdateAdvanceAmount value)? updateAdvanceAmount,
     TResult? Function(_CreateRental value)? createRental,
+    TResult? Function(_UpdateRental value)? updateRental,
     TResult? Function(_CalculateRental value)? calculateRental,
+    TResult? Function(_SetRental value)? setRental,
+    TResult? Function(_InitializeCustomers value)? initializeCustomers,
+    TResult? Function(_InitializeItems value)? initializeItems,
+    TResult? Function(_MarkRentalAsPaid value)? markRentalAsPaid,
+    TResult? Function(_UpdateRentedAt value)? updateRentedAt,
+    TResult? Function(_RecordPartialPayment value)? recordPartialPayment,
   }) {
     return addItem?.call(this);
   }
@@ -447,12 +766,20 @@ class _$AddItemImpl implements _AddItem {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_SelectCustomer value)? selectCustomer,
+    TResult Function(_RemoveCustomer value)? removeCustomer,
     TResult Function(_AddItem value)? addItem,
     TResult Function(_RemoveItem value)? removeItem,
     TResult Function(_UpdateItem value)? updateItem,
     TResult Function(_UpdateAdvanceAmount value)? updateAdvanceAmount,
     TResult Function(_CreateRental value)? createRental,
+    TResult Function(_UpdateRental value)? updateRental,
     TResult Function(_CalculateRental value)? calculateRental,
+    TResult Function(_SetRental value)? setRental,
+    TResult Function(_InitializeCustomers value)? initializeCustomers,
+    TResult Function(_InitializeItems value)? initializeItems,
+    TResult Function(_MarkRentalAsPaid value)? markRentalAsPaid,
+    TResult Function(_UpdateRentedAt value)? updateRentedAt,
+    TResult Function(_RecordPartialPayment value)? recordPartialPayment,
     required TResult orElse(),
   }) {
     if (addItem != null) {
@@ -543,12 +870,20 @@ class _$RemoveItemImpl implements _RemoveItem {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(CustomerEntity customer) selectCustomer,
+    required TResult Function() removeCustomer,
     required TResult Function(InventoryItemEntity item) addItem,
     required TResult Function(int index) removeItem,
     required TResult Function(int index, InventoryItemEntity item) updateItem,
     required TResult Function(double amount) updateAdvanceAmount,
     required TResult Function() createRental,
+    required TResult Function(RentalEntity rental) updateRental,
     required TResult Function() calculateRental,
+    required TResult Function(String id) setRental,
+    required TResult Function() initializeCustomers,
+    required TResult Function() initializeItems,
+    required TResult Function() markRentalAsPaid,
+    required TResult Function(DateTime date) updateRentedAt,
+    required TResult Function(double amount) recordPartialPayment,
   }) {
     return removeItem(index);
   }
@@ -557,12 +892,20 @@ class _$RemoveItemImpl implements _RemoveItem {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(CustomerEntity customer)? selectCustomer,
+    TResult? Function()? removeCustomer,
     TResult? Function(InventoryItemEntity item)? addItem,
     TResult? Function(int index)? removeItem,
     TResult? Function(int index, InventoryItemEntity item)? updateItem,
     TResult? Function(double amount)? updateAdvanceAmount,
     TResult? Function()? createRental,
+    TResult? Function(RentalEntity rental)? updateRental,
     TResult? Function()? calculateRental,
+    TResult? Function(String id)? setRental,
+    TResult? Function()? initializeCustomers,
+    TResult? Function()? initializeItems,
+    TResult? Function()? markRentalAsPaid,
+    TResult? Function(DateTime date)? updateRentedAt,
+    TResult? Function(double amount)? recordPartialPayment,
   }) {
     return removeItem?.call(index);
   }
@@ -571,12 +914,20 @@ class _$RemoveItemImpl implements _RemoveItem {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(CustomerEntity customer)? selectCustomer,
+    TResult Function()? removeCustomer,
     TResult Function(InventoryItemEntity item)? addItem,
     TResult Function(int index)? removeItem,
     TResult Function(int index, InventoryItemEntity item)? updateItem,
     TResult Function(double amount)? updateAdvanceAmount,
     TResult Function()? createRental,
+    TResult Function(RentalEntity rental)? updateRental,
     TResult Function()? calculateRental,
+    TResult Function(String id)? setRental,
+    TResult Function()? initializeCustomers,
+    TResult Function()? initializeItems,
+    TResult Function()? markRentalAsPaid,
+    TResult Function(DateTime date)? updateRentedAt,
+    TResult Function(double amount)? recordPartialPayment,
     required TResult orElse(),
   }) {
     if (removeItem != null) {
@@ -589,12 +940,20 @@ class _$RemoveItemImpl implements _RemoveItem {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_SelectCustomer value) selectCustomer,
+    required TResult Function(_RemoveCustomer value) removeCustomer,
     required TResult Function(_AddItem value) addItem,
     required TResult Function(_RemoveItem value) removeItem,
     required TResult Function(_UpdateItem value) updateItem,
     required TResult Function(_UpdateAdvanceAmount value) updateAdvanceAmount,
     required TResult Function(_CreateRental value) createRental,
+    required TResult Function(_UpdateRental value) updateRental,
     required TResult Function(_CalculateRental value) calculateRental,
+    required TResult Function(_SetRental value) setRental,
+    required TResult Function(_InitializeCustomers value) initializeCustomers,
+    required TResult Function(_InitializeItems value) initializeItems,
+    required TResult Function(_MarkRentalAsPaid value) markRentalAsPaid,
+    required TResult Function(_UpdateRentedAt value) updateRentedAt,
+    required TResult Function(_RecordPartialPayment value) recordPartialPayment,
   }) {
     return removeItem(this);
   }
@@ -603,12 +962,20 @@ class _$RemoveItemImpl implements _RemoveItem {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_SelectCustomer value)? selectCustomer,
+    TResult? Function(_RemoveCustomer value)? removeCustomer,
     TResult? Function(_AddItem value)? addItem,
     TResult? Function(_RemoveItem value)? removeItem,
     TResult? Function(_UpdateItem value)? updateItem,
     TResult? Function(_UpdateAdvanceAmount value)? updateAdvanceAmount,
     TResult? Function(_CreateRental value)? createRental,
+    TResult? Function(_UpdateRental value)? updateRental,
     TResult? Function(_CalculateRental value)? calculateRental,
+    TResult? Function(_SetRental value)? setRental,
+    TResult? Function(_InitializeCustomers value)? initializeCustomers,
+    TResult? Function(_InitializeItems value)? initializeItems,
+    TResult? Function(_MarkRentalAsPaid value)? markRentalAsPaid,
+    TResult? Function(_UpdateRentedAt value)? updateRentedAt,
+    TResult? Function(_RecordPartialPayment value)? recordPartialPayment,
   }) {
     return removeItem?.call(this);
   }
@@ -617,12 +984,20 @@ class _$RemoveItemImpl implements _RemoveItem {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_SelectCustomer value)? selectCustomer,
+    TResult Function(_RemoveCustomer value)? removeCustomer,
     TResult Function(_AddItem value)? addItem,
     TResult Function(_RemoveItem value)? removeItem,
     TResult Function(_UpdateItem value)? updateItem,
     TResult Function(_UpdateAdvanceAmount value)? updateAdvanceAmount,
     TResult Function(_CreateRental value)? createRental,
+    TResult Function(_UpdateRental value)? updateRental,
     TResult Function(_CalculateRental value)? calculateRental,
+    TResult Function(_SetRental value)? setRental,
+    TResult Function(_InitializeCustomers value)? initializeCustomers,
+    TResult Function(_InitializeItems value)? initializeItems,
+    TResult Function(_MarkRentalAsPaid value)? markRentalAsPaid,
+    TResult Function(_UpdateRentedAt value)? updateRentedAt,
+    TResult Function(_RecordPartialPayment value)? recordPartialPayment,
     required TResult orElse(),
   }) {
     if (removeItem != null) {
@@ -733,12 +1108,20 @@ class _$UpdateItemImpl implements _UpdateItem {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(CustomerEntity customer) selectCustomer,
+    required TResult Function() removeCustomer,
     required TResult Function(InventoryItemEntity item) addItem,
     required TResult Function(int index) removeItem,
     required TResult Function(int index, InventoryItemEntity item) updateItem,
     required TResult Function(double amount) updateAdvanceAmount,
     required TResult Function() createRental,
+    required TResult Function(RentalEntity rental) updateRental,
     required TResult Function() calculateRental,
+    required TResult Function(String id) setRental,
+    required TResult Function() initializeCustomers,
+    required TResult Function() initializeItems,
+    required TResult Function() markRentalAsPaid,
+    required TResult Function(DateTime date) updateRentedAt,
+    required TResult Function(double amount) recordPartialPayment,
   }) {
     return updateItem(index, item);
   }
@@ -747,12 +1130,20 @@ class _$UpdateItemImpl implements _UpdateItem {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(CustomerEntity customer)? selectCustomer,
+    TResult? Function()? removeCustomer,
     TResult? Function(InventoryItemEntity item)? addItem,
     TResult? Function(int index)? removeItem,
     TResult? Function(int index, InventoryItemEntity item)? updateItem,
     TResult? Function(double amount)? updateAdvanceAmount,
     TResult? Function()? createRental,
+    TResult? Function(RentalEntity rental)? updateRental,
     TResult? Function()? calculateRental,
+    TResult? Function(String id)? setRental,
+    TResult? Function()? initializeCustomers,
+    TResult? Function()? initializeItems,
+    TResult? Function()? markRentalAsPaid,
+    TResult? Function(DateTime date)? updateRentedAt,
+    TResult? Function(double amount)? recordPartialPayment,
   }) {
     return updateItem?.call(index, item);
   }
@@ -761,12 +1152,20 @@ class _$UpdateItemImpl implements _UpdateItem {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(CustomerEntity customer)? selectCustomer,
+    TResult Function()? removeCustomer,
     TResult Function(InventoryItemEntity item)? addItem,
     TResult Function(int index)? removeItem,
     TResult Function(int index, InventoryItemEntity item)? updateItem,
     TResult Function(double amount)? updateAdvanceAmount,
     TResult Function()? createRental,
+    TResult Function(RentalEntity rental)? updateRental,
     TResult Function()? calculateRental,
+    TResult Function(String id)? setRental,
+    TResult Function()? initializeCustomers,
+    TResult Function()? initializeItems,
+    TResult Function()? markRentalAsPaid,
+    TResult Function(DateTime date)? updateRentedAt,
+    TResult Function(double amount)? recordPartialPayment,
     required TResult orElse(),
   }) {
     if (updateItem != null) {
@@ -779,12 +1178,20 @@ class _$UpdateItemImpl implements _UpdateItem {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_SelectCustomer value) selectCustomer,
+    required TResult Function(_RemoveCustomer value) removeCustomer,
     required TResult Function(_AddItem value) addItem,
     required TResult Function(_RemoveItem value) removeItem,
     required TResult Function(_UpdateItem value) updateItem,
     required TResult Function(_UpdateAdvanceAmount value) updateAdvanceAmount,
     required TResult Function(_CreateRental value) createRental,
+    required TResult Function(_UpdateRental value) updateRental,
     required TResult Function(_CalculateRental value) calculateRental,
+    required TResult Function(_SetRental value) setRental,
+    required TResult Function(_InitializeCustomers value) initializeCustomers,
+    required TResult Function(_InitializeItems value) initializeItems,
+    required TResult Function(_MarkRentalAsPaid value) markRentalAsPaid,
+    required TResult Function(_UpdateRentedAt value) updateRentedAt,
+    required TResult Function(_RecordPartialPayment value) recordPartialPayment,
   }) {
     return updateItem(this);
   }
@@ -793,12 +1200,20 @@ class _$UpdateItemImpl implements _UpdateItem {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_SelectCustomer value)? selectCustomer,
+    TResult? Function(_RemoveCustomer value)? removeCustomer,
     TResult? Function(_AddItem value)? addItem,
     TResult? Function(_RemoveItem value)? removeItem,
     TResult? Function(_UpdateItem value)? updateItem,
     TResult? Function(_UpdateAdvanceAmount value)? updateAdvanceAmount,
     TResult? Function(_CreateRental value)? createRental,
+    TResult? Function(_UpdateRental value)? updateRental,
     TResult? Function(_CalculateRental value)? calculateRental,
+    TResult? Function(_SetRental value)? setRental,
+    TResult? Function(_InitializeCustomers value)? initializeCustomers,
+    TResult? Function(_InitializeItems value)? initializeItems,
+    TResult? Function(_MarkRentalAsPaid value)? markRentalAsPaid,
+    TResult? Function(_UpdateRentedAt value)? updateRentedAt,
+    TResult? Function(_RecordPartialPayment value)? recordPartialPayment,
   }) {
     return updateItem?.call(this);
   }
@@ -807,12 +1222,20 @@ class _$UpdateItemImpl implements _UpdateItem {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_SelectCustomer value)? selectCustomer,
+    TResult Function(_RemoveCustomer value)? removeCustomer,
     TResult Function(_AddItem value)? addItem,
     TResult Function(_RemoveItem value)? removeItem,
     TResult Function(_UpdateItem value)? updateItem,
     TResult Function(_UpdateAdvanceAmount value)? updateAdvanceAmount,
     TResult Function(_CreateRental value)? createRental,
+    TResult Function(_UpdateRental value)? updateRental,
     TResult Function(_CalculateRental value)? calculateRental,
+    TResult Function(_SetRental value)? setRental,
+    TResult Function(_InitializeCustomers value)? initializeCustomers,
+    TResult Function(_InitializeItems value)? initializeItems,
+    TResult Function(_MarkRentalAsPaid value)? markRentalAsPaid,
+    TResult Function(_UpdateRentedAt value)? updateRentedAt,
+    TResult Function(_RecordPartialPayment value)? recordPartialPayment,
     required TResult orElse(),
   }) {
     if (updateItem != null) {
@@ -906,12 +1329,20 @@ class _$UpdateAdvanceAmountImpl implements _UpdateAdvanceAmount {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(CustomerEntity customer) selectCustomer,
+    required TResult Function() removeCustomer,
     required TResult Function(InventoryItemEntity item) addItem,
     required TResult Function(int index) removeItem,
     required TResult Function(int index, InventoryItemEntity item) updateItem,
     required TResult Function(double amount) updateAdvanceAmount,
     required TResult Function() createRental,
+    required TResult Function(RentalEntity rental) updateRental,
     required TResult Function() calculateRental,
+    required TResult Function(String id) setRental,
+    required TResult Function() initializeCustomers,
+    required TResult Function() initializeItems,
+    required TResult Function() markRentalAsPaid,
+    required TResult Function(DateTime date) updateRentedAt,
+    required TResult Function(double amount) recordPartialPayment,
   }) {
     return updateAdvanceAmount(amount);
   }
@@ -920,12 +1351,20 @@ class _$UpdateAdvanceAmountImpl implements _UpdateAdvanceAmount {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(CustomerEntity customer)? selectCustomer,
+    TResult? Function()? removeCustomer,
     TResult? Function(InventoryItemEntity item)? addItem,
     TResult? Function(int index)? removeItem,
     TResult? Function(int index, InventoryItemEntity item)? updateItem,
     TResult? Function(double amount)? updateAdvanceAmount,
     TResult? Function()? createRental,
+    TResult? Function(RentalEntity rental)? updateRental,
     TResult? Function()? calculateRental,
+    TResult? Function(String id)? setRental,
+    TResult? Function()? initializeCustomers,
+    TResult? Function()? initializeItems,
+    TResult? Function()? markRentalAsPaid,
+    TResult? Function(DateTime date)? updateRentedAt,
+    TResult? Function(double amount)? recordPartialPayment,
   }) {
     return updateAdvanceAmount?.call(amount);
   }
@@ -934,12 +1373,20 @@ class _$UpdateAdvanceAmountImpl implements _UpdateAdvanceAmount {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(CustomerEntity customer)? selectCustomer,
+    TResult Function()? removeCustomer,
     TResult Function(InventoryItemEntity item)? addItem,
     TResult Function(int index)? removeItem,
     TResult Function(int index, InventoryItemEntity item)? updateItem,
     TResult Function(double amount)? updateAdvanceAmount,
     TResult Function()? createRental,
+    TResult Function(RentalEntity rental)? updateRental,
     TResult Function()? calculateRental,
+    TResult Function(String id)? setRental,
+    TResult Function()? initializeCustomers,
+    TResult Function()? initializeItems,
+    TResult Function()? markRentalAsPaid,
+    TResult Function(DateTime date)? updateRentedAt,
+    TResult Function(double amount)? recordPartialPayment,
     required TResult orElse(),
   }) {
     if (updateAdvanceAmount != null) {
@@ -952,12 +1399,20 @@ class _$UpdateAdvanceAmountImpl implements _UpdateAdvanceAmount {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_SelectCustomer value) selectCustomer,
+    required TResult Function(_RemoveCustomer value) removeCustomer,
     required TResult Function(_AddItem value) addItem,
     required TResult Function(_RemoveItem value) removeItem,
     required TResult Function(_UpdateItem value) updateItem,
     required TResult Function(_UpdateAdvanceAmount value) updateAdvanceAmount,
     required TResult Function(_CreateRental value) createRental,
+    required TResult Function(_UpdateRental value) updateRental,
     required TResult Function(_CalculateRental value) calculateRental,
+    required TResult Function(_SetRental value) setRental,
+    required TResult Function(_InitializeCustomers value) initializeCustomers,
+    required TResult Function(_InitializeItems value) initializeItems,
+    required TResult Function(_MarkRentalAsPaid value) markRentalAsPaid,
+    required TResult Function(_UpdateRentedAt value) updateRentedAt,
+    required TResult Function(_RecordPartialPayment value) recordPartialPayment,
   }) {
     return updateAdvanceAmount(this);
   }
@@ -966,12 +1421,20 @@ class _$UpdateAdvanceAmountImpl implements _UpdateAdvanceAmount {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_SelectCustomer value)? selectCustomer,
+    TResult? Function(_RemoveCustomer value)? removeCustomer,
     TResult? Function(_AddItem value)? addItem,
     TResult? Function(_RemoveItem value)? removeItem,
     TResult? Function(_UpdateItem value)? updateItem,
     TResult? Function(_UpdateAdvanceAmount value)? updateAdvanceAmount,
     TResult? Function(_CreateRental value)? createRental,
+    TResult? Function(_UpdateRental value)? updateRental,
     TResult? Function(_CalculateRental value)? calculateRental,
+    TResult? Function(_SetRental value)? setRental,
+    TResult? Function(_InitializeCustomers value)? initializeCustomers,
+    TResult? Function(_InitializeItems value)? initializeItems,
+    TResult? Function(_MarkRentalAsPaid value)? markRentalAsPaid,
+    TResult? Function(_UpdateRentedAt value)? updateRentedAt,
+    TResult? Function(_RecordPartialPayment value)? recordPartialPayment,
   }) {
     return updateAdvanceAmount?.call(this);
   }
@@ -980,12 +1443,20 @@ class _$UpdateAdvanceAmountImpl implements _UpdateAdvanceAmount {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_SelectCustomer value)? selectCustomer,
+    TResult Function(_RemoveCustomer value)? removeCustomer,
     TResult Function(_AddItem value)? addItem,
     TResult Function(_RemoveItem value)? removeItem,
     TResult Function(_UpdateItem value)? updateItem,
     TResult Function(_UpdateAdvanceAmount value)? updateAdvanceAmount,
     TResult Function(_CreateRental value)? createRental,
+    TResult Function(_UpdateRental value)? updateRental,
     TResult Function(_CalculateRental value)? calculateRental,
+    TResult Function(_SetRental value)? setRental,
+    TResult Function(_InitializeCustomers value)? initializeCustomers,
+    TResult Function(_InitializeItems value)? initializeItems,
+    TResult Function(_MarkRentalAsPaid value)? markRentalAsPaid,
+    TResult Function(_UpdateRentedAt value)? updateRentedAt,
+    TResult Function(_RecordPartialPayment value)? recordPartialPayment,
     required TResult orElse(),
   }) {
     if (updateAdvanceAmount != null) {
@@ -1050,12 +1521,20 @@ class _$CreateRentalImpl implements _CreateRental {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(CustomerEntity customer) selectCustomer,
+    required TResult Function() removeCustomer,
     required TResult Function(InventoryItemEntity item) addItem,
     required TResult Function(int index) removeItem,
     required TResult Function(int index, InventoryItemEntity item) updateItem,
     required TResult Function(double amount) updateAdvanceAmount,
     required TResult Function() createRental,
+    required TResult Function(RentalEntity rental) updateRental,
     required TResult Function() calculateRental,
+    required TResult Function(String id) setRental,
+    required TResult Function() initializeCustomers,
+    required TResult Function() initializeItems,
+    required TResult Function() markRentalAsPaid,
+    required TResult Function(DateTime date) updateRentedAt,
+    required TResult Function(double amount) recordPartialPayment,
   }) {
     return createRental();
   }
@@ -1064,12 +1543,20 @@ class _$CreateRentalImpl implements _CreateRental {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(CustomerEntity customer)? selectCustomer,
+    TResult? Function()? removeCustomer,
     TResult? Function(InventoryItemEntity item)? addItem,
     TResult? Function(int index)? removeItem,
     TResult? Function(int index, InventoryItemEntity item)? updateItem,
     TResult? Function(double amount)? updateAdvanceAmount,
     TResult? Function()? createRental,
+    TResult? Function(RentalEntity rental)? updateRental,
     TResult? Function()? calculateRental,
+    TResult? Function(String id)? setRental,
+    TResult? Function()? initializeCustomers,
+    TResult? Function()? initializeItems,
+    TResult? Function()? markRentalAsPaid,
+    TResult? Function(DateTime date)? updateRentedAt,
+    TResult? Function(double amount)? recordPartialPayment,
   }) {
     return createRental?.call();
   }
@@ -1078,12 +1565,20 @@ class _$CreateRentalImpl implements _CreateRental {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(CustomerEntity customer)? selectCustomer,
+    TResult Function()? removeCustomer,
     TResult Function(InventoryItemEntity item)? addItem,
     TResult Function(int index)? removeItem,
     TResult Function(int index, InventoryItemEntity item)? updateItem,
     TResult Function(double amount)? updateAdvanceAmount,
     TResult Function()? createRental,
+    TResult Function(RentalEntity rental)? updateRental,
     TResult Function()? calculateRental,
+    TResult Function(String id)? setRental,
+    TResult Function()? initializeCustomers,
+    TResult Function()? initializeItems,
+    TResult Function()? markRentalAsPaid,
+    TResult Function(DateTime date)? updateRentedAt,
+    TResult Function(double amount)? recordPartialPayment,
     required TResult orElse(),
   }) {
     if (createRental != null) {
@@ -1096,12 +1591,20 @@ class _$CreateRentalImpl implements _CreateRental {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_SelectCustomer value) selectCustomer,
+    required TResult Function(_RemoveCustomer value) removeCustomer,
     required TResult Function(_AddItem value) addItem,
     required TResult Function(_RemoveItem value) removeItem,
     required TResult Function(_UpdateItem value) updateItem,
     required TResult Function(_UpdateAdvanceAmount value) updateAdvanceAmount,
     required TResult Function(_CreateRental value) createRental,
+    required TResult Function(_UpdateRental value) updateRental,
     required TResult Function(_CalculateRental value) calculateRental,
+    required TResult Function(_SetRental value) setRental,
+    required TResult Function(_InitializeCustomers value) initializeCustomers,
+    required TResult Function(_InitializeItems value) initializeItems,
+    required TResult Function(_MarkRentalAsPaid value) markRentalAsPaid,
+    required TResult Function(_UpdateRentedAt value) updateRentedAt,
+    required TResult Function(_RecordPartialPayment value) recordPartialPayment,
   }) {
     return createRental(this);
   }
@@ -1110,12 +1613,20 @@ class _$CreateRentalImpl implements _CreateRental {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_SelectCustomer value)? selectCustomer,
+    TResult? Function(_RemoveCustomer value)? removeCustomer,
     TResult? Function(_AddItem value)? addItem,
     TResult? Function(_RemoveItem value)? removeItem,
     TResult? Function(_UpdateItem value)? updateItem,
     TResult? Function(_UpdateAdvanceAmount value)? updateAdvanceAmount,
     TResult? Function(_CreateRental value)? createRental,
+    TResult? Function(_UpdateRental value)? updateRental,
     TResult? Function(_CalculateRental value)? calculateRental,
+    TResult? Function(_SetRental value)? setRental,
+    TResult? Function(_InitializeCustomers value)? initializeCustomers,
+    TResult? Function(_InitializeItems value)? initializeItems,
+    TResult? Function(_MarkRentalAsPaid value)? markRentalAsPaid,
+    TResult? Function(_UpdateRentedAt value)? updateRentedAt,
+    TResult? Function(_RecordPartialPayment value)? recordPartialPayment,
   }) {
     return createRental?.call(this);
   }
@@ -1124,12 +1635,20 @@ class _$CreateRentalImpl implements _CreateRental {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_SelectCustomer value)? selectCustomer,
+    TResult Function(_RemoveCustomer value)? removeCustomer,
     TResult Function(_AddItem value)? addItem,
     TResult Function(_RemoveItem value)? removeItem,
     TResult Function(_UpdateItem value)? updateItem,
     TResult Function(_UpdateAdvanceAmount value)? updateAdvanceAmount,
     TResult Function(_CreateRental value)? createRental,
+    TResult Function(_UpdateRental value)? updateRental,
     TResult Function(_CalculateRental value)? calculateRental,
+    TResult Function(_SetRental value)? setRental,
+    TResult Function(_InitializeCustomers value)? initializeCustomers,
+    TResult Function(_InitializeItems value)? initializeItems,
+    TResult Function(_MarkRentalAsPaid value)? markRentalAsPaid,
+    TResult Function(_UpdateRentedAt value)? updateRentedAt,
+    TResult Function(_RecordPartialPayment value)? recordPartialPayment,
     required TResult orElse(),
   }) {
     if (createRental != null) {
@@ -1141,6 +1660,236 @@ class _$CreateRentalImpl implements _CreateRental {
 
 abstract class _CreateRental implements AddRentalEvent {
   const factory _CreateRental() = _$CreateRentalImpl;
+}
+
+/// @nodoc
+abstract class _$$UpdateRentalImplCopyWith<$Res> {
+  factory _$$UpdateRentalImplCopyWith(
+          _$UpdateRentalImpl value, $Res Function(_$UpdateRentalImpl) then) =
+      __$$UpdateRentalImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({RentalEntity rental});
+
+  $RentalEntityCopyWith<$Res> get rental;
+}
+
+/// @nodoc
+class __$$UpdateRentalImplCopyWithImpl<$Res>
+    extends _$AddRentalEventCopyWithImpl<$Res, _$UpdateRentalImpl>
+    implements _$$UpdateRentalImplCopyWith<$Res> {
+  __$$UpdateRentalImplCopyWithImpl(
+      _$UpdateRentalImpl _value, $Res Function(_$UpdateRentalImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AddRentalEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? rental = null,
+  }) {
+    return _then(_$UpdateRentalImpl(
+      null == rental
+          ? _value.rental
+          : rental // ignore: cast_nullable_to_non_nullable
+              as RentalEntity,
+    ));
+  }
+
+  /// Create a copy of AddRentalEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $RentalEntityCopyWith<$Res> get rental {
+    return $RentalEntityCopyWith<$Res>(_value.rental, (value) {
+      return _then(_value.copyWith(rental: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$UpdateRentalImpl implements _UpdateRental {
+  const _$UpdateRentalImpl(this.rental);
+
+  @override
+  final RentalEntity rental;
+
+  @override
+  String toString() {
+    return 'AddRentalEvent.updateRental(rental: $rental)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpdateRentalImpl &&
+            (identical(other.rental, rental) || other.rental == rental));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, rental);
+
+  /// Create a copy of AddRentalEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdateRentalImplCopyWith<_$UpdateRentalImpl> get copyWith =>
+      __$$UpdateRentalImplCopyWithImpl<_$UpdateRentalImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(CustomerEntity customer) selectCustomer,
+    required TResult Function() removeCustomer,
+    required TResult Function(InventoryItemEntity item) addItem,
+    required TResult Function(int index) removeItem,
+    required TResult Function(int index, InventoryItemEntity item) updateItem,
+    required TResult Function(double amount) updateAdvanceAmount,
+    required TResult Function() createRental,
+    required TResult Function(RentalEntity rental) updateRental,
+    required TResult Function() calculateRental,
+    required TResult Function(String id) setRental,
+    required TResult Function() initializeCustomers,
+    required TResult Function() initializeItems,
+    required TResult Function() markRentalAsPaid,
+    required TResult Function(DateTime date) updateRentedAt,
+    required TResult Function(double amount) recordPartialPayment,
+  }) {
+    return updateRental(rental);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(CustomerEntity customer)? selectCustomer,
+    TResult? Function()? removeCustomer,
+    TResult? Function(InventoryItemEntity item)? addItem,
+    TResult? Function(int index)? removeItem,
+    TResult? Function(int index, InventoryItemEntity item)? updateItem,
+    TResult? Function(double amount)? updateAdvanceAmount,
+    TResult? Function()? createRental,
+    TResult? Function(RentalEntity rental)? updateRental,
+    TResult? Function()? calculateRental,
+    TResult? Function(String id)? setRental,
+    TResult? Function()? initializeCustomers,
+    TResult? Function()? initializeItems,
+    TResult? Function()? markRentalAsPaid,
+    TResult? Function(DateTime date)? updateRentedAt,
+    TResult? Function(double amount)? recordPartialPayment,
+  }) {
+    return updateRental?.call(rental);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(CustomerEntity customer)? selectCustomer,
+    TResult Function()? removeCustomer,
+    TResult Function(InventoryItemEntity item)? addItem,
+    TResult Function(int index)? removeItem,
+    TResult Function(int index, InventoryItemEntity item)? updateItem,
+    TResult Function(double amount)? updateAdvanceAmount,
+    TResult Function()? createRental,
+    TResult Function(RentalEntity rental)? updateRental,
+    TResult Function()? calculateRental,
+    TResult Function(String id)? setRental,
+    TResult Function()? initializeCustomers,
+    TResult Function()? initializeItems,
+    TResult Function()? markRentalAsPaid,
+    TResult Function(DateTime date)? updateRentedAt,
+    TResult Function(double amount)? recordPartialPayment,
+    required TResult orElse(),
+  }) {
+    if (updateRental != null) {
+      return updateRental(rental);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SelectCustomer value) selectCustomer,
+    required TResult Function(_RemoveCustomer value) removeCustomer,
+    required TResult Function(_AddItem value) addItem,
+    required TResult Function(_RemoveItem value) removeItem,
+    required TResult Function(_UpdateItem value) updateItem,
+    required TResult Function(_UpdateAdvanceAmount value) updateAdvanceAmount,
+    required TResult Function(_CreateRental value) createRental,
+    required TResult Function(_UpdateRental value) updateRental,
+    required TResult Function(_CalculateRental value) calculateRental,
+    required TResult Function(_SetRental value) setRental,
+    required TResult Function(_InitializeCustomers value) initializeCustomers,
+    required TResult Function(_InitializeItems value) initializeItems,
+    required TResult Function(_MarkRentalAsPaid value) markRentalAsPaid,
+    required TResult Function(_UpdateRentedAt value) updateRentedAt,
+    required TResult Function(_RecordPartialPayment value) recordPartialPayment,
+  }) {
+    return updateRental(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SelectCustomer value)? selectCustomer,
+    TResult? Function(_RemoveCustomer value)? removeCustomer,
+    TResult? Function(_AddItem value)? addItem,
+    TResult? Function(_RemoveItem value)? removeItem,
+    TResult? Function(_UpdateItem value)? updateItem,
+    TResult? Function(_UpdateAdvanceAmount value)? updateAdvanceAmount,
+    TResult? Function(_CreateRental value)? createRental,
+    TResult? Function(_UpdateRental value)? updateRental,
+    TResult? Function(_CalculateRental value)? calculateRental,
+    TResult? Function(_SetRental value)? setRental,
+    TResult? Function(_InitializeCustomers value)? initializeCustomers,
+    TResult? Function(_InitializeItems value)? initializeItems,
+    TResult? Function(_MarkRentalAsPaid value)? markRentalAsPaid,
+    TResult? Function(_UpdateRentedAt value)? updateRentedAt,
+    TResult? Function(_RecordPartialPayment value)? recordPartialPayment,
+  }) {
+    return updateRental?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SelectCustomer value)? selectCustomer,
+    TResult Function(_RemoveCustomer value)? removeCustomer,
+    TResult Function(_AddItem value)? addItem,
+    TResult Function(_RemoveItem value)? removeItem,
+    TResult Function(_UpdateItem value)? updateItem,
+    TResult Function(_UpdateAdvanceAmount value)? updateAdvanceAmount,
+    TResult Function(_CreateRental value)? createRental,
+    TResult Function(_UpdateRental value)? updateRental,
+    TResult Function(_CalculateRental value)? calculateRental,
+    TResult Function(_SetRental value)? setRental,
+    TResult Function(_InitializeCustomers value)? initializeCustomers,
+    TResult Function(_InitializeItems value)? initializeItems,
+    TResult Function(_MarkRentalAsPaid value)? markRentalAsPaid,
+    TResult Function(_UpdateRentedAt value)? updateRentedAt,
+    TResult Function(_RecordPartialPayment value)? recordPartialPayment,
+    required TResult orElse(),
+  }) {
+    if (updateRental != null) {
+      return updateRental(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UpdateRental implements AddRentalEvent {
+  const factory _UpdateRental(final RentalEntity rental) = _$UpdateRentalImpl;
+
+  RentalEntity get rental;
+
+  /// Create a copy of AddRentalEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$UpdateRentalImplCopyWith<_$UpdateRentalImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1185,12 +1934,20 @@ class _$CalculateRentalImpl implements _CalculateRental {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(CustomerEntity customer) selectCustomer,
+    required TResult Function() removeCustomer,
     required TResult Function(InventoryItemEntity item) addItem,
     required TResult Function(int index) removeItem,
     required TResult Function(int index, InventoryItemEntity item) updateItem,
     required TResult Function(double amount) updateAdvanceAmount,
     required TResult Function() createRental,
+    required TResult Function(RentalEntity rental) updateRental,
     required TResult Function() calculateRental,
+    required TResult Function(String id) setRental,
+    required TResult Function() initializeCustomers,
+    required TResult Function() initializeItems,
+    required TResult Function() markRentalAsPaid,
+    required TResult Function(DateTime date) updateRentedAt,
+    required TResult Function(double amount) recordPartialPayment,
   }) {
     return calculateRental();
   }
@@ -1199,12 +1956,20 @@ class _$CalculateRentalImpl implements _CalculateRental {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(CustomerEntity customer)? selectCustomer,
+    TResult? Function()? removeCustomer,
     TResult? Function(InventoryItemEntity item)? addItem,
     TResult? Function(int index)? removeItem,
     TResult? Function(int index, InventoryItemEntity item)? updateItem,
     TResult? Function(double amount)? updateAdvanceAmount,
     TResult? Function()? createRental,
+    TResult? Function(RentalEntity rental)? updateRental,
     TResult? Function()? calculateRental,
+    TResult? Function(String id)? setRental,
+    TResult? Function()? initializeCustomers,
+    TResult? Function()? initializeItems,
+    TResult? Function()? markRentalAsPaid,
+    TResult? Function(DateTime date)? updateRentedAt,
+    TResult? Function(double amount)? recordPartialPayment,
   }) {
     return calculateRental?.call();
   }
@@ -1213,12 +1978,20 @@ class _$CalculateRentalImpl implements _CalculateRental {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(CustomerEntity customer)? selectCustomer,
+    TResult Function()? removeCustomer,
     TResult Function(InventoryItemEntity item)? addItem,
     TResult Function(int index)? removeItem,
     TResult Function(int index, InventoryItemEntity item)? updateItem,
     TResult Function(double amount)? updateAdvanceAmount,
     TResult Function()? createRental,
+    TResult Function(RentalEntity rental)? updateRental,
     TResult Function()? calculateRental,
+    TResult Function(String id)? setRental,
+    TResult Function()? initializeCustomers,
+    TResult Function()? initializeItems,
+    TResult Function()? markRentalAsPaid,
+    TResult Function(DateTime date)? updateRentedAt,
+    TResult Function(double amount)? recordPartialPayment,
     required TResult orElse(),
   }) {
     if (calculateRental != null) {
@@ -1231,12 +2004,20 @@ class _$CalculateRentalImpl implements _CalculateRental {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_SelectCustomer value) selectCustomer,
+    required TResult Function(_RemoveCustomer value) removeCustomer,
     required TResult Function(_AddItem value) addItem,
     required TResult Function(_RemoveItem value) removeItem,
     required TResult Function(_UpdateItem value) updateItem,
     required TResult Function(_UpdateAdvanceAmount value) updateAdvanceAmount,
     required TResult Function(_CreateRental value) createRental,
+    required TResult Function(_UpdateRental value) updateRental,
     required TResult Function(_CalculateRental value) calculateRental,
+    required TResult Function(_SetRental value) setRental,
+    required TResult Function(_InitializeCustomers value) initializeCustomers,
+    required TResult Function(_InitializeItems value) initializeItems,
+    required TResult Function(_MarkRentalAsPaid value) markRentalAsPaid,
+    required TResult Function(_UpdateRentedAt value) updateRentedAt,
+    required TResult Function(_RecordPartialPayment value) recordPartialPayment,
   }) {
     return calculateRental(this);
   }
@@ -1245,12 +2026,20 @@ class _$CalculateRentalImpl implements _CalculateRental {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_SelectCustomer value)? selectCustomer,
+    TResult? Function(_RemoveCustomer value)? removeCustomer,
     TResult? Function(_AddItem value)? addItem,
     TResult? Function(_RemoveItem value)? removeItem,
     TResult? Function(_UpdateItem value)? updateItem,
     TResult? Function(_UpdateAdvanceAmount value)? updateAdvanceAmount,
     TResult? Function(_CreateRental value)? createRental,
+    TResult? Function(_UpdateRental value)? updateRental,
     TResult? Function(_CalculateRental value)? calculateRental,
+    TResult? Function(_SetRental value)? setRental,
+    TResult? Function(_InitializeCustomers value)? initializeCustomers,
+    TResult? Function(_InitializeItems value)? initializeItems,
+    TResult? Function(_MarkRentalAsPaid value)? markRentalAsPaid,
+    TResult? Function(_UpdateRentedAt value)? updateRentedAt,
+    TResult? Function(_RecordPartialPayment value)? recordPartialPayment,
   }) {
     return calculateRental?.call(this);
   }
@@ -1259,12 +2048,20 @@ class _$CalculateRentalImpl implements _CalculateRental {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_SelectCustomer value)? selectCustomer,
+    TResult Function(_RemoveCustomer value)? removeCustomer,
     TResult Function(_AddItem value)? addItem,
     TResult Function(_RemoveItem value)? removeItem,
     TResult Function(_UpdateItem value)? updateItem,
     TResult Function(_UpdateAdvanceAmount value)? updateAdvanceAmount,
     TResult Function(_CreateRental value)? createRental,
+    TResult Function(_UpdateRental value)? updateRental,
     TResult Function(_CalculateRental value)? calculateRental,
+    TResult Function(_SetRental value)? setRental,
+    TResult Function(_InitializeCustomers value)? initializeCustomers,
+    TResult Function(_InitializeItems value)? initializeItems,
+    TResult Function(_MarkRentalAsPaid value)? markRentalAsPaid,
+    TResult Function(_UpdateRentedAt value)? updateRentedAt,
+    TResult Function(_RecordPartialPayment value)? recordPartialPayment,
     required TResult orElse(),
   }) {
     if (calculateRental != null) {
@@ -1279,8 +2076,1218 @@ abstract class _CalculateRental implements AddRentalEvent {
 }
 
 /// @nodoc
+abstract class _$$SetRentalImplCopyWith<$Res> {
+  factory _$$SetRentalImplCopyWith(
+          _$SetRentalImpl value, $Res Function(_$SetRentalImpl) then) =
+      __$$SetRentalImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String id});
+}
+
+/// @nodoc
+class __$$SetRentalImplCopyWithImpl<$Res>
+    extends _$AddRentalEventCopyWithImpl<$Res, _$SetRentalImpl>
+    implements _$$SetRentalImplCopyWith<$Res> {
+  __$$SetRentalImplCopyWithImpl(
+      _$SetRentalImpl _value, $Res Function(_$SetRentalImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AddRentalEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+  }) {
+    return _then(_$SetRentalImpl(
+      null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SetRentalImpl implements _SetRental {
+  const _$SetRentalImpl(this.id);
+
+  @override
+  final String id;
+
+  @override
+  String toString() {
+    return 'AddRentalEvent.setRental(id: $id)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SetRentalImpl &&
+            (identical(other.id, id) || other.id == id));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, id);
+
+  /// Create a copy of AddRentalEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SetRentalImplCopyWith<_$SetRentalImpl> get copyWith =>
+      __$$SetRentalImplCopyWithImpl<_$SetRentalImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(CustomerEntity customer) selectCustomer,
+    required TResult Function() removeCustomer,
+    required TResult Function(InventoryItemEntity item) addItem,
+    required TResult Function(int index) removeItem,
+    required TResult Function(int index, InventoryItemEntity item) updateItem,
+    required TResult Function(double amount) updateAdvanceAmount,
+    required TResult Function() createRental,
+    required TResult Function(RentalEntity rental) updateRental,
+    required TResult Function() calculateRental,
+    required TResult Function(String id) setRental,
+    required TResult Function() initializeCustomers,
+    required TResult Function() initializeItems,
+    required TResult Function() markRentalAsPaid,
+    required TResult Function(DateTime date) updateRentedAt,
+    required TResult Function(double amount) recordPartialPayment,
+  }) {
+    return setRental(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(CustomerEntity customer)? selectCustomer,
+    TResult? Function()? removeCustomer,
+    TResult? Function(InventoryItemEntity item)? addItem,
+    TResult? Function(int index)? removeItem,
+    TResult? Function(int index, InventoryItemEntity item)? updateItem,
+    TResult? Function(double amount)? updateAdvanceAmount,
+    TResult? Function()? createRental,
+    TResult? Function(RentalEntity rental)? updateRental,
+    TResult? Function()? calculateRental,
+    TResult? Function(String id)? setRental,
+    TResult? Function()? initializeCustomers,
+    TResult? Function()? initializeItems,
+    TResult? Function()? markRentalAsPaid,
+    TResult? Function(DateTime date)? updateRentedAt,
+    TResult? Function(double amount)? recordPartialPayment,
+  }) {
+    return setRental?.call(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(CustomerEntity customer)? selectCustomer,
+    TResult Function()? removeCustomer,
+    TResult Function(InventoryItemEntity item)? addItem,
+    TResult Function(int index)? removeItem,
+    TResult Function(int index, InventoryItemEntity item)? updateItem,
+    TResult Function(double amount)? updateAdvanceAmount,
+    TResult Function()? createRental,
+    TResult Function(RentalEntity rental)? updateRental,
+    TResult Function()? calculateRental,
+    TResult Function(String id)? setRental,
+    TResult Function()? initializeCustomers,
+    TResult Function()? initializeItems,
+    TResult Function()? markRentalAsPaid,
+    TResult Function(DateTime date)? updateRentedAt,
+    TResult Function(double amount)? recordPartialPayment,
+    required TResult orElse(),
+  }) {
+    if (setRental != null) {
+      return setRental(id);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SelectCustomer value) selectCustomer,
+    required TResult Function(_RemoveCustomer value) removeCustomer,
+    required TResult Function(_AddItem value) addItem,
+    required TResult Function(_RemoveItem value) removeItem,
+    required TResult Function(_UpdateItem value) updateItem,
+    required TResult Function(_UpdateAdvanceAmount value) updateAdvanceAmount,
+    required TResult Function(_CreateRental value) createRental,
+    required TResult Function(_UpdateRental value) updateRental,
+    required TResult Function(_CalculateRental value) calculateRental,
+    required TResult Function(_SetRental value) setRental,
+    required TResult Function(_InitializeCustomers value) initializeCustomers,
+    required TResult Function(_InitializeItems value) initializeItems,
+    required TResult Function(_MarkRentalAsPaid value) markRentalAsPaid,
+    required TResult Function(_UpdateRentedAt value) updateRentedAt,
+    required TResult Function(_RecordPartialPayment value) recordPartialPayment,
+  }) {
+    return setRental(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SelectCustomer value)? selectCustomer,
+    TResult? Function(_RemoveCustomer value)? removeCustomer,
+    TResult? Function(_AddItem value)? addItem,
+    TResult? Function(_RemoveItem value)? removeItem,
+    TResult? Function(_UpdateItem value)? updateItem,
+    TResult? Function(_UpdateAdvanceAmount value)? updateAdvanceAmount,
+    TResult? Function(_CreateRental value)? createRental,
+    TResult? Function(_UpdateRental value)? updateRental,
+    TResult? Function(_CalculateRental value)? calculateRental,
+    TResult? Function(_SetRental value)? setRental,
+    TResult? Function(_InitializeCustomers value)? initializeCustomers,
+    TResult? Function(_InitializeItems value)? initializeItems,
+    TResult? Function(_MarkRentalAsPaid value)? markRentalAsPaid,
+    TResult? Function(_UpdateRentedAt value)? updateRentedAt,
+    TResult? Function(_RecordPartialPayment value)? recordPartialPayment,
+  }) {
+    return setRental?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SelectCustomer value)? selectCustomer,
+    TResult Function(_RemoveCustomer value)? removeCustomer,
+    TResult Function(_AddItem value)? addItem,
+    TResult Function(_RemoveItem value)? removeItem,
+    TResult Function(_UpdateItem value)? updateItem,
+    TResult Function(_UpdateAdvanceAmount value)? updateAdvanceAmount,
+    TResult Function(_CreateRental value)? createRental,
+    TResult Function(_UpdateRental value)? updateRental,
+    TResult Function(_CalculateRental value)? calculateRental,
+    TResult Function(_SetRental value)? setRental,
+    TResult Function(_InitializeCustomers value)? initializeCustomers,
+    TResult Function(_InitializeItems value)? initializeItems,
+    TResult Function(_MarkRentalAsPaid value)? markRentalAsPaid,
+    TResult Function(_UpdateRentedAt value)? updateRentedAt,
+    TResult Function(_RecordPartialPayment value)? recordPartialPayment,
+    required TResult orElse(),
+  }) {
+    if (setRental != null) {
+      return setRental(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SetRental implements AddRentalEvent {
+  const factory _SetRental(final String id) = _$SetRentalImpl;
+
+  String get id;
+
+  /// Create a copy of AddRentalEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SetRentalImplCopyWith<_$SetRentalImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$InitializeCustomersImplCopyWith<$Res> {
+  factory _$$InitializeCustomersImplCopyWith(_$InitializeCustomersImpl value,
+          $Res Function(_$InitializeCustomersImpl) then) =
+      __$$InitializeCustomersImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$InitializeCustomersImplCopyWithImpl<$Res>
+    extends _$AddRentalEventCopyWithImpl<$Res, _$InitializeCustomersImpl>
+    implements _$$InitializeCustomersImplCopyWith<$Res> {
+  __$$InitializeCustomersImplCopyWithImpl(_$InitializeCustomersImpl _value,
+      $Res Function(_$InitializeCustomersImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AddRentalEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$InitializeCustomersImpl implements _InitializeCustomers {
+  const _$InitializeCustomersImpl();
+
+  @override
+  String toString() {
+    return 'AddRentalEvent.initializeCustomers()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$InitializeCustomersImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(CustomerEntity customer) selectCustomer,
+    required TResult Function() removeCustomer,
+    required TResult Function(InventoryItemEntity item) addItem,
+    required TResult Function(int index) removeItem,
+    required TResult Function(int index, InventoryItemEntity item) updateItem,
+    required TResult Function(double amount) updateAdvanceAmount,
+    required TResult Function() createRental,
+    required TResult Function(RentalEntity rental) updateRental,
+    required TResult Function() calculateRental,
+    required TResult Function(String id) setRental,
+    required TResult Function() initializeCustomers,
+    required TResult Function() initializeItems,
+    required TResult Function() markRentalAsPaid,
+    required TResult Function(DateTime date) updateRentedAt,
+    required TResult Function(double amount) recordPartialPayment,
+  }) {
+    return initializeCustomers();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(CustomerEntity customer)? selectCustomer,
+    TResult? Function()? removeCustomer,
+    TResult? Function(InventoryItemEntity item)? addItem,
+    TResult? Function(int index)? removeItem,
+    TResult? Function(int index, InventoryItemEntity item)? updateItem,
+    TResult? Function(double amount)? updateAdvanceAmount,
+    TResult? Function()? createRental,
+    TResult? Function(RentalEntity rental)? updateRental,
+    TResult? Function()? calculateRental,
+    TResult? Function(String id)? setRental,
+    TResult? Function()? initializeCustomers,
+    TResult? Function()? initializeItems,
+    TResult? Function()? markRentalAsPaid,
+    TResult? Function(DateTime date)? updateRentedAt,
+    TResult? Function(double amount)? recordPartialPayment,
+  }) {
+    return initializeCustomers?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(CustomerEntity customer)? selectCustomer,
+    TResult Function()? removeCustomer,
+    TResult Function(InventoryItemEntity item)? addItem,
+    TResult Function(int index)? removeItem,
+    TResult Function(int index, InventoryItemEntity item)? updateItem,
+    TResult Function(double amount)? updateAdvanceAmount,
+    TResult Function()? createRental,
+    TResult Function(RentalEntity rental)? updateRental,
+    TResult Function()? calculateRental,
+    TResult Function(String id)? setRental,
+    TResult Function()? initializeCustomers,
+    TResult Function()? initializeItems,
+    TResult Function()? markRentalAsPaid,
+    TResult Function(DateTime date)? updateRentedAt,
+    TResult Function(double amount)? recordPartialPayment,
+    required TResult orElse(),
+  }) {
+    if (initializeCustomers != null) {
+      return initializeCustomers();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SelectCustomer value) selectCustomer,
+    required TResult Function(_RemoveCustomer value) removeCustomer,
+    required TResult Function(_AddItem value) addItem,
+    required TResult Function(_RemoveItem value) removeItem,
+    required TResult Function(_UpdateItem value) updateItem,
+    required TResult Function(_UpdateAdvanceAmount value) updateAdvanceAmount,
+    required TResult Function(_CreateRental value) createRental,
+    required TResult Function(_UpdateRental value) updateRental,
+    required TResult Function(_CalculateRental value) calculateRental,
+    required TResult Function(_SetRental value) setRental,
+    required TResult Function(_InitializeCustomers value) initializeCustomers,
+    required TResult Function(_InitializeItems value) initializeItems,
+    required TResult Function(_MarkRentalAsPaid value) markRentalAsPaid,
+    required TResult Function(_UpdateRentedAt value) updateRentedAt,
+    required TResult Function(_RecordPartialPayment value) recordPartialPayment,
+  }) {
+    return initializeCustomers(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SelectCustomer value)? selectCustomer,
+    TResult? Function(_RemoveCustomer value)? removeCustomer,
+    TResult? Function(_AddItem value)? addItem,
+    TResult? Function(_RemoveItem value)? removeItem,
+    TResult? Function(_UpdateItem value)? updateItem,
+    TResult? Function(_UpdateAdvanceAmount value)? updateAdvanceAmount,
+    TResult? Function(_CreateRental value)? createRental,
+    TResult? Function(_UpdateRental value)? updateRental,
+    TResult? Function(_CalculateRental value)? calculateRental,
+    TResult? Function(_SetRental value)? setRental,
+    TResult? Function(_InitializeCustomers value)? initializeCustomers,
+    TResult? Function(_InitializeItems value)? initializeItems,
+    TResult? Function(_MarkRentalAsPaid value)? markRentalAsPaid,
+    TResult? Function(_UpdateRentedAt value)? updateRentedAt,
+    TResult? Function(_RecordPartialPayment value)? recordPartialPayment,
+  }) {
+    return initializeCustomers?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SelectCustomer value)? selectCustomer,
+    TResult Function(_RemoveCustomer value)? removeCustomer,
+    TResult Function(_AddItem value)? addItem,
+    TResult Function(_RemoveItem value)? removeItem,
+    TResult Function(_UpdateItem value)? updateItem,
+    TResult Function(_UpdateAdvanceAmount value)? updateAdvanceAmount,
+    TResult Function(_CreateRental value)? createRental,
+    TResult Function(_UpdateRental value)? updateRental,
+    TResult Function(_CalculateRental value)? calculateRental,
+    TResult Function(_SetRental value)? setRental,
+    TResult Function(_InitializeCustomers value)? initializeCustomers,
+    TResult Function(_InitializeItems value)? initializeItems,
+    TResult Function(_MarkRentalAsPaid value)? markRentalAsPaid,
+    TResult Function(_UpdateRentedAt value)? updateRentedAt,
+    TResult Function(_RecordPartialPayment value)? recordPartialPayment,
+    required TResult orElse(),
+  }) {
+    if (initializeCustomers != null) {
+      return initializeCustomers(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _InitializeCustomers implements AddRentalEvent {
+  const factory _InitializeCustomers() = _$InitializeCustomersImpl;
+}
+
+/// @nodoc
+abstract class _$$InitializeItemsImplCopyWith<$Res> {
+  factory _$$InitializeItemsImplCopyWith(_$InitializeItemsImpl value,
+          $Res Function(_$InitializeItemsImpl) then) =
+      __$$InitializeItemsImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$InitializeItemsImplCopyWithImpl<$Res>
+    extends _$AddRentalEventCopyWithImpl<$Res, _$InitializeItemsImpl>
+    implements _$$InitializeItemsImplCopyWith<$Res> {
+  __$$InitializeItemsImplCopyWithImpl(
+      _$InitializeItemsImpl _value, $Res Function(_$InitializeItemsImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AddRentalEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$InitializeItemsImpl implements _InitializeItems {
+  const _$InitializeItemsImpl();
+
+  @override
+  String toString() {
+    return 'AddRentalEvent.initializeItems()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$InitializeItemsImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(CustomerEntity customer) selectCustomer,
+    required TResult Function() removeCustomer,
+    required TResult Function(InventoryItemEntity item) addItem,
+    required TResult Function(int index) removeItem,
+    required TResult Function(int index, InventoryItemEntity item) updateItem,
+    required TResult Function(double amount) updateAdvanceAmount,
+    required TResult Function() createRental,
+    required TResult Function(RentalEntity rental) updateRental,
+    required TResult Function() calculateRental,
+    required TResult Function(String id) setRental,
+    required TResult Function() initializeCustomers,
+    required TResult Function() initializeItems,
+    required TResult Function() markRentalAsPaid,
+    required TResult Function(DateTime date) updateRentedAt,
+    required TResult Function(double amount) recordPartialPayment,
+  }) {
+    return initializeItems();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(CustomerEntity customer)? selectCustomer,
+    TResult? Function()? removeCustomer,
+    TResult? Function(InventoryItemEntity item)? addItem,
+    TResult? Function(int index)? removeItem,
+    TResult? Function(int index, InventoryItemEntity item)? updateItem,
+    TResult? Function(double amount)? updateAdvanceAmount,
+    TResult? Function()? createRental,
+    TResult? Function(RentalEntity rental)? updateRental,
+    TResult? Function()? calculateRental,
+    TResult? Function(String id)? setRental,
+    TResult? Function()? initializeCustomers,
+    TResult? Function()? initializeItems,
+    TResult? Function()? markRentalAsPaid,
+    TResult? Function(DateTime date)? updateRentedAt,
+    TResult? Function(double amount)? recordPartialPayment,
+  }) {
+    return initializeItems?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(CustomerEntity customer)? selectCustomer,
+    TResult Function()? removeCustomer,
+    TResult Function(InventoryItemEntity item)? addItem,
+    TResult Function(int index)? removeItem,
+    TResult Function(int index, InventoryItemEntity item)? updateItem,
+    TResult Function(double amount)? updateAdvanceAmount,
+    TResult Function()? createRental,
+    TResult Function(RentalEntity rental)? updateRental,
+    TResult Function()? calculateRental,
+    TResult Function(String id)? setRental,
+    TResult Function()? initializeCustomers,
+    TResult Function()? initializeItems,
+    TResult Function()? markRentalAsPaid,
+    TResult Function(DateTime date)? updateRentedAt,
+    TResult Function(double amount)? recordPartialPayment,
+    required TResult orElse(),
+  }) {
+    if (initializeItems != null) {
+      return initializeItems();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SelectCustomer value) selectCustomer,
+    required TResult Function(_RemoveCustomer value) removeCustomer,
+    required TResult Function(_AddItem value) addItem,
+    required TResult Function(_RemoveItem value) removeItem,
+    required TResult Function(_UpdateItem value) updateItem,
+    required TResult Function(_UpdateAdvanceAmount value) updateAdvanceAmount,
+    required TResult Function(_CreateRental value) createRental,
+    required TResult Function(_UpdateRental value) updateRental,
+    required TResult Function(_CalculateRental value) calculateRental,
+    required TResult Function(_SetRental value) setRental,
+    required TResult Function(_InitializeCustomers value) initializeCustomers,
+    required TResult Function(_InitializeItems value) initializeItems,
+    required TResult Function(_MarkRentalAsPaid value) markRentalAsPaid,
+    required TResult Function(_UpdateRentedAt value) updateRentedAt,
+    required TResult Function(_RecordPartialPayment value) recordPartialPayment,
+  }) {
+    return initializeItems(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SelectCustomer value)? selectCustomer,
+    TResult? Function(_RemoveCustomer value)? removeCustomer,
+    TResult? Function(_AddItem value)? addItem,
+    TResult? Function(_RemoveItem value)? removeItem,
+    TResult? Function(_UpdateItem value)? updateItem,
+    TResult? Function(_UpdateAdvanceAmount value)? updateAdvanceAmount,
+    TResult? Function(_CreateRental value)? createRental,
+    TResult? Function(_UpdateRental value)? updateRental,
+    TResult? Function(_CalculateRental value)? calculateRental,
+    TResult? Function(_SetRental value)? setRental,
+    TResult? Function(_InitializeCustomers value)? initializeCustomers,
+    TResult? Function(_InitializeItems value)? initializeItems,
+    TResult? Function(_MarkRentalAsPaid value)? markRentalAsPaid,
+    TResult? Function(_UpdateRentedAt value)? updateRentedAt,
+    TResult? Function(_RecordPartialPayment value)? recordPartialPayment,
+  }) {
+    return initializeItems?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SelectCustomer value)? selectCustomer,
+    TResult Function(_RemoveCustomer value)? removeCustomer,
+    TResult Function(_AddItem value)? addItem,
+    TResult Function(_RemoveItem value)? removeItem,
+    TResult Function(_UpdateItem value)? updateItem,
+    TResult Function(_UpdateAdvanceAmount value)? updateAdvanceAmount,
+    TResult Function(_CreateRental value)? createRental,
+    TResult Function(_UpdateRental value)? updateRental,
+    TResult Function(_CalculateRental value)? calculateRental,
+    TResult Function(_SetRental value)? setRental,
+    TResult Function(_InitializeCustomers value)? initializeCustomers,
+    TResult Function(_InitializeItems value)? initializeItems,
+    TResult Function(_MarkRentalAsPaid value)? markRentalAsPaid,
+    TResult Function(_UpdateRentedAt value)? updateRentedAt,
+    TResult Function(_RecordPartialPayment value)? recordPartialPayment,
+    required TResult orElse(),
+  }) {
+    if (initializeItems != null) {
+      return initializeItems(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _InitializeItems implements AddRentalEvent {
+  const factory _InitializeItems() = _$InitializeItemsImpl;
+}
+
+/// @nodoc
+abstract class _$$MarkRentalAsPaidImplCopyWith<$Res> {
+  factory _$$MarkRentalAsPaidImplCopyWith(_$MarkRentalAsPaidImpl value,
+          $Res Function(_$MarkRentalAsPaidImpl) then) =
+      __$$MarkRentalAsPaidImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$MarkRentalAsPaidImplCopyWithImpl<$Res>
+    extends _$AddRentalEventCopyWithImpl<$Res, _$MarkRentalAsPaidImpl>
+    implements _$$MarkRentalAsPaidImplCopyWith<$Res> {
+  __$$MarkRentalAsPaidImplCopyWithImpl(_$MarkRentalAsPaidImpl _value,
+      $Res Function(_$MarkRentalAsPaidImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AddRentalEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$MarkRentalAsPaidImpl implements _MarkRentalAsPaid {
+  const _$MarkRentalAsPaidImpl();
+
+  @override
+  String toString() {
+    return 'AddRentalEvent.markRentalAsPaid()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$MarkRentalAsPaidImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(CustomerEntity customer) selectCustomer,
+    required TResult Function() removeCustomer,
+    required TResult Function(InventoryItemEntity item) addItem,
+    required TResult Function(int index) removeItem,
+    required TResult Function(int index, InventoryItemEntity item) updateItem,
+    required TResult Function(double amount) updateAdvanceAmount,
+    required TResult Function() createRental,
+    required TResult Function(RentalEntity rental) updateRental,
+    required TResult Function() calculateRental,
+    required TResult Function(String id) setRental,
+    required TResult Function() initializeCustomers,
+    required TResult Function() initializeItems,
+    required TResult Function() markRentalAsPaid,
+    required TResult Function(DateTime date) updateRentedAt,
+    required TResult Function(double amount) recordPartialPayment,
+  }) {
+    return markRentalAsPaid();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(CustomerEntity customer)? selectCustomer,
+    TResult? Function()? removeCustomer,
+    TResult? Function(InventoryItemEntity item)? addItem,
+    TResult? Function(int index)? removeItem,
+    TResult? Function(int index, InventoryItemEntity item)? updateItem,
+    TResult? Function(double amount)? updateAdvanceAmount,
+    TResult? Function()? createRental,
+    TResult? Function(RentalEntity rental)? updateRental,
+    TResult? Function()? calculateRental,
+    TResult? Function(String id)? setRental,
+    TResult? Function()? initializeCustomers,
+    TResult? Function()? initializeItems,
+    TResult? Function()? markRentalAsPaid,
+    TResult? Function(DateTime date)? updateRentedAt,
+    TResult? Function(double amount)? recordPartialPayment,
+  }) {
+    return markRentalAsPaid?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(CustomerEntity customer)? selectCustomer,
+    TResult Function()? removeCustomer,
+    TResult Function(InventoryItemEntity item)? addItem,
+    TResult Function(int index)? removeItem,
+    TResult Function(int index, InventoryItemEntity item)? updateItem,
+    TResult Function(double amount)? updateAdvanceAmount,
+    TResult Function()? createRental,
+    TResult Function(RentalEntity rental)? updateRental,
+    TResult Function()? calculateRental,
+    TResult Function(String id)? setRental,
+    TResult Function()? initializeCustomers,
+    TResult Function()? initializeItems,
+    TResult Function()? markRentalAsPaid,
+    TResult Function(DateTime date)? updateRentedAt,
+    TResult Function(double amount)? recordPartialPayment,
+    required TResult orElse(),
+  }) {
+    if (markRentalAsPaid != null) {
+      return markRentalAsPaid();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SelectCustomer value) selectCustomer,
+    required TResult Function(_RemoveCustomer value) removeCustomer,
+    required TResult Function(_AddItem value) addItem,
+    required TResult Function(_RemoveItem value) removeItem,
+    required TResult Function(_UpdateItem value) updateItem,
+    required TResult Function(_UpdateAdvanceAmount value) updateAdvanceAmount,
+    required TResult Function(_CreateRental value) createRental,
+    required TResult Function(_UpdateRental value) updateRental,
+    required TResult Function(_CalculateRental value) calculateRental,
+    required TResult Function(_SetRental value) setRental,
+    required TResult Function(_InitializeCustomers value) initializeCustomers,
+    required TResult Function(_InitializeItems value) initializeItems,
+    required TResult Function(_MarkRentalAsPaid value) markRentalAsPaid,
+    required TResult Function(_UpdateRentedAt value) updateRentedAt,
+    required TResult Function(_RecordPartialPayment value) recordPartialPayment,
+  }) {
+    return markRentalAsPaid(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SelectCustomer value)? selectCustomer,
+    TResult? Function(_RemoveCustomer value)? removeCustomer,
+    TResult? Function(_AddItem value)? addItem,
+    TResult? Function(_RemoveItem value)? removeItem,
+    TResult? Function(_UpdateItem value)? updateItem,
+    TResult? Function(_UpdateAdvanceAmount value)? updateAdvanceAmount,
+    TResult? Function(_CreateRental value)? createRental,
+    TResult? Function(_UpdateRental value)? updateRental,
+    TResult? Function(_CalculateRental value)? calculateRental,
+    TResult? Function(_SetRental value)? setRental,
+    TResult? Function(_InitializeCustomers value)? initializeCustomers,
+    TResult? Function(_InitializeItems value)? initializeItems,
+    TResult? Function(_MarkRentalAsPaid value)? markRentalAsPaid,
+    TResult? Function(_UpdateRentedAt value)? updateRentedAt,
+    TResult? Function(_RecordPartialPayment value)? recordPartialPayment,
+  }) {
+    return markRentalAsPaid?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SelectCustomer value)? selectCustomer,
+    TResult Function(_RemoveCustomer value)? removeCustomer,
+    TResult Function(_AddItem value)? addItem,
+    TResult Function(_RemoveItem value)? removeItem,
+    TResult Function(_UpdateItem value)? updateItem,
+    TResult Function(_UpdateAdvanceAmount value)? updateAdvanceAmount,
+    TResult Function(_CreateRental value)? createRental,
+    TResult Function(_UpdateRental value)? updateRental,
+    TResult Function(_CalculateRental value)? calculateRental,
+    TResult Function(_SetRental value)? setRental,
+    TResult Function(_InitializeCustomers value)? initializeCustomers,
+    TResult Function(_InitializeItems value)? initializeItems,
+    TResult Function(_MarkRentalAsPaid value)? markRentalAsPaid,
+    TResult Function(_UpdateRentedAt value)? updateRentedAt,
+    TResult Function(_RecordPartialPayment value)? recordPartialPayment,
+    required TResult orElse(),
+  }) {
+    if (markRentalAsPaid != null) {
+      return markRentalAsPaid(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _MarkRentalAsPaid implements AddRentalEvent {
+  const factory _MarkRentalAsPaid() = _$MarkRentalAsPaidImpl;
+}
+
+/// @nodoc
+abstract class _$$UpdateRentedAtImplCopyWith<$Res> {
+  factory _$$UpdateRentedAtImplCopyWith(_$UpdateRentedAtImpl value,
+          $Res Function(_$UpdateRentedAtImpl) then) =
+      __$$UpdateRentedAtImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({DateTime date});
+}
+
+/// @nodoc
+class __$$UpdateRentedAtImplCopyWithImpl<$Res>
+    extends _$AddRentalEventCopyWithImpl<$Res, _$UpdateRentedAtImpl>
+    implements _$$UpdateRentedAtImplCopyWith<$Res> {
+  __$$UpdateRentedAtImplCopyWithImpl(
+      _$UpdateRentedAtImpl _value, $Res Function(_$UpdateRentedAtImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AddRentalEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? date = null,
+  }) {
+    return _then(_$UpdateRentedAtImpl(
+      null == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UpdateRentedAtImpl implements _UpdateRentedAt {
+  const _$UpdateRentedAtImpl(this.date);
+
+  @override
+  final DateTime date;
+
+  @override
+  String toString() {
+    return 'AddRentalEvent.updateRentedAt(date: $date)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpdateRentedAtImpl &&
+            (identical(other.date, date) || other.date == date));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, date);
+
+  /// Create a copy of AddRentalEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdateRentedAtImplCopyWith<_$UpdateRentedAtImpl> get copyWith =>
+      __$$UpdateRentedAtImplCopyWithImpl<_$UpdateRentedAtImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(CustomerEntity customer) selectCustomer,
+    required TResult Function() removeCustomer,
+    required TResult Function(InventoryItemEntity item) addItem,
+    required TResult Function(int index) removeItem,
+    required TResult Function(int index, InventoryItemEntity item) updateItem,
+    required TResult Function(double amount) updateAdvanceAmount,
+    required TResult Function() createRental,
+    required TResult Function(RentalEntity rental) updateRental,
+    required TResult Function() calculateRental,
+    required TResult Function(String id) setRental,
+    required TResult Function() initializeCustomers,
+    required TResult Function() initializeItems,
+    required TResult Function() markRentalAsPaid,
+    required TResult Function(DateTime date) updateRentedAt,
+    required TResult Function(double amount) recordPartialPayment,
+  }) {
+    return updateRentedAt(date);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(CustomerEntity customer)? selectCustomer,
+    TResult? Function()? removeCustomer,
+    TResult? Function(InventoryItemEntity item)? addItem,
+    TResult? Function(int index)? removeItem,
+    TResult? Function(int index, InventoryItemEntity item)? updateItem,
+    TResult? Function(double amount)? updateAdvanceAmount,
+    TResult? Function()? createRental,
+    TResult? Function(RentalEntity rental)? updateRental,
+    TResult? Function()? calculateRental,
+    TResult? Function(String id)? setRental,
+    TResult? Function()? initializeCustomers,
+    TResult? Function()? initializeItems,
+    TResult? Function()? markRentalAsPaid,
+    TResult? Function(DateTime date)? updateRentedAt,
+    TResult? Function(double amount)? recordPartialPayment,
+  }) {
+    return updateRentedAt?.call(date);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(CustomerEntity customer)? selectCustomer,
+    TResult Function()? removeCustomer,
+    TResult Function(InventoryItemEntity item)? addItem,
+    TResult Function(int index)? removeItem,
+    TResult Function(int index, InventoryItemEntity item)? updateItem,
+    TResult Function(double amount)? updateAdvanceAmount,
+    TResult Function()? createRental,
+    TResult Function(RentalEntity rental)? updateRental,
+    TResult Function()? calculateRental,
+    TResult Function(String id)? setRental,
+    TResult Function()? initializeCustomers,
+    TResult Function()? initializeItems,
+    TResult Function()? markRentalAsPaid,
+    TResult Function(DateTime date)? updateRentedAt,
+    TResult Function(double amount)? recordPartialPayment,
+    required TResult orElse(),
+  }) {
+    if (updateRentedAt != null) {
+      return updateRentedAt(date);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SelectCustomer value) selectCustomer,
+    required TResult Function(_RemoveCustomer value) removeCustomer,
+    required TResult Function(_AddItem value) addItem,
+    required TResult Function(_RemoveItem value) removeItem,
+    required TResult Function(_UpdateItem value) updateItem,
+    required TResult Function(_UpdateAdvanceAmount value) updateAdvanceAmount,
+    required TResult Function(_CreateRental value) createRental,
+    required TResult Function(_UpdateRental value) updateRental,
+    required TResult Function(_CalculateRental value) calculateRental,
+    required TResult Function(_SetRental value) setRental,
+    required TResult Function(_InitializeCustomers value) initializeCustomers,
+    required TResult Function(_InitializeItems value) initializeItems,
+    required TResult Function(_MarkRentalAsPaid value) markRentalAsPaid,
+    required TResult Function(_UpdateRentedAt value) updateRentedAt,
+    required TResult Function(_RecordPartialPayment value) recordPartialPayment,
+  }) {
+    return updateRentedAt(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SelectCustomer value)? selectCustomer,
+    TResult? Function(_RemoveCustomer value)? removeCustomer,
+    TResult? Function(_AddItem value)? addItem,
+    TResult? Function(_RemoveItem value)? removeItem,
+    TResult? Function(_UpdateItem value)? updateItem,
+    TResult? Function(_UpdateAdvanceAmount value)? updateAdvanceAmount,
+    TResult? Function(_CreateRental value)? createRental,
+    TResult? Function(_UpdateRental value)? updateRental,
+    TResult? Function(_CalculateRental value)? calculateRental,
+    TResult? Function(_SetRental value)? setRental,
+    TResult? Function(_InitializeCustomers value)? initializeCustomers,
+    TResult? Function(_InitializeItems value)? initializeItems,
+    TResult? Function(_MarkRentalAsPaid value)? markRentalAsPaid,
+    TResult? Function(_UpdateRentedAt value)? updateRentedAt,
+    TResult? Function(_RecordPartialPayment value)? recordPartialPayment,
+  }) {
+    return updateRentedAt?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SelectCustomer value)? selectCustomer,
+    TResult Function(_RemoveCustomer value)? removeCustomer,
+    TResult Function(_AddItem value)? addItem,
+    TResult Function(_RemoveItem value)? removeItem,
+    TResult Function(_UpdateItem value)? updateItem,
+    TResult Function(_UpdateAdvanceAmount value)? updateAdvanceAmount,
+    TResult Function(_CreateRental value)? createRental,
+    TResult Function(_UpdateRental value)? updateRental,
+    TResult Function(_CalculateRental value)? calculateRental,
+    TResult Function(_SetRental value)? setRental,
+    TResult Function(_InitializeCustomers value)? initializeCustomers,
+    TResult Function(_InitializeItems value)? initializeItems,
+    TResult Function(_MarkRentalAsPaid value)? markRentalAsPaid,
+    TResult Function(_UpdateRentedAt value)? updateRentedAt,
+    TResult Function(_RecordPartialPayment value)? recordPartialPayment,
+    required TResult orElse(),
+  }) {
+    if (updateRentedAt != null) {
+      return updateRentedAt(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UpdateRentedAt implements AddRentalEvent {
+  const factory _UpdateRentedAt(final DateTime date) = _$UpdateRentedAtImpl;
+
+  DateTime get date;
+
+  /// Create a copy of AddRentalEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$UpdateRentedAtImplCopyWith<_$UpdateRentedAtImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$RecordPartialPaymentImplCopyWith<$Res> {
+  factory _$$RecordPartialPaymentImplCopyWith(_$RecordPartialPaymentImpl value,
+          $Res Function(_$RecordPartialPaymentImpl) then) =
+      __$$RecordPartialPaymentImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({double amount});
+}
+
+/// @nodoc
+class __$$RecordPartialPaymentImplCopyWithImpl<$Res>
+    extends _$AddRentalEventCopyWithImpl<$Res, _$RecordPartialPaymentImpl>
+    implements _$$RecordPartialPaymentImplCopyWith<$Res> {
+  __$$RecordPartialPaymentImplCopyWithImpl(_$RecordPartialPaymentImpl _value,
+      $Res Function(_$RecordPartialPaymentImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AddRentalEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? amount = null,
+  }) {
+    return _then(_$RecordPartialPaymentImpl(
+      null == amount
+          ? _value.amount
+          : amount // ignore: cast_nullable_to_non_nullable
+              as double,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$RecordPartialPaymentImpl implements _RecordPartialPayment {
+  const _$RecordPartialPaymentImpl(this.amount);
+
+  @override
+  final double amount;
+
+  @override
+  String toString() {
+    return 'AddRentalEvent.recordPartialPayment(amount: $amount)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$RecordPartialPaymentImpl &&
+            (identical(other.amount, amount) || other.amount == amount));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, amount);
+
+  /// Create a copy of AddRentalEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$RecordPartialPaymentImplCopyWith<_$RecordPartialPaymentImpl>
+      get copyWith =>
+          __$$RecordPartialPaymentImplCopyWithImpl<_$RecordPartialPaymentImpl>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(CustomerEntity customer) selectCustomer,
+    required TResult Function() removeCustomer,
+    required TResult Function(InventoryItemEntity item) addItem,
+    required TResult Function(int index) removeItem,
+    required TResult Function(int index, InventoryItemEntity item) updateItem,
+    required TResult Function(double amount) updateAdvanceAmount,
+    required TResult Function() createRental,
+    required TResult Function(RentalEntity rental) updateRental,
+    required TResult Function() calculateRental,
+    required TResult Function(String id) setRental,
+    required TResult Function() initializeCustomers,
+    required TResult Function() initializeItems,
+    required TResult Function() markRentalAsPaid,
+    required TResult Function(DateTime date) updateRentedAt,
+    required TResult Function(double amount) recordPartialPayment,
+  }) {
+    return recordPartialPayment(amount);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(CustomerEntity customer)? selectCustomer,
+    TResult? Function()? removeCustomer,
+    TResult? Function(InventoryItemEntity item)? addItem,
+    TResult? Function(int index)? removeItem,
+    TResult? Function(int index, InventoryItemEntity item)? updateItem,
+    TResult? Function(double amount)? updateAdvanceAmount,
+    TResult? Function()? createRental,
+    TResult? Function(RentalEntity rental)? updateRental,
+    TResult? Function()? calculateRental,
+    TResult? Function(String id)? setRental,
+    TResult? Function()? initializeCustomers,
+    TResult? Function()? initializeItems,
+    TResult? Function()? markRentalAsPaid,
+    TResult? Function(DateTime date)? updateRentedAt,
+    TResult? Function(double amount)? recordPartialPayment,
+  }) {
+    return recordPartialPayment?.call(amount);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(CustomerEntity customer)? selectCustomer,
+    TResult Function()? removeCustomer,
+    TResult Function(InventoryItemEntity item)? addItem,
+    TResult Function(int index)? removeItem,
+    TResult Function(int index, InventoryItemEntity item)? updateItem,
+    TResult Function(double amount)? updateAdvanceAmount,
+    TResult Function()? createRental,
+    TResult Function(RentalEntity rental)? updateRental,
+    TResult Function()? calculateRental,
+    TResult Function(String id)? setRental,
+    TResult Function()? initializeCustomers,
+    TResult Function()? initializeItems,
+    TResult Function()? markRentalAsPaid,
+    TResult Function(DateTime date)? updateRentedAt,
+    TResult Function(double amount)? recordPartialPayment,
+    required TResult orElse(),
+  }) {
+    if (recordPartialPayment != null) {
+      return recordPartialPayment(amount);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SelectCustomer value) selectCustomer,
+    required TResult Function(_RemoveCustomer value) removeCustomer,
+    required TResult Function(_AddItem value) addItem,
+    required TResult Function(_RemoveItem value) removeItem,
+    required TResult Function(_UpdateItem value) updateItem,
+    required TResult Function(_UpdateAdvanceAmount value) updateAdvanceAmount,
+    required TResult Function(_CreateRental value) createRental,
+    required TResult Function(_UpdateRental value) updateRental,
+    required TResult Function(_CalculateRental value) calculateRental,
+    required TResult Function(_SetRental value) setRental,
+    required TResult Function(_InitializeCustomers value) initializeCustomers,
+    required TResult Function(_InitializeItems value) initializeItems,
+    required TResult Function(_MarkRentalAsPaid value) markRentalAsPaid,
+    required TResult Function(_UpdateRentedAt value) updateRentedAt,
+    required TResult Function(_RecordPartialPayment value) recordPartialPayment,
+  }) {
+    return recordPartialPayment(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SelectCustomer value)? selectCustomer,
+    TResult? Function(_RemoveCustomer value)? removeCustomer,
+    TResult? Function(_AddItem value)? addItem,
+    TResult? Function(_RemoveItem value)? removeItem,
+    TResult? Function(_UpdateItem value)? updateItem,
+    TResult? Function(_UpdateAdvanceAmount value)? updateAdvanceAmount,
+    TResult? Function(_CreateRental value)? createRental,
+    TResult? Function(_UpdateRental value)? updateRental,
+    TResult? Function(_CalculateRental value)? calculateRental,
+    TResult? Function(_SetRental value)? setRental,
+    TResult? Function(_InitializeCustomers value)? initializeCustomers,
+    TResult? Function(_InitializeItems value)? initializeItems,
+    TResult? Function(_MarkRentalAsPaid value)? markRentalAsPaid,
+    TResult? Function(_UpdateRentedAt value)? updateRentedAt,
+    TResult? Function(_RecordPartialPayment value)? recordPartialPayment,
+  }) {
+    return recordPartialPayment?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SelectCustomer value)? selectCustomer,
+    TResult Function(_RemoveCustomer value)? removeCustomer,
+    TResult Function(_AddItem value)? addItem,
+    TResult Function(_RemoveItem value)? removeItem,
+    TResult Function(_UpdateItem value)? updateItem,
+    TResult Function(_UpdateAdvanceAmount value)? updateAdvanceAmount,
+    TResult Function(_CreateRental value)? createRental,
+    TResult Function(_UpdateRental value)? updateRental,
+    TResult Function(_CalculateRental value)? calculateRental,
+    TResult Function(_SetRental value)? setRental,
+    TResult Function(_InitializeCustomers value)? initializeCustomers,
+    TResult Function(_InitializeItems value)? initializeItems,
+    TResult Function(_MarkRentalAsPaid value)? markRentalAsPaid,
+    TResult Function(_UpdateRentedAt value)? updateRentedAt,
+    TResult Function(_RecordPartialPayment value)? recordPartialPayment,
+    required TResult orElse(),
+  }) {
+    if (recordPartialPayment != null) {
+      return recordPartialPayment(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _RecordPartialPayment implements AddRentalEvent {
+  const factory _RecordPartialPayment(final double amount) =
+      _$RecordPartialPaymentImpl;
+
+  double get amount;
+
+  /// Create a copy of AddRentalEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$RecordPartialPaymentImplCopyWith<_$RecordPartialPaymentImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$AddRentalState {
   RentalEntity get selectedRental => throw _privateConstructorUsedError;
+  List<CustomerEntity> get customers => throw _privateConstructorUsedError;
+  List<InventoryItemEntity> get items => throw _privateConstructorUsedError;
 
   /// Create a copy of AddRentalState
   /// with the given fields replaced by the non-null parameter values.
@@ -1295,7 +3302,10 @@ abstract class $AddRentalStateCopyWith<$Res> {
           AddRentalState value, $Res Function(AddRentalState) then) =
       _$AddRentalStateCopyWithImpl<$Res, AddRentalState>;
   @useResult
-  $Res call({RentalEntity selectedRental});
+  $Res call(
+      {RentalEntity selectedRental,
+      List<CustomerEntity> customers,
+      List<InventoryItemEntity> items});
 
   $RentalEntityCopyWith<$Res> get selectedRental;
 }
@@ -1316,12 +3326,22 @@ class _$AddRentalStateCopyWithImpl<$Res, $Val extends AddRentalState>
   @override
   $Res call({
     Object? selectedRental = null,
+    Object? customers = null,
+    Object? items = null,
   }) {
     return _then(_value.copyWith(
       selectedRental: null == selectedRental
           ? _value.selectedRental
           : selectedRental // ignore: cast_nullable_to_non_nullable
               as RentalEntity,
+      customers: null == customers
+          ? _value.customers
+          : customers // ignore: cast_nullable_to_non_nullable
+              as List<CustomerEntity>,
+      items: null == items
+          ? _value.items
+          : items // ignore: cast_nullable_to_non_nullable
+              as List<InventoryItemEntity>,
     ) as $Val);
   }
 
@@ -1344,7 +3364,10 @@ abstract class _$$AddRentalStateImplCopyWith<$Res>
       __$$AddRentalStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({RentalEntity selectedRental});
+  $Res call(
+      {RentalEntity selectedRental,
+      List<CustomerEntity> customers,
+      List<InventoryItemEntity> items});
 
   @override
   $RentalEntityCopyWith<$Res> get selectedRental;
@@ -1364,12 +3387,22 @@ class __$$AddRentalStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? selectedRental = null,
+    Object? customers = null,
+    Object? items = null,
   }) {
     return _then(_$AddRentalStateImpl(
       selectedRental: null == selectedRental
           ? _value.selectedRental
           : selectedRental // ignore: cast_nullable_to_non_nullable
               as RentalEntity,
+      customers: null == customers
+          ? _value._customers
+          : customers // ignore: cast_nullable_to_non_nullable
+              as List<CustomerEntity>,
+      items: null == items
+          ? _value._items
+          : items // ignore: cast_nullable_to_non_nullable
+              as List<InventoryItemEntity>,
     ));
   }
 }
@@ -1377,14 +3410,36 @@ class __$$AddRentalStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$AddRentalStateImpl implements _AddRentalState {
-  const _$AddRentalStateImpl({required this.selectedRental});
+  const _$AddRentalStateImpl(
+      {required this.selectedRental,
+      final List<CustomerEntity> customers = const [],
+      final List<InventoryItemEntity> items = const []})
+      : _customers = customers,
+        _items = items;
 
   @override
   final RentalEntity selectedRental;
+  final List<CustomerEntity> _customers;
+  @override
+  @JsonKey()
+  List<CustomerEntity> get customers {
+    if (_customers is EqualUnmodifiableListView) return _customers;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_customers);
+  }
+
+  final List<InventoryItemEntity> _items;
+  @override
+  @JsonKey()
+  List<InventoryItemEntity> get items {
+    if (_items is EqualUnmodifiableListView) return _items;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_items);
+  }
 
   @override
   String toString() {
-    return 'AddRentalState(selectedRental: $selectedRental)';
+    return 'AddRentalState(selectedRental: $selectedRental, customers: $customers, items: $items)';
   }
 
   @override
@@ -1393,11 +3448,18 @@ class _$AddRentalStateImpl implements _AddRentalState {
         (other.runtimeType == runtimeType &&
             other is _$AddRentalStateImpl &&
             (identical(other.selectedRental, selectedRental) ||
-                other.selectedRental == selectedRental));
+                other.selectedRental == selectedRental) &&
+            const DeepCollectionEquality()
+                .equals(other._customers, _customers) &&
+            const DeepCollectionEquality().equals(other._items, _items));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, selectedRental);
+  int get hashCode => Object.hash(
+      runtimeType,
+      selectedRental,
+      const DeepCollectionEquality().hash(_customers),
+      const DeepCollectionEquality().hash(_items));
 
   /// Create a copy of AddRentalState
   /// with the given fields replaced by the non-null parameter values.
@@ -1410,11 +3472,17 @@ class _$AddRentalStateImpl implements _AddRentalState {
 }
 
 abstract class _AddRentalState implements AddRentalState {
-  const factory _AddRentalState({required final RentalEntity selectedRental}) =
-      _$AddRentalStateImpl;
+  const factory _AddRentalState(
+      {required final RentalEntity selectedRental,
+      final List<CustomerEntity> customers,
+      final List<InventoryItemEntity> items}) = _$AddRentalStateImpl;
 
   @override
   RentalEntity get selectedRental;
+  @override
+  List<CustomerEntity> get customers;
+  @override
+  List<InventoryItemEntity> get items;
 
   /// Create a copy of AddRentalState
   /// with the given fields replaced by the non-null parameter values.

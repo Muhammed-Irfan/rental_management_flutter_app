@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$CustomerEntity {
-  int get id => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String? get phoneNumber => throw _privateConstructorUsedError;
   String? get address => throw _privateConstructorUsedError;
@@ -34,7 +34,7 @@ abstract class $CustomerEntityCopyWith<$Res> {
           CustomerEntity value, $Res Function(CustomerEntity) then) =
       _$CustomerEntityCopyWithImpl<$Res, CustomerEntity>;
   @useResult
-  $Res call({int id, String name, String? phoneNumber, String? address});
+  $Res call({String id, String name, String? phoneNumber, String? address});
 }
 
 /// @nodoc
@@ -61,7 +61,7 @@ class _$CustomerEntityCopyWithImpl<$Res, $Val extends CustomerEntity>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -86,7 +86,7 @@ abstract class _$$CustomerEntityImplCopyWith<$Res>
       __$$CustomerEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, String name, String? phoneNumber, String? address});
+  $Res call({String id, String name, String? phoneNumber, String? address});
 }
 
 /// @nodoc
@@ -111,7 +111,7 @@ class __$$CustomerEntityImplCopyWithImpl<$Res>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -135,7 +135,7 @@ class _$CustomerEntityImpl implements _CustomerEntity {
       {required this.id, required this.name, this.phoneNumber, this.address});
 
   @override
-  final int id;
+  final String id;
   @override
   final String name;
   @override
@@ -175,13 +175,13 @@ class _$CustomerEntityImpl implements _CustomerEntity {
 
 abstract class _CustomerEntity implements CustomerEntity {
   const factory _CustomerEntity(
-      {required final int id,
+      {required final String id,
       required final String name,
       final String? phoneNumber,
       final String? address}) = _$CustomerEntityImpl;
 
   @override
-  int get id;
+  String get id;
   @override
   String get name;
   @override

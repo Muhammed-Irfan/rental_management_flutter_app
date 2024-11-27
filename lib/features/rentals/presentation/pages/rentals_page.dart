@@ -16,7 +16,8 @@ class RentalsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => getIt<RentalsBloc>(),
+      create: (context) =>
+          getIt<RentalsBloc>()..add(const RentalsEvent.loadRentals()),
       child: const RentalsView(),
     );
   }
@@ -32,30 +33,48 @@ class RentalsView extends StatelessWidget {
         title: const Text('Rentals'),
       ),
       body: BaseView<RentalsBloc, RentalsState>(
-        initialWidget: _buildContent(
-          context,
-          RentalsState(rentals: [RentalEntity.empty(), RentalEntity.empty()]),
-        ),
+        initialWidget: _buildContent(context, const RentalsState(rentals: [])),
         onLoaded: (state) => _buildContent(context, state),
       ),
     );
   }
 
   Widget _buildContent(BuildContext context, RentalsState state) {
-    return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            AppButton(
-              text: 'Add New Rental',
-              onPressed: () => context.pushNamed(RouteNames.addRental),
-            ).expandedWidth,
-            const SizedBox(height: 24),
-            _buildRentalsList(state),
-          ],
-        ),
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(16.0, 16, 16, 0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          AppButton(
+            text: 'Add New Rental',
+            onPressed: () => context.pushNamed(RouteNames.addRental),
+          ).expandedWidth,
+          const SizedBox(height: 24),
+          AppDropdown<RentalStatus>(
+            label: 'Filter by Status',
+            hint: 'Select a status',
+            items: RentalStatus.values,
+            itemLabel: (status) {
+              final label = switch (status) {
+                RentalStatus.active => 'Active',
+                RentalStatus.partiallyPaid => 'Partially Paid',
+                RentalStatus.paid => 'Paid',
+                RentalStatus.all => 'All',
+              };
+
+              return label;
+            },
+            onChanged: (RentalStatus? status) {
+              if (status != null) {
+                context
+                    .read<RentalsBloc>()
+                    .add(RentalsEvent.filterByStatus(status));
+              }
+            },
+          ),
+          const SizedBox(height: 24),
+          Expanded(child: _buildRentalsList(state)),
+        ],
       ),
     );
   }
@@ -71,7 +90,6 @@ class RentalsView extends StatelessWidget {
     }
 
     return ListView.separated(
-      shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       itemCount: state.rentals.length,
       itemBuilder: (context, index) {
@@ -80,7 +98,7 @@ class RentalsView extends StatelessWidget {
           rental: rental,
           onTap: () => context.pushNamed(
             RouteNames.editRental,
-            pathParameters: {'id': rental.id.toString()},
+            pathParameters: {'id': rental.id},
           ),
         );
       },

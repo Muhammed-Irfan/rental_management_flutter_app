@@ -34,21 +34,47 @@ class RentalItem extends StatelessWidget {
                       style: AppTextStyles.title,
                     ),
                     const SizedBox(height: 4),
-                    Text(
-                      'Rented on: ${rental.rentedAt.toString().split(' ')[0]}',
-                      style: AppTextStyles.body.copyWith(
-                        color: Colors.grey,
+                    RichText(
+                      text: TextSpan(
+                        style: AppTextStyles.body.copyWith(color: Colors.grey),
+                        children: [
+                          const TextSpan(text: 'Rented On: '),
+                          TextSpan(
+                            text: rental.rentedAt.toFormattedString(),
+                            style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: AppColors.primary,),
+                          ),
+                        ],
                       ),
                     ),
                     const SizedBox(height: 4),
-                    ...rental.items.map(
-                      (item) => Text('${item.name}:${item.quantity}').padding(bottom: 4),
-                    ),
+                    if (rental.status == RentalStatus.partiallyPaid) ...[
+                      const SizedBox(height: 4),
+                      Text(
+                        'Pending Amount: ₹${rental.calculatePendingAmount().toStringAsFixed(2)}',
+                        style: AppTextStyles.body.copyWith(
+                          color: Colors.red,
+                        ),
+                      ),
+                    ],
                   ],
                 ),
               ),
               const SizedBox(width: 16),
-              _buildStatusIndicator(),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  _buildStatusIndicator(),
+                  const SizedBox(height: 8),
+                  Text(
+                    '₹${rental.calculateTotalAmount().toStringAsFixed(2)}',
+                    style: AppTextStyles.body.copyWith(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
+              ),
             ],
           ),
         ),
@@ -59,7 +85,9 @@ class RentalItem extends StatelessWidget {
   Widget _buildStatusIndicator() {
     final (color, label) = switch (rental.status) {
       RentalStatus.active => (AppColors.tealGreen, 'Active'),
-      RentalStatus.paid => (AppColors.royalBlue, 'Completed'),
+      RentalStatus.partiallyPaid => (AppColors.amber, 'Partially Paid'),
+      RentalStatus.paid => (AppColors.royalBlue, 'Paid'),
+      RentalStatus.all => (AppColors.primary, 'All'),
     };
 
     return Container(
@@ -70,7 +98,7 @@ class RentalItem extends StatelessWidget {
       ),
       child: Text(
         label,
-        style: AppTextStyles.body.copyWith(
+        style: AppTextStyles.caption.copyWith(
           fontWeight: FontWeight.bold,
           color: AppColors.onPrimary,
         ),

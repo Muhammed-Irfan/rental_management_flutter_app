@@ -3,25 +3,39 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rentease/core/di/injection.dart';
 import 'package:rentease/core/presentation/widgets/base_view.dart';
 import 'package:rentease/core/theme/theme_imports.dart';
+import 'package:rentease/core/utils/app_debouncer.dart';
 import 'package:rentease/core/utils/extensions.dart';
-import 'package:rentease/features/customers/domain/entities/customer_entity.dart';
 import 'package:rentease/features/customers/presentation/bloc/add_customer_bloc.dart';
 import 'package:rentease/shared/presentation/widgets/common_widgets.dart';
 
 class AddCustomerPage extends StatelessWidget {
-  const AddCustomerPage({super.key});
+  final String? id;
+  const AddCustomerPage({super.key, this.id});
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => getIt<AddCustomerBloc>(),
-      child: const AddCustomerView(),
+      create: (context) {
+        final bloc = getIt<AddCustomerBloc>();
+        if (id != null) {
+          bloc.add(AddCustomerEvent.setCustomer(id!));
+        }
+        return bloc;
+      },
+      child: AddCustomerView(id: id),
     );
   }
 }
 
 class AddCustomerView extends StatelessWidget {
-  const AddCustomerView({super.key});
+  final String? id;
+  final _debouncer = AppDebouncer(milliseconds: 1500);
+
+  AddCustomerView({super.key, this.id});
+
+  final _nameController = TextEditingController();
+  final _phoneController = TextEditingController();
+  final _addressController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -30,16 +44,18 @@ class AddCustomerView extends StatelessWidget {
         title: const Text('Add New Customer'),
       ),
       body: BaseView<AddCustomerBloc, AddCustomerState>(
-        initialWidget: _buildContent(
-          context,
-          AddCustomerState(customer: CustomerEntity.empty()),
-        ),
-        onLoaded: (state) => _buildContent(context, state),
+        initialWidget: _buildContent(context),
+        onLoaded: (state) {
+          _nameController.text = state.customer.name;
+          _phoneController.text = state.customer.phoneNumber ?? '';
+          _addressController.text = state.customer.address ?? '';
+          return _buildContent(context);
+        },
       ),
     );
   }
 
-  Widget _buildContent(BuildContext context, AddCustomerState state) {
+  Widget _buildContent(BuildContext context) {
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -53,45 +69,44 @@ class AddCustomerView extends StatelessWidget {
             const SizedBox(height: 16),
             AppTextField(
               label: 'Name',
-              controller: TextEditingController(text: state.customer.name)
-                ..selection = TextSelection.fromPosition(
-                  TextPosition(offset: state.customer.name.length),
-                ),
-              onChanged: (value) {
-                context.read<AddCustomerBloc>().add(AddCustomerEvent.updateName(value));
-              },
+              controller: _nameController,
             ),
             const SizedBox(height: 16),
             AppTextField(
               label: 'Phone',
-              controller: TextEditingController(text: state.customer.phoneNumber ?? '')
-                ..selection = TextSelection.fromPosition(
-                  TextPosition(offset: state.customer.phoneNumber?.length ?? 0),
-                ),
+              controller: _phoneController,
               keyboardType: TextInputType.phone,
-              onChanged: (value) {
-                context.read<AddCustomerBloc>().add(AddCustomerEvent.updatePhone(value));
-              },
             ),
             const SizedBox(height: 16),
             AppTextField(
               label: 'Address',
-              controller: TextEditingController(text: state.customer.address ?? '')
-                ..selection = TextSelection.fromPosition(
-                  TextPosition(offset: state.customer.address?.length ?? 0),
-                ),
+              controller: _addressController,
               maxLines: 3,
-              onChanged: (value) {
-                context.read<AddCustomerBloc>().add(AddCustomerEvent.updateAddress(value));
-              },
             ),
             const SizedBox(height: 32),
-            AppButton(
-              text: 'Add Customer',
-              onPressed: () {
-                context.read<AddCustomerBloc>().add(const AddCustomerEvent.createCustomer());
+            ValueListenableBuilder(
+              valueListenable: _nameController,
+              builder: (context, _, __) {
+                return AppButton(
+                  text: id != null ? 'Save Customer' : 'Add Customer',
+                  isDisabled: _nameController.text.trim().isEmpty,
+                  onPressed: () async {
+                    final bloc = context.read<AddCustomerBloc>()
+                      ..add(
+                        AddCustomerEvent.updateFields(
+                          name: _nameController.text,
+                          phone: _phoneController.text,
+                          address: _addressController.text,
+                        ),
+                      );
+                    await Future.delayed(const Duration(milliseconds: 100));
+                    bloc.add(
+                      id != null ? const AddCustomerEvent.updateCustomer() : const AddCustomerEvent.createCustomer(),
+                    );
+                  },
+                ).expandedWidth;
               },
-            ).expandedWidth,
+            ),
           ],
         ),
       ),

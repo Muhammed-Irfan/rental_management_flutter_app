@@ -209,6 +209,8 @@ linter:
     - void_checks
 
 analyzer:
+  errors:
+    avoid_renaming_method_parameters: ignore
   exclude:
     - '**.freezed.dart'
     - '**.g.dart'

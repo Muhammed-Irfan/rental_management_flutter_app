@@ -115,3 +115,18 @@ extension StringExtensions on String {
         fit: fit,
       );
 }
+
+extension DateTimeExtension on DateTime {
+  String toFormattedString() {
+    final months = [
+      'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+      'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',
+    ];
+    
+    final day = this.day.toString().padLeft(2, '0');
+    final month = months[this.month - 1];
+    final year = this.year.toString();
+    
+    return '$day $month $year';
+  }
+}

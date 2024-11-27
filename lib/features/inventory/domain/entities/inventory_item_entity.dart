@@ -5,7 +5,7 @@ part 'inventory_item_entity.freezed.dart';
 @freezed
 class InventoryItemEntity with _$InventoryItemEntity {
   const factory InventoryItemEntity({
-    required int id,
+    required String id,
     required String name,
     required double rent,
     required int quantity,
@@ -14,10 +14,10 @@ class InventoryItemEntity with _$InventoryItemEntity {
   }) = _InventoryItemEntity;
 
   factory InventoryItemEntity.empty() => const InventoryItemEntity(
-        id: 0,
-        name: 'Sample Item',
-        rent: 20.0,
-        quantity: 10,
-        available: 10,
+        id: '',
+        name: '',
+        rent: 0.0,
+        quantity: 0,
+        available: 0,
       );
 }

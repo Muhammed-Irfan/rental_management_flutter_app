@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$InventoryItemEntity {
-  int get id => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   double get rent => throw _privateConstructorUsedError;
   int get quantity => throw _privateConstructorUsedError;
@@ -37,7 +37,7 @@ abstract class $InventoryItemEntityCopyWith<$Res> {
       _$InventoryItemEntityCopyWithImpl<$Res, InventoryItemEntity>;
   @useResult
   $Res call(
-      {int id,
+      {String id,
       String name,
       double rent,
       int quantity,
@@ -71,7 +71,7 @@ class _$InventoryItemEntityCopyWithImpl<$Res, $Val extends InventoryItemEntity>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -105,7 +105,7 @@ abstract class _$$InventoryItemEntityImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int id,
+      {String id,
       String name,
       double rent,
       int quantity,
@@ -137,7 +137,7 @@ class __$$InventoryItemEntityImplCopyWithImpl<$Res>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -174,7 +174,7 @@ class _$InventoryItemEntityImpl implements _InventoryItemEntity {
       this.description});
 
   @override
-  final int id;
+  final String id;
   @override
   final String name;
   @override
@@ -223,7 +223,7 @@ class _$InventoryItemEntityImpl implements _InventoryItemEntity {
 
 abstract class _InventoryItemEntity implements InventoryItemEntity {
   const factory _InventoryItemEntity(
-      {required final int id,
+      {required final String id,
       required final String name,
       required final double rent,
       required final int quantity,
@@ -231,7 +231,7 @@ abstract class _InventoryItemEntity implements InventoryItemEntity {
       final String? description}) = _$InventoryItemEntityImpl;
 
   @override
-  int get id;
+  String get id;
   @override
   String get name;
   @override

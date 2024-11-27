@@ -8,6 +8,7 @@ import 'package:rentease/core/theme/theme_imports.dart';
 import 'package:rentease/features/customers/presentation/bloc/customer_details_bloc.dart';
 import 'package:rentease/features/rentals/domain/entities/rental_entity.dart';
 import 'package:rentease/features/rentals/presentation/widgets/rental_item.dart';
+import 'package:rentease/shared/presentation/widgets/app_dropdown.dart';
 
 class CustomerDetailsPage extends StatelessWidget {
   final String customerId;
@@ -20,8 +21,9 @@ class CustomerDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) =>
-          getIt<CustomerDetailsBloc>()..add(CustomerDetailsEvent.loadCustomerDetails(int.parse(customerId))),
+      create: (context) => getIt<CustomerDetailsBloc>()
+        ..add(CustomerDetailsEvent.loadCustomerDetails(customerId))
+        ..listenToRentalsUpdated(customerId),
       child: CustomerDetailsView(customerId: customerId),
     );
   }
@@ -48,19 +50,17 @@ class CustomerDetailsView extends StatelessWidget {
   }
 
   Widget _buildContent(BuildContext context, CustomerDetailsState state) {
-    return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _buildCustomerInfo(state, context),
-            const SizedBox(height: 16),
-            _buildSummary(state),
-            const SizedBox(height: 32),
-            _buildRentalList(state),
-          ],
-        ),
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(16.0, 16, 16, 0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          _buildCustomerInfo(state, context),
+          const SizedBox(height: 16),
+          _buildSummary(state),
+          const SizedBox(height: 32),
+          Expanded(child: _buildRentalList(state, context)),
+        ],
       ),
     );
   }
@@ -94,8 +94,10 @@ class CustomerDetailsView extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             _buildInfoRow('Name', state.customer.name),
-            if (state.customer.phoneNumber != null) _buildInfoRow('Phone', state.customer.phoneNumber!),
-            if (state.customer.address != null) _buildInfoRow('Address', state.customer.address!),
+            if (state.customer.phoneNumber != null)
+              _buildInfoRow('Phone', state.customer.phoneNumber!),
+            if (state.customer.address != null)
+              _buildInfoRow('Address', state.customer.address!),
           ],
         ),
       ),
@@ -189,8 +191,8 @@ class CustomerDetailsView extends StatelessWidget {
     );
   }
 
-  Widget _buildRentalList(CustomerDetailsState state) {
-    final rentals = [RentalEntity.empty(), RentalEntity.empty()];
+  Widget _buildRentalList(CustomerDetailsState state, BuildContext context) {
+    final rentals = state.rentals;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -200,25 +202,56 @@ class CustomerDetailsView extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
-        const SizedBox(height: 16),
-        if (rentals.isEmpty)
-          const Center(
-            child: Text(
-              'No rentals found',
-              style: TextStyle(fontSize: 16, color: Colors.grey),
-            ),
-          )
-        else
-          ListView.separated(
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            itemCount: rentals.length,
-            itemBuilder: (context, index) {
-              final rental = rentals[index];
-              return RentalItem(rental: rental);
-            },
-            separatorBuilder: (context, index) => const SizedBox(height: 16),
-          ),
+        const SizedBox(height: 24),
+        AppDropdown<RentalStatus>(
+          label: 'Filter by Status',
+          hint: 'Select a status',
+          items: RentalStatus.values,
+          itemLabel: (status) {
+            final label = switch (status) {
+              RentalStatus.active => 'Active',
+              RentalStatus.partiallyPaid => 'Partially Paid',
+              RentalStatus.paid => 'Paid',
+              RentalStatus.all => 'All',
+            };
+            return label;
+          },
+          onChanged: (RentalStatus? status) {
+            if (status != null) {
+              context
+                  .read<CustomerDetailsBloc>()
+                  .add(CustomerDetailsEvent.filterByStatus(status));
+            }
+          },
+        ),
+        const SizedBox(height: 24),
+        Expanded(
+          child: rentals.isEmpty
+              ? const Center(
+                  child: Text(
+                    'No rentals found',
+                    style: TextStyle(fontSize: 16, color: Colors.grey),
+                  ),
+                )
+              : ListView.separated(
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: rentals.length,
+                  itemBuilder: (context, index) {
+                    final rental = rentals[index];
+                    return RentalItem(
+                      rental: rental,
+                      onTap: () {
+                        context.pushNamed(
+                          RouteNames.editRental,
+                          pathParameters: {'id': rental.id},
+                        );
+                      },
+                    );
+                  },
+                  separatorBuilder: (context, index) =>
+                      const SizedBox(height: 16),
+                ),
+        ),
       ],
     );
   }

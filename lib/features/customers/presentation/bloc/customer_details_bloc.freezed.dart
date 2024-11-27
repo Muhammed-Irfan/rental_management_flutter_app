@@ -18,39 +18,39 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$CustomerDetailsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(int customerId) loadCustomerDetails,
-    required TResult Function() refreshRentals,
+    required TResult Function(String customerId) loadCustomerDetails,
+    required TResult Function(RentalStatus status) filterByStatus,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int customerId)? loadCustomerDetails,
-    TResult? Function()? refreshRentals,
+    TResult? Function(String customerId)? loadCustomerDetails,
+    TResult? Function(RentalStatus status)? filterByStatus,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int customerId)? loadCustomerDetails,
-    TResult Function()? refreshRentals,
+    TResult Function(String customerId)? loadCustomerDetails,
+    TResult Function(RentalStatus status)? filterByStatus,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadCustomerDetails value) loadCustomerDetails,
-    required TResult Function(_RefreshRentals value) refreshRentals,
+    required TResult Function(_FilterByStatus value) filterByStatus,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoadCustomerDetails value)? loadCustomerDetails,
-    TResult? Function(_RefreshRentals value)? refreshRentals,
+    TResult? Function(_FilterByStatus value)? filterByStatus,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadCustomerDetails value)? loadCustomerDetails,
-    TResult Function(_RefreshRentals value)? refreshRentals,
+    TResult Function(_FilterByStatus value)? filterByStatus,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -84,7 +84,7 @@ abstract class _$$LoadCustomerDetailsImplCopyWith<$Res> {
           $Res Function(_$LoadCustomerDetailsImpl) then) =
       __$$LoadCustomerDetailsImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({int customerId});
+  $Res call({String customerId});
 }
 
 /// @nodoc
@@ -106,7 +106,7 @@ class __$$LoadCustomerDetailsImplCopyWithImpl<$Res>
       null == customerId
           ? _value.customerId
           : customerId // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
     ));
   }
 }
@@ -117,7 +117,7 @@ class _$LoadCustomerDetailsImpl implements _LoadCustomerDetails {
   const _$LoadCustomerDetailsImpl(this.customerId);
 
   @override
-  final int customerId;
+  final String customerId;
 
   @override
   String toString() {
@@ -148,8 +148,8 @@ class _$LoadCustomerDetailsImpl implements _LoadCustomerDetails {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(int customerId) loadCustomerDetails,
-    required TResult Function() refreshRentals,
+    required TResult Function(String customerId) loadCustomerDetails,
+    required TResult Function(RentalStatus status) filterByStatus,
   }) {
     return loadCustomerDetails(customerId);
   }
@@ -157,8 +157,8 @@ class _$LoadCustomerDetailsImpl implements _LoadCustomerDetails {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int customerId)? loadCustomerDetails,
-    TResult? Function()? refreshRentals,
+    TResult? Function(String customerId)? loadCustomerDetails,
+    TResult? Function(RentalStatus status)? filterByStatus,
   }) {
     return loadCustomerDetails?.call(customerId);
   }
@@ -166,8 +166,8 @@ class _$LoadCustomerDetailsImpl implements _LoadCustomerDetails {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int customerId)? loadCustomerDetails,
-    TResult Function()? refreshRentals,
+    TResult Function(String customerId)? loadCustomerDetails,
+    TResult Function(RentalStatus status)? filterByStatus,
     required TResult orElse(),
   }) {
     if (loadCustomerDetails != null) {
@@ -180,7 +180,7 @@ class _$LoadCustomerDetailsImpl implements _LoadCustomerDetails {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadCustomerDetails value) loadCustomerDetails,
-    required TResult Function(_RefreshRentals value) refreshRentals,
+    required TResult Function(_FilterByStatus value) filterByStatus,
   }) {
     return loadCustomerDetails(this);
   }
@@ -189,7 +189,7 @@ class _$LoadCustomerDetailsImpl implements _LoadCustomerDetails {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoadCustomerDetails value)? loadCustomerDetails,
-    TResult? Function(_RefreshRentals value)? refreshRentals,
+    TResult? Function(_FilterByStatus value)? filterByStatus,
   }) {
     return loadCustomerDetails?.call(this);
   }
@@ -198,7 +198,7 @@ class _$LoadCustomerDetailsImpl implements _LoadCustomerDetails {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadCustomerDetails value)? loadCustomerDetails,
-    TResult Function(_RefreshRentals value)? refreshRentals,
+    TResult Function(_FilterByStatus value)? filterByStatus,
     required TResult orElse(),
   }) {
     if (loadCustomerDetails != null) {
@@ -209,10 +209,10 @@ class _$LoadCustomerDetailsImpl implements _LoadCustomerDetails {
 }
 
 abstract class _LoadCustomerDetails implements CustomerDetailsEvent {
-  const factory _LoadCustomerDetails(final int customerId) =
+  const factory _LoadCustomerDetails(final String customerId) =
       _$LoadCustomerDetailsImpl;
 
-  int get customerId;
+  String get customerId;
 
   /// Create a copy of CustomerDetailsEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -222,70 +222,98 @@ abstract class _LoadCustomerDetails implements CustomerDetailsEvent {
 }
 
 /// @nodoc
-abstract class _$$RefreshRentalsImplCopyWith<$Res> {
-  factory _$$RefreshRentalsImplCopyWith(_$RefreshRentalsImpl value,
-          $Res Function(_$RefreshRentalsImpl) then) =
-      __$$RefreshRentalsImplCopyWithImpl<$Res>;
+abstract class _$$FilterByStatusImplCopyWith<$Res> {
+  factory _$$FilterByStatusImplCopyWith(_$FilterByStatusImpl value,
+          $Res Function(_$FilterByStatusImpl) then) =
+      __$$FilterByStatusImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({RentalStatus status});
 }
 
 /// @nodoc
-class __$$RefreshRentalsImplCopyWithImpl<$Res>
-    extends _$CustomerDetailsEventCopyWithImpl<$Res, _$RefreshRentalsImpl>
-    implements _$$RefreshRentalsImplCopyWith<$Res> {
-  __$$RefreshRentalsImplCopyWithImpl(
-      _$RefreshRentalsImpl _value, $Res Function(_$RefreshRentalsImpl) _then)
+class __$$FilterByStatusImplCopyWithImpl<$Res>
+    extends _$CustomerDetailsEventCopyWithImpl<$Res, _$FilterByStatusImpl>
+    implements _$$FilterByStatusImplCopyWith<$Res> {
+  __$$FilterByStatusImplCopyWithImpl(
+      _$FilterByStatusImpl _value, $Res Function(_$FilterByStatusImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of CustomerDetailsEvent
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? status = null,
+  }) {
+    return _then(_$FilterByStatusImpl(
+      null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as RentalStatus,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$RefreshRentalsImpl implements _RefreshRentals {
-  const _$RefreshRentalsImpl();
+class _$FilterByStatusImpl implements _FilterByStatus {
+  const _$FilterByStatusImpl(this.status);
+
+  @override
+  final RentalStatus status;
 
   @override
   String toString() {
-    return 'CustomerDetailsEvent.refreshRentals()';
+    return 'CustomerDetailsEvent.filterByStatus(status: $status)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$RefreshRentalsImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$FilterByStatusImpl &&
+            (identical(other.status, status) || other.status == status));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, status);
+
+  /// Create a copy of CustomerDetailsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FilterByStatusImplCopyWith<_$FilterByStatusImpl> get copyWith =>
+      __$$FilterByStatusImplCopyWithImpl<_$FilterByStatusImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(int customerId) loadCustomerDetails,
-    required TResult Function() refreshRentals,
+    required TResult Function(String customerId) loadCustomerDetails,
+    required TResult Function(RentalStatus status) filterByStatus,
   }) {
-    return refreshRentals();
+    return filterByStatus(status);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int customerId)? loadCustomerDetails,
-    TResult? Function()? refreshRentals,
+    TResult? Function(String customerId)? loadCustomerDetails,
+    TResult? Function(RentalStatus status)? filterByStatus,
   }) {
-    return refreshRentals?.call();
+    return filterByStatus?.call(status);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int customerId)? loadCustomerDetails,
-    TResult Function()? refreshRentals,
+    TResult Function(String customerId)? loadCustomerDetails,
+    TResult Function(RentalStatus status)? filterByStatus,
     required TResult orElse(),
   }) {
-    if (refreshRentals != null) {
-      return refreshRentals();
+    if (filterByStatus != null) {
+      return filterByStatus(status);
     }
     return orElse();
   }
@@ -294,36 +322,45 @@ class _$RefreshRentalsImpl implements _RefreshRentals {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadCustomerDetails value) loadCustomerDetails,
-    required TResult Function(_RefreshRentals value) refreshRentals,
+    required TResult Function(_FilterByStatus value) filterByStatus,
   }) {
-    return refreshRentals(this);
+    return filterByStatus(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoadCustomerDetails value)? loadCustomerDetails,
-    TResult? Function(_RefreshRentals value)? refreshRentals,
+    TResult? Function(_FilterByStatus value)? filterByStatus,
   }) {
-    return refreshRentals?.call(this);
+    return filterByStatus?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadCustomerDetails value)? loadCustomerDetails,
-    TResult Function(_RefreshRentals value)? refreshRentals,
+    TResult Function(_FilterByStatus value)? filterByStatus,
     required TResult orElse(),
   }) {
-    if (refreshRentals != null) {
-      return refreshRentals(this);
+    if (filterByStatus != null) {
+      return filterByStatus(this);
     }
     return orElse();
   }
 }
 
-abstract class _RefreshRentals implements CustomerDetailsEvent {
-  const factory _RefreshRentals() = _$RefreshRentalsImpl;
+abstract class _FilterByStatus implements CustomerDetailsEvent {
+  const factory _FilterByStatus(final RentalStatus status) =
+      _$FilterByStatusImpl;
+
+  RentalStatus get status;
+
+  /// Create a copy of CustomerDetailsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$FilterByStatusImplCopyWith<_$FilterByStatusImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc

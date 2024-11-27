@@ -45,9 +45,9 @@ final router = GoRouter(
                 GoRoute(
                   path: RoutePaths.editCustomer,
                   name: RouteNames.editCustomer,
-                  builder: (context, state) => const AddCustomerPage(
-                      // customerId: state.pathParameters['id']!,
-                      ),
+                  builder: (context, state) => AddCustomerPage(
+                    id: state.pathParameters['id'],
+                  ),
                 ),
               ],
             ),
@@ -66,9 +66,9 @@ final router = GoRouter(
             GoRoute(
               path: RoutePaths.editInventory,
               name: RouteNames.editInventory,
-              builder: (context, state) => const AddInventoryPage(
-                  // inventoryId: state.pathParameters['id']!,
-                  ),
+              builder: (context, state) => AddInventoryPage(
+                id: state.pathParameters['id'],
+              ),
             ),
           ],
         ),
@@ -80,9 +80,9 @@ final router = GoRouter(
             GoRoute(
               path: RoutePaths.editRental,
               name: RouteNames.editRental,
-              builder: (context, state) => const AddRentalPage(
-                  // rentalId: state.pathParameters['id']!,
-                  ),
+              builder: (context, state) => AddRentalPage(
+                id: state.pathParameters['id'],
+              ),
             ),
           ],
         ),
@@ -96,7 +96,7 @@ final router = GoRouter(
     GoRoute(
       path: RoutePaths.logs,
       name: RouteNames.logs,
-      builder: (context, state) => TalkerScreen(talker: getIt<Talker>()),
+      builder: (context, state) => TalkerScreen(talker: getIt<LoggingService>().talker),
     ),
   ],
   observers: [TalkerRouteObserver(getIt<LoggingService>().talker)],

@@ -16,11 +16,12 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$RentalEntity {
-  int get id => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
   CustomerEntity get customer => throw _privateConstructorUsedError;
   List<InventoryItemEntity> get items => throw _privateConstructorUsedError;
   DateTime get rentedAt => throw _privateConstructorUsedError;
   double get advanceAmount => throw _privateConstructorUsedError;
+  double get partialPaymentAmount => throw _privateConstructorUsedError;
   DateTime? get returnedAt => throw _privateConstructorUsedError;
   double get totalAmount => throw _privateConstructorUsedError;
   RentalStatus get status => throw _privateConstructorUsedError;
@@ -39,11 +40,12 @@ abstract class $RentalEntityCopyWith<$Res> {
       _$RentalEntityCopyWithImpl<$Res, RentalEntity>;
   @useResult
   $Res call(
-      {int id,
+      {String id,
       CustomerEntity customer,
       List<InventoryItemEntity> items,
       DateTime rentedAt,
       double advanceAmount,
+      double partialPaymentAmount,
       DateTime? returnedAt,
       double totalAmount,
       RentalStatus status});
@@ -71,6 +73,7 @@ class _$RentalEntityCopyWithImpl<$Res, $Val extends RentalEntity>
     Object? items = null,
     Object? rentedAt = null,
     Object? advanceAmount = null,
+    Object? partialPaymentAmount = null,
     Object? returnedAt = freezed,
     Object? totalAmount = null,
     Object? status = null,
@@ -79,7 +82,7 @@ class _$RentalEntityCopyWithImpl<$Res, $Val extends RentalEntity>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       customer: null == customer
           ? _value.customer
           : customer // ignore: cast_nullable_to_non_nullable
@@ -95,6 +98,10 @@ class _$RentalEntityCopyWithImpl<$Res, $Val extends RentalEntity>
       advanceAmount: null == advanceAmount
           ? _value.advanceAmount
           : advanceAmount // ignore: cast_nullable_to_non_nullable
+              as double,
+      partialPaymentAmount: null == partialPaymentAmount
+          ? _value.partialPaymentAmount
+          : partialPaymentAmount // ignore: cast_nullable_to_non_nullable
               as double,
       returnedAt: freezed == returnedAt
           ? _value.returnedAt
@@ -131,11 +138,12 @@ abstract class _$$RentalEntityImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int id,
+      {String id,
       CustomerEntity customer,
       List<InventoryItemEntity> items,
       DateTime rentedAt,
       double advanceAmount,
+      double partialPaymentAmount,
       DateTime? returnedAt,
       double totalAmount,
       RentalStatus status});
@@ -162,6 +170,7 @@ class __$$RentalEntityImplCopyWithImpl<$Res>
     Object? items = null,
     Object? rentedAt = null,
     Object? advanceAmount = null,
+    Object? partialPaymentAmount = null,
     Object? returnedAt = freezed,
     Object? totalAmount = null,
     Object? status = null,
@@ -170,7 +179,7 @@ class __$$RentalEntityImplCopyWithImpl<$Res>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       customer: null == customer
           ? _value.customer
           : customer // ignore: cast_nullable_to_non_nullable
@@ -186,6 +195,10 @@ class __$$RentalEntityImplCopyWithImpl<$Res>
       advanceAmount: null == advanceAmount
           ? _value.advanceAmount
           : advanceAmount // ignore: cast_nullable_to_non_nullable
+              as double,
+      partialPaymentAmount: null == partialPaymentAmount
+          ? _value.partialPaymentAmount
+          : partialPaymentAmount // ignore: cast_nullable_to_non_nullable
               as double,
       returnedAt: freezed == returnedAt
           ? _value.returnedAt
@@ -205,20 +218,22 @@ class __$$RentalEntityImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$RentalEntityImpl implements _RentalEntity {
+class _$RentalEntityImpl extends _RentalEntity {
   const _$RentalEntityImpl(
       {required this.id,
       required this.customer,
       required final List<InventoryItemEntity> items,
       required this.rentedAt,
       this.advanceAmount = 0.0,
+      this.partialPaymentAmount = 0.0,
       this.returnedAt,
       this.totalAmount = 0.0,
       this.status = RentalStatus.active})
-      : _items = items;
+      : _items = items,
+        super._();
 
   @override
-  final int id;
+  final String id;
   @override
   final CustomerEntity customer;
   final List<InventoryItemEntity> _items;
@@ -235,6 +250,9 @@ class _$RentalEntityImpl implements _RentalEntity {
   @JsonKey()
   final double advanceAmount;
   @override
+  @JsonKey()
+  final double partialPaymentAmount;
+  @override
   final DateTime? returnedAt;
   @override
   @JsonKey()
@@ -245,7 +263,7 @@ class _$RentalEntityImpl implements _RentalEntity {
 
   @override
   String toString() {
-    return 'RentalEntity(id: $id, customer: $customer, items: $items, rentedAt: $rentedAt, advanceAmount: $advanceAmount, returnedAt: $returnedAt, totalAmount: $totalAmount, status: $status)';
+    return 'RentalEntity(id: $id, customer: $customer, items: $items, rentedAt: $rentedAt, advanceAmount: $advanceAmount, partialPaymentAmount: $partialPaymentAmount, returnedAt: $returnedAt, totalAmount: $totalAmount, status: $status)';
   }
 
   @override
@@ -261,6 +279,8 @@ class _$RentalEntityImpl implements _RentalEntity {
                 other.rentedAt == rentedAt) &&
             (identical(other.advanceAmount, advanceAmount) ||
                 other.advanceAmount == advanceAmount) &&
+            (identical(other.partialPaymentAmount, partialPaymentAmount) ||
+                other.partialPaymentAmount == partialPaymentAmount) &&
             (identical(other.returnedAt, returnedAt) ||
                 other.returnedAt == returnedAt) &&
             (identical(other.totalAmount, totalAmount) ||
@@ -276,6 +296,7 @@ class _$RentalEntityImpl implements _RentalEntity {
       const DeepCollectionEquality().hash(_items),
       rentedAt,
       advanceAmount,
+      partialPaymentAmount,
       returnedAt,
       totalAmount,
       status);
@@ -289,19 +310,21 @@ class _$RentalEntityImpl implements _RentalEntity {
       __$$RentalEntityImplCopyWithImpl<_$RentalEntityImpl>(this, _$identity);
 }
 
-abstract class _RentalEntity implements RentalEntity {
+abstract class _RentalEntity extends RentalEntity {
   const factory _RentalEntity(
-      {required final int id,
+      {required final String id,
       required final CustomerEntity customer,
       required final List<InventoryItemEntity> items,
       required final DateTime rentedAt,
       final double advanceAmount,
+      final double partialPaymentAmount,
       final DateTime? returnedAt,
       final double totalAmount,
       final RentalStatus status}) = _$RentalEntityImpl;
+  const _RentalEntity._() : super._();
 
   @override
-  int get id;
+  String get id;
   @override
   CustomerEntity get customer;
   @override
@@ -310,6 +333,8 @@ abstract class _RentalEntity implements RentalEntity {
   DateTime get rentedAt;
   @override
   double get advanceAmount;
+  @override
+  double get partialPaymentAmount;
   @override
   DateTime? get returnedAt;
   @override
