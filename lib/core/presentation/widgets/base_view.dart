@@ -66,7 +66,7 @@ class BaseView<B extends BaseBloc<dynamic, T>, T> extends StatelessWidget {
     if (navigation.message != null) {
       _showSnackBar(context, navigation.message!, SnackBarType.success);
     }
-    
+
     if (navigation.routeName != null) {
       context.goNamed(
         navigation.routeName!,
@@ -99,9 +99,7 @@ class BaseView<B extends BaseBloc<dynamic, T>, T> extends StatelessWidget {
               },
             )
           : null,
-      duration: type == SnackBarType.error
-          ? const Duration(seconds: 5)
-          : const Duration(seconds: 2),
+      duration: type == SnackBarType.error ? const Duration(seconds: 5) : const Duration(seconds: 2),
     );
 
     ScaffoldMessenger.of(context)

@@ -42,37 +42,34 @@ class AddRentalBloc extends BaseBloc<AddRentalEvent, AddRentalState> {
     AddRentalEvent event,
     Emitter<BaseState<AddRentalState>> emit,
   ) async {
-    await state.maybeWhen(
-      loaded: (data) async {
-        await event.map(
-          selectCustomer: (e) => _selectCustomer(emit, data, e),
-          addItem: (e) => _addItem(emit, data, e),
-          removeItem: (e) => _removeItem(emit, data, e),
-          updateItem: (e) => _updateItem(emit, data, e),
-          updateAdvanceAmount: (e) => _updateAdvanceAmount(emit, data, e),
-          createRental: (e) => _createRental(emit, data),
-          updateRental: (e) => _updateRental(emit, data, e),
-          calculateRental: (e) => _handleCalculateRental(e, emit, data),
-          setRental: (e) => _setRental(emit, data, e),
-          initializeCustomers: (_) => _initializeCustomers(emit, data),
-          initializeItems: (_) => _initializeItems(emit, data),
-          markRentalAsPaid: (e) => _markRentalAsPaid(emit, data, e),
-          removeCustomer: (e) => _removeCustomer(emit, data),
-          updateRentedAt: (e) => _updateRentedAt(emit, data, e),
-          recordPartialPayment: (e) => _recordPartialPayment(emit, data, e),
-        );
-      },
-      orElse: () async {
-        emitLoaded(
-          emit,
-          AddRentalState(
-            selectedRental: RentalEntity.empty(),
-            customers: const [],
-            items: const [],
-          ),
-        );
-        await handleEvent(event, emit);
-      },
+    // Get current state or create initial state
+    final currentState = state.maybeWhen(
+      loaded: (data) => data,
+      orElse: () => AddRentalState(selectedRental: RentalEntity.empty()),
+    );
+
+    // Emit the current state if we're not already in loaded state
+    if (!state.maybeWhen(loaded: (_) => true, orElse: () => false)) {
+      emitLoaded(emit, currentState);
+    }
+
+    // Process the event
+    await event.map(
+      selectCustomer: (e) => _selectCustomer(emit, currentState, e),
+      addItem: (e) => _addItem(emit, currentState, e),
+      removeItem: (e) => _removeItem(emit, currentState, e),
+      updateItem: (e) => _updateItem(emit, currentState, e),
+      updateAdvanceAmount: (e) => _updateAdvanceAmount(emit, currentState, e),
+      createRental: (e) => _createRental(emit, currentState),
+      updateRental: (e) => _updateRental(emit, currentState, e),
+      calculateRental: (e) => _handleCalculateRental(e, emit, currentState),
+      setRental: (e) => _setRental(emit, currentState, e),
+      initializeCustomers: (_) => _initializeCustomers(emit, currentState),
+      initializeItems: (_) => _initializeItems(emit, currentState),
+      markRentalAsPaid: (e) => _markRentalAsPaid(emit, currentState, e),
+      removeCustomer: (e) => _removeCustomer(emit, currentState),
+      updateRentedAt: (e) => _updateRentedAt(emit, currentState, e),
+      recordPartialPayment: (e) => _recordPartialPayment(emit, currentState, e),
     );
   }
 
@@ -103,10 +100,10 @@ class AddRentalBloc extends BaseBloc<AddRentalEvent, AddRentalState> {
           emit,
           data.copyWith(
             selectedRental: rental ?? RentalEntity.empty(),
+            // Preserve existing customers and items lists
+            // Only update the selected rental
           ),
         );
-        add(const AddRentalEvent.initializeCustomers());
-        add(const AddRentalEvent.initializeItems());
       },
     );
   }
@@ -195,10 +192,24 @@ class AddRentalBloc extends BaseBloc<AddRentalEvent, AddRentalState> {
     AddRentalState data,
     _UpdateAdvanceAmount event,
   ) async {
+    // Remove any existing advance payment
+    final filteredPayments =
+        data.selectedRental.paymentHistory.where((payment) => payment.type != PaymentType.advance).toList();
+
+    // Create new advance payment record
+    final newPayment = PaymentRecord(
+      date: DateTime.now(),
+      amount: event.amount,
+      type: PaymentType.advance,
+    );
+
     emitLoaded(
       emit,
       data.copyWith(
-        selectedRental: data.selectedRental.copyWith(advanceAmount: event.amount),
+        selectedRental: data.selectedRental.copyWith(
+          advanceAmount: event.amount,
+          paymentHistory: [...filteredPayments, newPayment],
+        ),
       ),
     );
   }
@@ -298,7 +309,9 @@ class AddRentalBloc extends BaseBloc<AddRentalEvent, AddRentalState> {
       (failure) => emitError(emit, failure.message),
       (items) => emitLoaded(
         emit,
-        data.copyWith(items: items),
+        data.copyWith(
+          items: items,
+        ),
       ),
     );
   }
@@ -309,10 +322,20 @@ class AddRentalBloc extends BaseBloc<AddRentalEvent, AddRentalState> {
     _MarkRentalAsPaid event,
   ) async {
     final totalAmount = data.selectedRental.calculateTotalAmount();
+    final pendingAmount = totalAmount - data.selectedRental.advanceAmount - data.selectedRental.partialPaymentAmount;
+
+    final newPayment = PaymentRecord(
+      date: DateTime.now(),
+      amount: pendingAmount,
+      type: PaymentType.full,
+    );
+
     final updatedRental = data.selectedRental.copyWith(
       status: RentalStatus.paid,
       totalAmount: totalAmount,
+      paymentHistory: [...data.selectedRental.paymentHistory, newPayment],
     );
+
     final result = await _updateRentalUseCase(updatedRental);
 
     result.fold(
@@ -344,10 +367,19 @@ class AddRentalBloc extends BaseBloc<AddRentalEvent, AddRentalState> {
   ) async {
     emitLoading(emit);
     final totalAmount = data.selectedRental.calculateTotalAmount();
+
+    // Create new payment record
+    final newPayment = PaymentRecord(
+      date: DateTime.now(),
+      amount: event.amount,
+      type: PaymentType.partial,
+    );
+
     final updatedRental = data.selectedRental.copyWith(
       totalAmount: totalAmount,
       status: RentalStatus.partiallyPaid,
       partialPaymentAmount: data.selectedRental.partialPaymentAmount + event.amount,
+      paymentHistory: [...data.selectedRental.paymentHistory, newPayment], // Add to payment history
     );
 
     final result = await _updateRentalUseCase(updatedRental);

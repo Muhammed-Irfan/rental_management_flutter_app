@@ -11,6 +11,7 @@ extension HiveRegistrar on HiveInterface {
   void registerAdapters() {
     registerAdapter(CustomerHiveModelAdapter());
     registerAdapter(InventoryItemHiveModelAdapter());
+    registerAdapter(PaymentRecordHiveModelAdapter());
     registerAdapter(RentalHiveModelAdapter());
   }
 }

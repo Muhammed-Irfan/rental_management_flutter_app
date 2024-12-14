@@ -107,11 +107,11 @@ Future<_i174.GetIt> init(
     () => storageModule.prefs,
     preResolve: true,
   );
-  gh.singleton<_i1022.LoggingService>(() => _i1022.LoggingService());
   await gh.singletonAsync<_i821.DatabaseService>(
     () => databaseModule.databaseService,
     preResolve: true,
   );
+  gh.singleton<_i1022.LoggingService>(() => _i1022.LoggingService());
   gh.lazySingleton<_i409.EventBus>(() => _i409.EventBus());
   gh.factory<_i189.RentalLocalDataSource>(
       () => _i189.RentalLocalDataSourceImpl(gh<_i821.DatabaseService>()));
@@ -131,11 +131,11 @@ Future<_i174.GetIt> init(
       () => _i509.DashboardRepositoryImpl(gh<_i446.DashboardDataSource>()));
   gh.factory<_i591.GetOverviewUseCase>(
       () => _i591.GetOverviewUseCase(gh<_i665.DashboardRepository>()));
-  gh.factory<_i512.AddRentalUseCase>(() => _i512.AddRentalUseCase(
+  gh.factory<_i230.UpdateRentalUseCase>(() => _i230.UpdateRentalUseCase(
         gh<_i545.RentalRepository>(),
         gh<_i409.EventBus>(),
       ));
-  gh.factory<_i230.UpdateRentalUseCase>(() => _i230.UpdateRentalUseCase(
+  gh.factory<_i512.AddRentalUseCase>(() => _i512.AddRentalUseCase(
         gh<_i545.RentalRepository>(),
         gh<_i409.EventBus>(),
       ));
@@ -147,16 +147,16 @@ Future<_i174.GetIt> init(
         gh<_i504.CustomerRepository>(),
         gh<_i409.EventBus>(),
       ));
-  gh.factory<_i425.GetAllRentalsUseCase>(
-      () => _i425.GetAllRentalsUseCase(gh<_i545.RentalRepository>()));
-  gh.factory<_i75.GetRentalByIdUseCase>(
-      () => _i75.GetRentalByIdUseCase(gh<_i545.RentalRepository>()));
+  gh.factory<_i226.GetCustomerCollectedAmountUseCase>(() =>
+      _i226.GetCustomerCollectedAmountUseCase(gh<_i545.RentalRepository>()));
   gh.factory<_i740.GetCustomerRentalsUseCase>(
       () => _i740.GetCustomerRentalsUseCase(gh<_i545.RentalRepository>()));
   gh.factory<_i371.GetCustomerPendingAmountUseCase>(() =>
       _i371.GetCustomerPendingAmountUseCase(gh<_i545.RentalRepository>()));
-  gh.factory<_i226.GetCustomerCollectedAmountUseCase>(() =>
-      _i226.GetCustomerCollectedAmountUseCase(gh<_i545.RentalRepository>()));
+  gh.factory<_i75.GetRentalByIdUseCase>(
+      () => _i75.GetRentalByIdUseCase(gh<_i545.RentalRepository>()));
+  gh.factory<_i425.GetAllRentalsUseCase>(
+      () => _i425.GetAllRentalsUseCase(gh<_i545.RentalRepository>()));
   gh.factory<_i422.InventoryRepository>(() =>
       _i572.InventoryRepositoryImpl(gh<_i716.InventoryLocalDataSource>()));
   gh.factory<_i968.StorageService>(
@@ -207,15 +207,15 @@ Future<_i174.GetIt> init(
         gh<_i866.GetInventoryWithAvailabilityUseCase>(),
         gh<_i409.EventBus>(),
       ));
+  gh.factory<_i213.AddInventoryItemUseCase>(() => _i213.AddInventoryItemUseCase(
+        gh<_i422.InventoryRepository>(),
+        gh<_i409.EventBus>(),
+      ));
   gh.factory<_i866.UpdateInventoryItemUseCase>(
       () => _i866.UpdateInventoryItemUseCase(
             gh<_i422.InventoryRepository>(),
             gh<_i409.EventBus>(),
           ));
-  gh.factory<_i213.AddInventoryItemUseCase>(() => _i213.AddInventoryItemUseCase(
-        gh<_i422.InventoryRepository>(),
-        gh<_i409.EventBus>(),
-      ));
   gh.factory<_i153.AddInventoryBloc>(() => _i153.AddInventoryBloc(
         gh<_i213.AddInventoryItemUseCase>(),
         gh<_i866.UpdateInventoryItemUseCase>(),

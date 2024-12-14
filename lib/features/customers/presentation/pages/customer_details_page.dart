@@ -51,14 +51,14 @@ class CustomerDetailsView extends StatelessWidget {
 
   Widget _buildContent(BuildContext context, CustomerDetailsState state) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(16.0, 16, 16, 0),
+      padding: const EdgeInsets.fromLTRB(16.0, 0, 16, 0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           _buildCustomerInfo(state, context),
-          const SizedBox(height: 16),
+          const SizedBox(height: 8),
           _buildSummary(state),
-          const SizedBox(height: 32),
+          const SizedBox(height: 16),
           Expanded(child: _buildRentalList(state, context)),
         ],
       ),
@@ -70,19 +70,20 @@ class CustomerDetailsView extends StatelessWidget {
       elevation: 8,
       color: AppColors.customerCardBackground,
       child: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               children: [
-                Text(
-                  'Customer Information',
-                  style: AppTextStyles.title.copyWith(
-                    fontWeight: FontWeight.bold,
+                Expanded(
+                  child: Text(
+                    'Customer Information',
+                    style: AppTextStyles.title.copyWith(
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
-                const Spacer(),
                 IconButton(
                   icon: const Icon(Icons.edit),
                   onPressed: () => context.pushNamed(
@@ -92,12 +93,9 @@ class CustomerDetailsView extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(height: 16),
             _buildInfoRow('Name', state.customer.name),
-            if (state.customer.phoneNumber != null)
-              _buildInfoRow('Phone', state.customer.phoneNumber!),
-            if (state.customer.address != null)
-              _buildInfoRow('Address', state.customer.address!),
+            if (state.customer.phoneNumber != null) _buildInfoRow('Phone', state.customer.phoneNumber!),
+            if (state.customer.address != null) _buildInfoRow('Address', state.customer.address!),
           ],
         ),
       ),
@@ -106,7 +104,7 @@ class CustomerDetailsView extends StatelessWidget {
 
   Widget _buildInfoRow(String label, String value) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 8.0),
+      padding: const EdgeInsets.only(bottom: 2),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -114,15 +112,15 @@ class CustomerDetailsView extends StatelessWidget {
             width: 80,
             child: Text(
               label,
-              style: AppTextStyles.body.copyWith(
-                fontWeight: FontWeight.bold,
-              ),
+              style: AppTextStyles.body,
             ),
           ),
           Expanded(
             child: Text(
               value,
-              style: AppTextStyles.body,
+              style: AppTextStyles.body.copyWith(
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
         ],
@@ -145,7 +143,7 @@ class CustomerDetailsView extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const SizedBox(height: 16),
+            const SizedBox(height: 8),
             Row(
               children: [
                 Expanded(
@@ -202,7 +200,7 @@ class CustomerDetailsView extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
-        const SizedBox(height: 24),
+        const SizedBox(height: 8),
         AppDropdown<RentalStatus>(
           label: 'Filter by Status',
           hint: 'Select a status',
@@ -218,13 +216,11 @@ class CustomerDetailsView extends StatelessWidget {
           },
           onChanged: (RentalStatus? status) {
             if (status != null) {
-              context
-                  .read<CustomerDetailsBloc>()
-                  .add(CustomerDetailsEvent.filterByStatus(status));
+              context.read<CustomerDetailsBloc>().add(CustomerDetailsEvent.filterByStatus(status));
             }
           },
         ),
-        const SizedBox(height: 24),
+        const SizedBox(height: 12),
         Expanded(
           child: rentals.isEmpty
               ? const Center(
@@ -234,7 +230,6 @@ class CustomerDetailsView extends StatelessWidget {
                   ),
                 )
               : ListView.separated(
-                  physics: const NeverScrollableScrollPhysics(),
                   itemCount: rentals.length,
                   itemBuilder: (context, index) {
                     final rental = rentals[index];
@@ -248,8 +243,7 @@ class CustomerDetailsView extends StatelessWidget {
                       },
                     );
                   },
-                  separatorBuilder: (context, index) =>
-                      const SizedBox(height: 16),
+                  separatorBuilder: (context, index) => const SizedBox(height: 16),
                 ),
         ),
       ],

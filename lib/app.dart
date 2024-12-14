@@ -13,6 +13,11 @@ class RentalTracker extends StatelessWidget {
       routerConfig: router,
       theme: AppTheme.theme,
       debugShowCheckedModeBanner: false,
+      builder: (context, child) {
+        return MediaQuery.withNoTextScaling(
+          child: child ?? const SizedBox.shrink(),
+        );
+      },
     );
   }
 }

@@ -5,6 +5,21 @@ import 'package:rentease/features/inventory/domain/entities/inventory_item_entit
 part 'rental_entity.freezed.dart';
 
 @freezed
+class PaymentRecord with _$PaymentRecord {
+  const factory PaymentRecord({
+    required DateTime date,
+    required double amount,
+    required PaymentType type,
+  }) = _PaymentRecord;
+}
+
+enum PaymentType {
+  advance,
+  partial,
+  full
+}
+
+@freezed
 class RentalEntity with _$RentalEntity {
   const factory RentalEntity({
     required String id,
@@ -13,6 +28,7 @@ class RentalEntity with _$RentalEntity {
     required DateTime rentedAt,
     @Default(0.0) double advanceAmount,
     @Default(0.0) double partialPaymentAmount,
+    @Default([]) List<PaymentRecord> paymentHistory,
     DateTime? returnedAt,
     @Default(0.0) double totalAmount,
     @Default(RentalStatus.active) RentalStatus status,

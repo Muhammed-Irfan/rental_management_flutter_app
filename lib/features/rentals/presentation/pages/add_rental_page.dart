@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:rentease/core/di/injection.dart';
 import 'package:rentease/core/presentation/widgets/base_view.dart';
+import 'package:rentease/core/router/route_names.dart';
 import 'package:rentease/core/theme/theme_imports.dart';
 import 'package:rentease/core/utils/app_debouncer.dart';
 import 'package:rentease/core/utils/extensions.dart';
@@ -20,14 +22,15 @@ class AddRentalPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) {
-        final bloc = getIt<AddRentalBloc>();
+        final bloc = getIt<AddRentalBloc>()
+          ..add(const AddRentalEvent.initializeCustomers())
+          ..add(const AddRentalEvent.initializeItems());
+
+        // If editing, also set the rental
         if (id != null) {
           bloc.add(AddRentalEvent.setRental(id!));
-        } else {
-          bloc
-            ..add(const AddRentalEvent.initializeCustomers())
-            ..add(const AddRentalEvent.initializeItems());
         }
+
         return bloc;
       },
       child: AddRentalView(id: id),
@@ -96,31 +99,46 @@ class AddRentalView extends StatelessWidget {
         ),
         const SizedBox(height: 16),
         if (selectedCustomer.id.isNotEmpty)
-          Container(
-            decoration: BoxDecoration(
-              border: Border.all(color: Theme.of(context).primaryColor),
-              borderRadius: 4.0.borderRadius,
-              color: AppColors.customerCardBackground,
-            ),
-            padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 6.0),
-            child: Row(
-              children: [
-                Expanded(
-                  child: Text(
-                    selectedCustomer.name,
-                    style: AppTextStyles.title,
+          Row(
+            children: [
+              Expanded(
+                child: GestureDetector(
+                  onTap: () {
+                    context.pushNamed(
+                      RouteNames.editCustomer,
+                      pathParameters: {'id': selectedCustomer.id},
+                    );
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Theme.of(context).primaryColor),
+                      borderRadius: 4.0.borderRadius,
+                      color: AppColors.customerCardBackground,
+                    ),
+                    padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 9.0),
+                    child: Text(
+                      selectedCustomer.name,
+                      style: AppTextStyles.title,
+                    ),
                   ),
                 ),
-                state.selectedRental.status != RentalStatus.paid
-                    ? IconButton(
-                        icon: const Icon(Icons.close),
+              ),
+              state.selectedRental.status != RentalStatus.paid
+                  ? Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Theme.of(context).primaryColor),
+                        borderRadius: 4.0.borderRadius,
+                      ),
+                      margin: const EdgeInsets.only(left: 8.0),
+                      child: IconButton(
+                        icon: const Icon(Icons.delete_outline_rounded),
                         onPressed: () {
                           context.read<AddRentalBloc>().add(const AddRentalEvent.removeCustomer());
                         },
-                      )
-                    : const SizedBox(height: 45),
-              ],
-            ),
+                      ),
+                    )
+                  : const SizedBox.shrink(),
+            ],
           )
         else
           AppDropdown<CustomerEntity>(
@@ -372,11 +390,12 @@ class AddRentalView extends StatelessWidget {
           ).expandedWidth,
         ],
         const SizedBox(height: 16),
-        AppButton(
-          text: state.selectedRental.status == RentalStatus.paid ? 'View Summary' : 'Proceed to Pay',
-          onPressed: () => _showCalculationSheet(context, state),
-          isDisabled: state.selectedRental.items.isEmpty,
-        ).expandedWidth,
+        if (id != null)
+          AppButton(
+            text: state.selectedRental.status == RentalStatus.paid ? 'View Summary' : 'Proceed to Pay',
+            onPressed: () => _showCalculationSheet(context, state),
+            isDisabled: state.selectedRental.items.isEmpty,
+          ).expandedWidth,
       ],
     );
   }
@@ -401,16 +420,19 @@ class AddRentalView extends StatelessWidget {
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
         ),
-        builder: (context) => RentalCalculationSheet(
-          rental: state.selectedRental,
-          onMarkAsPaid: () {
-            bloc.add(const AddRentalEvent.markRentalAsPaid());
-            Navigator.pop(context);
-          },
-          onPartialPayment: (amount) {
-            bloc.add(AddRentalEvent.recordPartialPayment(amount));
-            Navigator.pop(context);
-          },
+        builder: (context) => SizedBox(
+          height: MediaQuery.of(context).size.height * 0.8,
+          child: RentalCalculationSheet(
+            rental: state.selectedRental,
+            onMarkAsPaid: () {
+              bloc.add(const AddRentalEvent.markRentalAsPaid());
+              Navigator.pop(context);
+            },
+            onPartialPayment: (amount) {
+              bloc.add(AddRentalEvent.recordPartialPayment(amount));
+              Navigator.pop(context);
+            },
+          ),
         ),
       );
     }

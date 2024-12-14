@@ -32,13 +32,15 @@ class OverviewCard extends StatelessWidget {
             children: [
               Icon(icon, color: AppColors.onPrimary, size: 32),
               const SizedBox(width: 16),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(title, style: AppTextStyles.body.copyWith(color: AppColors.onSecondary)),
-                ],
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(title, style: AppTextStyles.body.copyWith(color: AppColors.onSecondary)),
+                  ],
+                ),
               ),
-              const Spacer(),
+              const SizedBox(width: 25),
               Text(value, style: AppTextStyles.heading.copyWith(color: AppColors.onSecondary)),
             ],
           ),

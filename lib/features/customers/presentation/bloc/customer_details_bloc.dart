@@ -104,7 +104,7 @@ class CustomerDetailsBloc
         final pendingAmount =
             pendingAmountResult.fold((l) => 0.0, (r) => (r as num).toDouble());
         final collectedAmount = collectedAmountResult.fold(
-            (l) => 0.0, (r) => (r as num).toDouble());
+            (l) => 0.0, (r) => (r as num).toDouble(),);
 
         if (!emit.isDone) {
           emitLoaded(
@@ -122,7 +122,7 @@ class CustomerDetailsBloc
   }
 
   Future<void> _filterByStatus(RentalStatus status,
-      Emitter<BaseState<CustomerDetailsState>> emit) async {
+      Emitter<BaseState<CustomerDetailsState>> emit,) async {
     state.maybeWhen(
       loaded: (data) async {
         emitLoading(emit);

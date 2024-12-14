@@ -5,6 +5,40 @@ import 'package:rentease/features/rentals/domain/entities/rental_entity.dart';
 
 part 'rental_hive_model.g.dart';
 
+@HiveType(typeId: 5)
+class PaymentRecordHiveModel {
+  @HiveField(0)
+  final DateTime date;
+
+  @HiveField(1)
+  final double amount;
+
+  @HiveField(2)
+  final PaymentType type;
+
+  PaymentRecordHiveModel({
+    required this.date,
+    required this.amount,
+    required this.type,
+  });
+
+  factory PaymentRecordHiveModel.fromEntity(PaymentRecord entity) {
+    return PaymentRecordHiveModel(
+      date: entity.date,
+      amount: entity.amount,
+      type: entity.type,
+    );
+  }
+
+  PaymentRecord toEntity() {
+    return PaymentRecord(
+      date: date,
+      amount: amount,
+      type: type,
+    );
+  }
+}
+
 @HiveType(typeId: 3)
 class RentalHiveModel extends HiveObject {
   @HiveField(0)
@@ -34,6 +68,9 @@ class RentalHiveModel extends HiveObject {
   @HiveField(8)
   final double partialPaymentAmount;
 
+  @HiveField(9)
+  final List<PaymentRecordHiveModel> paymentHistory;
+
   RentalHiveModel({
     required this.id,
     required this.customer,
@@ -44,6 +81,7 @@ class RentalHiveModel extends HiveObject {
     this.totalAmount = 0.0,
     this.status = RentalStatus.active,
     this.partialPaymentAmount = 0.0,
+    this.paymentHistory = const [],
   });
 
   factory RentalHiveModel.fromEntity(RentalEntity entity) {
@@ -57,6 +95,7 @@ class RentalHiveModel extends HiveObject {
       totalAmount: entity.totalAmount,
       status: entity.status,
       partialPaymentAmount: entity.partialPaymentAmount,
+      paymentHistory: entity.paymentHistory.map(PaymentRecordHiveModel.fromEntity).toList(),
     );
   }
 
@@ -71,6 +110,7 @@ class RentalHiveModel extends HiveObject {
       totalAmount: totalAmount,
       status: status,
       partialPaymentAmount: partialPaymentAmount,
+      paymentHistory: paymentHistory.map((e) => e.toEntity()).toList(),
     );
   }
 }

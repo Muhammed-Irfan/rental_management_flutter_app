@@ -42,8 +42,9 @@ class RentalItem extends StatelessWidget {
                           TextSpan(
                             text: rental.rentedAt.toFormattedString(),
                             style: const TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: AppColors.primary,),
+                              fontWeight: FontWeight.bold,
+                              color: AppColors.primary,
+                            ),
                           ),
                         ],
                       ),

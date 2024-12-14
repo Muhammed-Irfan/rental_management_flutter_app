@@ -15,6 +15,170 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
+mixin _$PaymentRecord {
+  DateTime get date => throw _privateConstructorUsedError;
+  double get amount => throw _privateConstructorUsedError;
+  PaymentType get type => throw _privateConstructorUsedError;
+
+  /// Create a copy of PaymentRecord
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $PaymentRecordCopyWith<PaymentRecord> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $PaymentRecordCopyWith<$Res> {
+  factory $PaymentRecordCopyWith(
+          PaymentRecord value, $Res Function(PaymentRecord) then) =
+      _$PaymentRecordCopyWithImpl<$Res, PaymentRecord>;
+  @useResult
+  $Res call({DateTime date, double amount, PaymentType type});
+}
+
+/// @nodoc
+class _$PaymentRecordCopyWithImpl<$Res, $Val extends PaymentRecord>
+    implements $PaymentRecordCopyWith<$Res> {
+  _$PaymentRecordCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of PaymentRecord
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? date = null,
+    Object? amount = null,
+    Object? type = null,
+  }) {
+    return _then(_value.copyWith(
+      date: null == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      amount: null == amount
+          ? _value.amount
+          : amount // ignore: cast_nullable_to_non_nullable
+              as double,
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as PaymentType,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$PaymentRecordImplCopyWith<$Res>
+    implements $PaymentRecordCopyWith<$Res> {
+  factory _$$PaymentRecordImplCopyWith(
+          _$PaymentRecordImpl value, $Res Function(_$PaymentRecordImpl) then) =
+      __$$PaymentRecordImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({DateTime date, double amount, PaymentType type});
+}
+
+/// @nodoc
+class __$$PaymentRecordImplCopyWithImpl<$Res>
+    extends _$PaymentRecordCopyWithImpl<$Res, _$PaymentRecordImpl>
+    implements _$$PaymentRecordImplCopyWith<$Res> {
+  __$$PaymentRecordImplCopyWithImpl(
+      _$PaymentRecordImpl _value, $Res Function(_$PaymentRecordImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of PaymentRecord
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? date = null,
+    Object? amount = null,
+    Object? type = null,
+  }) {
+    return _then(_$PaymentRecordImpl(
+      date: null == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      amount: null == amount
+          ? _value.amount
+          : amount // ignore: cast_nullable_to_non_nullable
+              as double,
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as PaymentType,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$PaymentRecordImpl implements _PaymentRecord {
+  const _$PaymentRecordImpl(
+      {required this.date, required this.amount, required this.type});
+
+  @override
+  final DateTime date;
+  @override
+  final double amount;
+  @override
+  final PaymentType type;
+
+  @override
+  String toString() {
+    return 'PaymentRecord(date: $date, amount: $amount, type: $type)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PaymentRecordImpl &&
+            (identical(other.date, date) || other.date == date) &&
+            (identical(other.amount, amount) || other.amount == amount) &&
+            (identical(other.type, type) || other.type == type));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, date, amount, type);
+
+  /// Create a copy of PaymentRecord
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PaymentRecordImplCopyWith<_$PaymentRecordImpl> get copyWith =>
+      __$$PaymentRecordImplCopyWithImpl<_$PaymentRecordImpl>(this, _$identity);
+}
+
+abstract class _PaymentRecord implements PaymentRecord {
+  const factory _PaymentRecord(
+      {required final DateTime date,
+      required final double amount,
+      required final PaymentType type}) = _$PaymentRecordImpl;
+
+  @override
+  DateTime get date;
+  @override
+  double get amount;
+  @override
+  PaymentType get type;
+
+  /// Create a copy of PaymentRecord
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$PaymentRecordImplCopyWith<_$PaymentRecordImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$RentalEntity {
   String get id => throw _privateConstructorUsedError;
   CustomerEntity get customer => throw _privateConstructorUsedError;
@@ -22,6 +186,7 @@ mixin _$RentalEntity {
   DateTime get rentedAt => throw _privateConstructorUsedError;
   double get advanceAmount => throw _privateConstructorUsedError;
   double get partialPaymentAmount => throw _privateConstructorUsedError;
+  List<PaymentRecord> get paymentHistory => throw _privateConstructorUsedError;
   DateTime? get returnedAt => throw _privateConstructorUsedError;
   double get totalAmount => throw _privateConstructorUsedError;
   RentalStatus get status => throw _privateConstructorUsedError;
@@ -46,6 +211,7 @@ abstract class $RentalEntityCopyWith<$Res> {
       DateTime rentedAt,
       double advanceAmount,
       double partialPaymentAmount,
+      List<PaymentRecord> paymentHistory,
       DateTime? returnedAt,
       double totalAmount,
       RentalStatus status});
@@ -74,6 +240,7 @@ class _$RentalEntityCopyWithImpl<$Res, $Val extends RentalEntity>
     Object? rentedAt = null,
     Object? advanceAmount = null,
     Object? partialPaymentAmount = null,
+    Object? paymentHistory = null,
     Object? returnedAt = freezed,
     Object? totalAmount = null,
     Object? status = null,
@@ -103,6 +270,10 @@ class _$RentalEntityCopyWithImpl<$Res, $Val extends RentalEntity>
           ? _value.partialPaymentAmount
           : partialPaymentAmount // ignore: cast_nullable_to_non_nullable
               as double,
+      paymentHistory: null == paymentHistory
+          ? _value.paymentHistory
+          : paymentHistory // ignore: cast_nullable_to_non_nullable
+              as List<PaymentRecord>,
       returnedAt: freezed == returnedAt
           ? _value.returnedAt
           : returnedAt // ignore: cast_nullable_to_non_nullable
@@ -144,6 +315,7 @@ abstract class _$$RentalEntityImplCopyWith<$Res>
       DateTime rentedAt,
       double advanceAmount,
       double partialPaymentAmount,
+      List<PaymentRecord> paymentHistory,
       DateTime? returnedAt,
       double totalAmount,
       RentalStatus status});
@@ -171,6 +343,7 @@ class __$$RentalEntityImplCopyWithImpl<$Res>
     Object? rentedAt = null,
     Object? advanceAmount = null,
     Object? partialPaymentAmount = null,
+    Object? paymentHistory = null,
     Object? returnedAt = freezed,
     Object? totalAmount = null,
     Object? status = null,
@@ -200,6 +373,10 @@ class __$$RentalEntityImplCopyWithImpl<$Res>
           ? _value.partialPaymentAmount
           : partialPaymentAmount // ignore: cast_nullable_to_non_nullable
               as double,
+      paymentHistory: null == paymentHistory
+          ? _value._paymentHistory
+          : paymentHistory // ignore: cast_nullable_to_non_nullable
+              as List<PaymentRecord>,
       returnedAt: freezed == returnedAt
           ? _value.returnedAt
           : returnedAt // ignore: cast_nullable_to_non_nullable
@@ -226,10 +403,12 @@ class _$RentalEntityImpl extends _RentalEntity {
       required this.rentedAt,
       this.advanceAmount = 0.0,
       this.partialPaymentAmount = 0.0,
+      final List<PaymentRecord> paymentHistory = const [],
       this.returnedAt,
       this.totalAmount = 0.0,
       this.status = RentalStatus.active})
       : _items = items,
+        _paymentHistory = paymentHistory,
         super._();
 
   @override
@@ -252,6 +431,15 @@ class _$RentalEntityImpl extends _RentalEntity {
   @override
   @JsonKey()
   final double partialPaymentAmount;
+  final List<PaymentRecord> _paymentHistory;
+  @override
+  @JsonKey()
+  List<PaymentRecord> get paymentHistory {
+    if (_paymentHistory is EqualUnmodifiableListView) return _paymentHistory;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_paymentHistory);
+  }
+
   @override
   final DateTime? returnedAt;
   @override
@@ -263,7 +451,7 @@ class _$RentalEntityImpl extends _RentalEntity {
 
   @override
   String toString() {
-    return 'RentalEntity(id: $id, customer: $customer, items: $items, rentedAt: $rentedAt, advanceAmount: $advanceAmount, partialPaymentAmount: $partialPaymentAmount, returnedAt: $returnedAt, totalAmount: $totalAmount, status: $status)';
+    return 'RentalEntity(id: $id, customer: $customer, items: $items, rentedAt: $rentedAt, advanceAmount: $advanceAmount, partialPaymentAmount: $partialPaymentAmount, paymentHistory: $paymentHistory, returnedAt: $returnedAt, totalAmount: $totalAmount, status: $status)';
   }
 
   @override
@@ -281,6 +469,8 @@ class _$RentalEntityImpl extends _RentalEntity {
                 other.advanceAmount == advanceAmount) &&
             (identical(other.partialPaymentAmount, partialPaymentAmount) ||
                 other.partialPaymentAmount == partialPaymentAmount) &&
+            const DeepCollectionEquality()
+                .equals(other._paymentHistory, _paymentHistory) &&
             (identical(other.returnedAt, returnedAt) ||
                 other.returnedAt == returnedAt) &&
             (identical(other.totalAmount, totalAmount) ||
@@ -297,6 +487,7 @@ class _$RentalEntityImpl extends _RentalEntity {
       rentedAt,
       advanceAmount,
       partialPaymentAmount,
+      const DeepCollectionEquality().hash(_paymentHistory),
       returnedAt,
       totalAmount,
       status);
@@ -318,6 +509,7 @@ abstract class _RentalEntity extends RentalEntity {
       required final DateTime rentedAt,
       final double advanceAmount,
       final double partialPaymentAmount,
+      final List<PaymentRecord> paymentHistory,
       final DateTime? returnedAt,
       final double totalAmount,
       final RentalStatus status}) = _$RentalEntityImpl;
@@ -335,6 +527,8 @@ abstract class _RentalEntity extends RentalEntity {
   double get advanceAmount;
   @override
   double get partialPaymentAmount;
+  @override
+  List<PaymentRecord> get paymentHistory;
   @override
   DateTime? get returnedAt;
   @override
